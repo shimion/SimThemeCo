@@ -1,0 +1,1 @@
+a:5:{s:5:"files";a:0:{}s:10:"references";s:115:"I:\wamp64\www\simtheme\dev\wp-content\themes\simtheme-lumen/assets/css\63f5f6d34fc65016ea1b1a8e4c87b07cb3f6f11c.css";s:9:"filemtime";s:10:"1506881924";s:9:"generated";s:10:"1506881924";s:11:"regenerated";s:10:"1506881924";}
