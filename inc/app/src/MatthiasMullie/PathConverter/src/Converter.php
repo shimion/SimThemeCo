@@ -72,9 +72,9 @@ class Converter implements ConverterInterface
 
         /*
          * Example:
-         *     /home/forkcms/frontend/cache/compiled_templates/../../core/layout/css/../images/img.gif
+         *     /home/forkcms/frontend/cache/compiled_templates/../..inc/admin/core/layout/css/../images/img.gif
          * to
-         *     /home/forkcms/frontend/core/layout/images/img.gif
+         *     /home/forkcms/frontendinc/admin/core/layout/images/img.gif
          */
         do {
             $path = preg_replace('/[^\/]+(?<!\.\.)\/\.\.\//', '', $path, -1, $count);
@@ -87,7 +87,7 @@ class Converter implements ConverterInterface
      * Figure out the shared path of 2 locations.
      *
      * Example:
-     *     /home/forkcms/frontend/core/layout/images/img.gif
+     *     /home/forkcms/frontendinc/admin/core/layout/images/img.gif
      * and
      *     /home/forkcms/frontend/cache/minified_css
      * share
@@ -124,9 +124,9 @@ class Converter implements ConverterInterface
      * Convert paths relative from 1 file to another.
      *
      * E.g.
-     *     ../images/img.gif relative to /home/forkcms/frontend/core/layout/css
+     *     ../images/img.gif relative to /home/forkcms/frontendinc/admin/core/layout/css
      * should become:
-     *     ../../core/layout/images/img.gif relative to
+     *     ../..inc/admin/core/layout/images/img.gif relative to
      *     /home/forkcms/frontend/cache/minified_css
      *
      * @param string $path The relative path that needs to be converted

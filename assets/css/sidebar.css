@@ -1,0 +1,10 @@
+/*
+Sidebar STYLE
+*/
+
+.main-sidebar h3{font-size:118%;line-height: 150%; padding-bottom:10px}
+.main-sidebar ul{ margin-left:0px; padding-left: 0}
+.main-sidebar ul li { list-style: none; margin-bottom: 5px; line-height: auto; display: block;}
+.main-sidebar ul li a{ display: block; line-height:150%:}
+
+
