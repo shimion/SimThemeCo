@@ -7,8 +7,10 @@
      @endphp
     </head>
          <body>
-                      
-                @include('components.header')          
+            @if($Data->Get('global.wapper') == true)
+            <div class="wapper">
+            @endif        
+                 @include('components.header')          
                {{-- The main content section. It has also included the sidebar --}}
                 <section class="content">
                     <div class="container">
@@ -24,5 +26,9 @@
                 @include('components.footer', [])  
                       
         @php wp_footer() @endphp
+        
+         @if($Data->Get('global.wapper') == true)
+        </div>
+        @endif
     </body>
 </html>

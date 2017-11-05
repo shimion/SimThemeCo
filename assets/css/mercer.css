@@ -48,7 +48,7 @@ Style CSS
 
 
 
-
+.wapper{ max-width: 960px; margin: 0 auto;}
 
 
 h1 {font-size: 30px !important;}
@@ -71,7 +71,7 @@ body {background: url(images/mercer_bodybg.jpg);}
 
 .container { width: 100% !important; max-width: 960px !important; background: #fff; }
 
-.header_top {background: #000000;}
+.wapper-header-top {background: #000000;}
 
 .top-logo {display: inline-block;margin: 5px 0px;}
 
@@ -82,13 +82,13 @@ body {background: url(images/mercer_bodybg.jpg);}
     margin-right: 0px;
 }
 
-#top_menu  {margin-top: 7px;}
+.wapper-header-top ul  {margin-top: 7px;}
 
-#top_menu li {
+.wapper-header-top ul li {
     display: inline-block;
 }
 
-#top_menu li a {
+.wapper-header-top ul li a {
     color: #ffffff;
     font-size: 13px;
     margin-right: 10px;

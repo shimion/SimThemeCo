@@ -131,7 +131,7 @@ add_action('loop_start',function($query){
     global $wp_query;
     if($query === $wp_query){
     add_filter('the_title', function($title){
-        if(is_singular() or ! is_main_query()) return $title;
+        if(is_singular() or ! $wp_query->in_the_loop) return $title;
 
         $title = Excerpt($title,  App::Config()->Get('global.title_limit'), '...');
         $title = sprintf('<a href="%s" >%s</a>', get_the_permalink(),  $title);

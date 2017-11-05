@@ -3,12 +3,16 @@
  * Must PreDefined ***
 */
 return[
+    //Basic
     'logo' => Helpers()->logo,
     'favicon' => get_theme_mod('site_icon', ASSETS . 'logo.jpg'),
     'date_format' => get_option('date_format'),
     'site_url'   =>  Helpers()->site['url'],
     'site_name'   =>  Helpers()->site['name'],
     'site_description'   =>  Helpers()->site['description'],
+    
+    //Layout
+    'wapper'        => true,
     'button_class'  => 'btn-outline-secondary', // ***
     'header_top' => Helpers()->DisplayHeaderTop(),
     'header' => true,
