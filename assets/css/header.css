@@ -1,0 +1,12 @@
+.site-title-description-wapper {
+    font-size: 145%;
+    line-height: 100%;
+}
+
+.site-title-description-wapper span {
+    font-size: 69%;
+    display: inline-block;
+    line-height: 100%;
+    font-style: italic;
+}
+.wapper-header-top .col-sm:last-child{ text-align: right;}

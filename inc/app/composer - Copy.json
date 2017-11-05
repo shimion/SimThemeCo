@@ -1,0 +1,31 @@
+{
+    
+    "require": {
+        "illuminate/view": "~5",
+        "illuminate/events": "~5"
+    },
+
+  "autoload": {
+    "psr-4": {
+       "ST\\":"src/",
+        "MatthiasMullie\\Minify\\": "src/",
+        "MatthiasMullie\\PathConverter\\": "src/",
+        "Philo\\Blade\\": "vendor/",      
+        "Illuminate\\Container\\": "vendor/",
+        "Illuminate\\Contracts\\Container\\": "vendor/",
+        "Illuminate\\Events\\": "vendor/",
+        "Illuminate\\Contracts\\Events\\": "vendor/",
+        "Illuminate\\Filesystem\\": "vendor/",
+        "Illuminate\\Contracts\\Filesystem\\": "vendor/",
+        "Illuminate\\Support\\": "vendor/",
+        "Illuminate\\View\\": "vendor/",
+        "Illuminate\\Contracts\\View\\": "vendor/",
+        "Illuminate\\Routing\\": "vendor/",
+        "Illuminate\\Routing\\Route\\": "vendor/",
+        "Illuminate\\Contracts\\Support\\": "vendor/",
+        "Illuminate\\Http\\": "vendor/",
+        "Illuminate\\Queue\\": "vendor/"
+    }
+  }
+}
+  

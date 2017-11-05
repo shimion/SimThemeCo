@@ -6,7 +6,25 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
+    'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'ST\\' => array($baseDir . '/src'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'Philo\\Blade\\' => array($vendorDir, $vendorDir . '/philo/laravel-blade/src'),
+    'Northwoods\\Config\\' => array($vendorDir),
     'MatthiasMullie\\PathConverter\\' => array($baseDir . '/src'),
     'MatthiasMullie\\Minify\\' => array($baseDir . '/src'),
+    'Illuminate\\View\\' => array($vendorDir, $vendorDir . '/illuminate/view'),
+    'Illuminate\\Support\\' => array($vendorDir, $vendorDir . '/illuminate/support'),
+    'Illuminate\\Routing\\' => array($vendorDir),
+    'Illuminate\\Filesystem\\' => array($vendorDir, $vendorDir . '/illuminate/filesystem'),
+    'Illuminate\\Events\\' => array($vendorDir, $vendorDir . '/illuminate/events'),
+    'Illuminate\\Contracts\\View\\' => array($vendorDir),
+    'Illuminate\\Contracts\\Support\\' => array($vendorDir),
+    'Illuminate\\Contracts\\Filesystem\\' => array($vendorDir),
+    'Illuminate\\Contracts\\Events\\' => array($vendorDir),
+    'Illuminate\\Contracts\\Container\\' => array($vendorDir),
+    'Illuminate\\Contracts\\' => array($vendorDir, $vendorDir . '/illuminate/contracts'),
+    'Illuminate\\Container\\' => array($vendorDir, $vendorDir . '/illuminate/container'),
+    'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Common/Inflector'),
 );

@@ -1,0 +1,265 @@
+/*
+    * # Mercer Project
+    * # WebImpakt Development
+    * # Deve: Shimion B
+    * # simtheme.com
+    * # Ver: 0.1
+*/
+
+
+/*--------------------------------------------------------------
+1.0 
+Style CSS
+--------------------------------------------------------------*/
+
+
+
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('fonts/BebasNeue.eot?#iefix') format('embedded-opentype'),  url('fonts/BebasNeue.otf')  format('opentype'),
+	     url('fonts/BebasNeue.woff') format('woff'), url('fonts/BebasNeue.ttf')  format('truetype'), url('fonts/BebasNeue.svg#BebasNeue') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Rockwell';
+  src: url('fonts/Rockwell.eot?#iefix') format('embedded-opentype'),  url('fonts/Rockwell.woff') format('woff'), url('fonts/Rockwell.ttf')  format('truetype'), url('fonts/Rockwell.svg#Rockwell') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'Gotham-Bold';
+  src: url('fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),  url('fonts/Gotham-Bold.otf')  format('opentype'),
+	     url('fonts/Gotham-Bold.woff') format('woff'), url('fonts/Gotham-Bold.ttf')  format('truetype'), url('fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+h1 {font-size: 30px !important;}
+h2 {font-size: 28px !important;margin-bottom: 20px !important;font-family: initial !important;}
+h3 {font-size: 20px !important;}
+h4 {font-size: 16px !important;}
+p {color: #787878;}
+
+
+a:hover {
+    color: firebrick !important;
+    text-decoration: none !important;
+}
+.widget {margin-bottom: 20px;}
+
+
+
+
+body {background: url(images/mercer_bodybg.jpg);}
+
+.container { width: 100% !important; max-width: 960px !important; background: #fff; }
+
+.header_top {background: #000000;}
+
+.top-logo {display: inline-block;margin: 5px 0px;}
+
+.header_rightnav {padding-left: 0px !important;}
+
+.navbar-nav {
+    padding-top: 15px;
+    margin-right: 0px;
+}
+
+#top_menu  {margin-top: 7px;}
+
+#top_menu li {
+    display: inline-block;
+}
+
+#top_menu li a {
+    color: #ffffff;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.navbar-nav>li>a:hover {
+    color: firebrick;
+}
+
+
+
+
+
+.logandreg { background: url(images/mercer_loginbg.jpg); background-repeat: repeat-x; background-size: auto 100%; line-height: normal; padding-left: 10px; padding-bottom: 5px; border-radius: 0px 0px 5px 5px; display: inline-block; margin-right: 10px;}
+.logandreg li {display: inline-block;line-height: 20px;vertical-align: middle; position: relative;}
+.logandreg li:first-child:before {content: ""; width: 1px; height: 15px; background: #000; position: absolute;top: 4px; right: 3px}
+
+
+
+
+
+
+
+
+
+
+.searchform {background: #fff;max-width: 135px;width: 100%;display: inline-block;}
+#search {padding: 5px;height: 28px;border: 0;border-radius: 0;}
+.submitbtn {padding: 5px !important;line-height: 16px !important;height: 28px;vertical-align: top !important;border-radius: 0px !important;background: transparent;}
+.btn {cursor: pointer;}
+
+
+
+
+
+
+
+
+
+.header { padding-bottom: 10px; }
+.header .header_left {padding-top: 25px;padding-bottom: 25px;}
+.header .header_left a {display: inline-block;}
+.header_right {display: flex;align-items: center;}
+.header_right h1 {font-family: 'Rockwell';max-width: 480px;}
+
+
+
+
+
+
+
+
+
+
+
+
+.menu_container { background: #193e62; }
+#main_menu { display: block; padding-top: 5px; padding-bottom: 5px; line-height: normal; }
+.menu_container li { display: inline-block; padding-top: 8px; padding-bottom: 8px; position: relative; }
+.menu_container li:last-child:after {display: none;}
+.menu_container li a {color: #ffffff;padding: 0px 35px;}
+.menu_container li:after {content: ""; width: 1px; height: 30px; background: #fff; position: absolute;top: 4px;}
+
+
+
+
+
+
+
+
+
+
+
+
+.post_content { padding-top: 15px; padding-bottom: 40px; }
+.textwidget img {margin-left: 15px;}
+.textwidget p {text-align: justify;}
+.home .imagewidget img {width: 100%;}
+.members_home {background: url(images/mercer_members_bg.jpg);background-repeat: no-repeat;background-size: cover;}
+.members_home .widget_text {width: 100%;max-width: 300px;padding-left: 20px;padding-top: 15px;padding-bottom: 15px;}
+.members_home h2 {font-family: 'BebasNeue' !important;color: #ffffff;font-size: 26px !important;line-height: 24px;margin-bottom: 3px !important;display: block;}
+.findoutmore {color: #fff;padding: 5px 10px;border: 1px solid #fff;font-family: 'Rockwell';text-transform: uppercase;display: inline-block;}
+
+
+
+
+
+
+
+
+
+
+.list-group-item {margin-bottom: 15px !important;border: 1px solid #193c5f !important;border-radius: 0 !important;padding: 0 !important;}
+.widgettitle {font-size: 14px !important;padding: 8px 12px;background: #193c5f;color: #fff;line-height: normal;vertical-align: top;margin-bottom: 12px;font-family: 'Rockwell';}
+
+.widget_social ul {list-style: none;padding-left: 0;text-align: center;margin-bottom: 12px;}
+.widget_social ul li {display: inline-block;}
+.social-item a {width: 30px;height: 30px;display: block;background: #000000;border-radius: 50%;}
+.social-item i {vertical-align: middle;color: #fff;}
+.facebook_item a {background: #4e71a8;}
+.instagram_item a {background: #000000;}
+.twitter_item a {background: #1cb7eb;}
+
+
+
+
+
+
+
+
+
+.events-list ul {padding-left: 0px;list-style: none;}
+.event_dateofmonth {width: 52px; height: 52px; display: inline-block; text-align: center; line-height: 20px;    text-transform: uppercase; font-size: 24px;font-family: 'BebasNeue';padding: 7px 0px;background: #ededed;vertical-align: top;color: #1a4873;}
+.event_tittleandtime {display: inline-block;margin-left: 5px;}
+.event_tittleandtime h4 {font-size: 14px !important;margin-bottom: 0;}
+.eventtime {line-height: normal;font-size: 14px;}
+.event_regbtn {line-height: 16px;}
+.event_regbtn a {line-height: 16px;font-size: 14px;font-weight: 500;color: #1a4873;}
+.events-list ul li {padding-bottom: 12px;border-bottom: 2px solid #ededed;width: 100%;max-width: 250px;margin-left: 12px;margin-bottom: 12px;}
+.events-list ul .event-item:last-child {border:0 !important;margin-bottom: 0 !important;padding-bottom: 0;}
+
+
+
+
+
+
+
+
+
+
+.widget_text ul {list-style: none;padding-left: 15px;margin-bottom: 12px;}
+.widget_text li {position: relative;padding-bottom: 3px;margin-bottom: 3px;}
+.widget_text li a {font-size: 14px;color: #193c5f;}
+.widget_text li a:hover {text-decoration: none;}
+.widget_text li a:before {content: ""; height: 1px; width: 100%; max-width: 225px; background: #d9d9d9; position: absolute; bottom: 0;}
+.widget_text li:last-child {padding-bottom: 0px;margin-bottom: 0px;}
+.widget_text li:last-child a:before {display: none;}
+.widget_text li i {font-size: 14px;color: #193c5f;margin-right: 5px;}
+
+
+
+
+
+
+
+
+
+
+
+.memberloginform {padding: 0px 10px 15px;}
+.memberloginform .form-group {margin-bottom: 7px;}
+.memberloginform .form-group input {border-radius: 4px;line-height: normal;padding: 6px;font-size: 12px;text-align: center;}
+.memberloginform button {height: 30px;vertical-align: top;line-height: 17px;width: 100%;max-width: 220px;margin: 0 auto;border-radius: 20px;display: block;font-family: 'Gotham-Bold';color: #193c5f;background: #f4f4f4;border: 1px solid #ededed;text-transform: uppercase;font-size: 13px;}
+
+
+
+
+
+
+
+
+
+
+
+#footer {background: #000000;}
+#footer .container {background: transparent;}
+#footer_menu {display: block;text-align: right;}
+#footer_menu li {display: inline-block;}
+#footer_menu li a {color: #ffffff;font-size: 12px;line-height: normal;padding: 0px 5px;}
+#footer p, #footer span {color: #ffffff;font-size: 12px;}
+.footer-inner-left {padding-top: 15px;}
+.footer-inner-left p {margin-bottom: 0;text-transform: uppercase;}
+.footer-inner-left h3 {color: #fff;font-family: initial;font-size: 22px !important;}
+.footer-inner-right {text-align: right;padding-bottom: 10px;}
