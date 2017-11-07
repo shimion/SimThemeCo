@@ -25,10 +25,13 @@ a:hover,a:focus {
     }
 a:focus,.btn:focus {outline: none;}
 
+/*
+Hover effect
+*/
 
-
-
-
+a, a i, a i:hover, a:hover, button, input[type="submit"] {
+    transition: .5s;
+}
 
 
 /*
@@ -37,5 +40,6 @@ Content STYLE
 
 section.content {
     padding-top: 30px;
+    background: #FFF;
 }
 

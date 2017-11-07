@@ -9,6 +9,7 @@ use ST\Helpers; // it helps to set data for config.php
 use ST\Controller\Search;
 use ST\Providers\WidgetCustomizer;
 use ST\Helpers\CommentsWalker;
+use ST\Providers\PostTypeProvider;
 $template_directory =  _INC . '/resources/views';
 if (!is_dir($template_directory)) {
 mkdir($template_directory , 0755, true);
@@ -101,7 +102,7 @@ function GetConfig($name){
  */
 add_filter('get_search_form', 'SearchForm');
 function SearchForm(){
-        return ST\Controller\Search::Form();
+        return apply_filters('search_form_filter', ST\Controller\Search::Form());
     }
 
 
@@ -264,7 +265,11 @@ add_action('after_setup_theme', function(){
     
 });
 
-
+    function PostType($type = [], $tax){
+        $type['taxonomies'] = $tax ?? '';
+        $type['taxonomies']['post_type'] = $tax['post_type'] ?? $type['name'];
+        new PostTypeProvider($type); 
+    }
 
 
 //add_shortcode('STST', 'STST');
@@ -456,7 +461,7 @@ add_action( 'wp_ajax_nopriv_Minify', 'Minify' );
 function Minify(){
 $styles = [];
 $bootstrap = _CSS.'bootstrap.css';
-   
+$styles[] = _CSS.'font-awesome.min.css';
 $styles[] = _CSS.'style.css';
 $styles[] = _CSS.'header.css';    
 $styles[] = _CSS.'wp.css';

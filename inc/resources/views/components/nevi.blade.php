@@ -6,9 +6,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
        {!! $Menu !!}
+    @if($Data->Get('global.enable_search_header'))   
     {!! $Search !!}
-    @php 
-    print_r(cs_get_option( 'header_top_wapper' ))
-    @endphp
+    @endif
+   
+
+   <p class="header-custom-text">{{$Data->Get('global.menu_text')}}</p> 
+   
+
   </div>
 </nav>

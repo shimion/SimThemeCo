@@ -165,7 +165,7 @@ $options[]            = array(
       'settings'      => array(
 
         array(
-              'name'          => 'enable_search_heading',
+              'name'          => 'enable_search_header',
               'control'       => array(
                 'type'        => 'cs_field',
                 'options'     => array(

@@ -59,8 +59,8 @@ p {color: #787878;}
 
 
 a:hover {
-    color: firebrick !important;
-    text-decoration: none !important;
+    color: #b9b9b9!important;
+    text-decoration: none!important;
 }
 .widget {margin-bottom: 20px;}
 
@@ -82,7 +82,7 @@ body {background: url(images/mercer_bodybg.jpg);}
     margin-right: 0px;
 }
 
-.wapper-header-top ul  {margin-top: 7px;}
+.wapper-header-top ul  {margin-top: 0px; margin-bottom: 0px;}
 
 .wapper-header-top ul li {
     display: inline-block;
@@ -94,15 +94,49 @@ body {background: url(images/mercer_bodybg.jpg);}
     margin-right: 10px;
 }
 
+.col-login-register {
+    max-width: 123px;
+}
+.logo-wapper{max-width: 180px;}
+.top-custom-menu {
+    width: 100%;
+    max-width: 600px;
+}
+
+.top-custom-menu ul {
+    padding-left: 0px;
+}
+
+.wapper-header-top button.btn.btn-default.submitbtn {
+    background-color: #fff;
+    border-radius: 0;
+    padding: 3px 5px;
+}
+.wapper-header-top .form-inline .input-group {
+    max-width: 135px;
+}
+
 .navbar-nav>li>a:hover {
     color: firebrick;
 }
 
+.header-custom-text{
+        font-family: 'Rockwell';
+        max-width: 480px;
+        font-size: 30px !important;
+        font-weight: 500;
+        line-height: 1.2;
+        color: #212529;
+        margin-left: 100px;
+}
 
 
-
-
-.logandreg { background: url(images/mercer_loginbg.jpg); background-repeat: repeat-x; background-size: auto 100%; line-height: normal; padding-left: 10px; padding-bottom: 5px; border-radius: 0px 0px 5px 5px; display: inline-block; margin-right: 10px;}
+@media (min-width: 960px){
+    .top-custom-menu{
+        min-width: 495px;
+    }
+}
+.logandreg { background: url(images/mercer_loginbg.jpg); background-repeat: repeat-x; background-size: auto 100%; line-height: normal; padding-left: 10px; padding-bottom: 5px; border-radius: 0px 0px 5px 5px; display: inherit; margin-right: 10px; margin-top:0px; margin-bottom: 0px;}
 .logandreg li {display: inline-block;line-height: 20px;vertical-align: middle; position: relative;}
 .logandreg li:first-child:before {content: ""; width: 1px; height: 15px; background: #000; position: absolute;top: 4px; right: 3px}
 
@@ -115,9 +149,9 @@ body {background: url(images/mercer_bodybg.jpg);}
 
 
 
-.searchform {background: #fff;max-width: 135px;width: 100%;display: inline-block;}
+.st-search-form {background: #fff;max-width: 135px;width: 100%;display: inline-block;}
 #search {padding: 5px;height: 28px;border: 0;border-radius: 0;}
-.submitbtn {padding: 5px !important;line-height: 16px !important;height: 28px;vertical-align: top !important;border-radius: 0px !important;background: transparent;}
+.st-search-form {padding: 5px !important;line-height: 16px !important;height: 28px;vertical-align: top !important;border-radius: 0px !important;background: transparent;}
 .btn {cursor: pointer;}
 
 
@@ -128,30 +162,18 @@ body {background: url(images/mercer_bodybg.jpg);}
 
 
 
-.header { padding-bottom: 10px; }
+.header { padding-bottom: 0px; }
 .header .header_left {padding-top: 25px;padding-bottom: 25px;}
 .header .header_left a {display: inline-block;}
-.header_right {display: flex;align-items: center;}
-.header_right h1 {font-family: 'Rockwell';max-width: 480px;}
 
 
 
-
-
-
-
-
-
-
-
-
-.menu_container { background: #193e62; }
-#main_menu { display: block; padding-top: 5px; padding-bottom: 5px; line-height: normal; }
-.menu_container li { display: inline-block; padding-top: 8px; padding-bottom: 8px; position: relative; }
-.menu_container li:last-child:after {display: none;}
-.menu_container li a {color: #ffffff;padding: 0px 35px;}
-.menu_container li:after {content: ""; width: 1px; height: 30px; background: #fff; position: absolute;top: 4px;}
-
+.wapper-header-bottom.container { background: #193e62; }
+.wapper-header-bottom.container ul {display: block;padding-left: 0;padding-top: 5px;padding-bottom: 5px;line-height: normal;margin: 0;}
+.wapper-header-bottom.container li { display: inline-block; padding-top: 8px; padding-bottom: 8px; position: relative; }
+.wapper-header-bottom.container li:last-child:after {display: none;}
+.wapper-header-bottom.container li a {color: #ffffff;padding: 0px 35px;}
+.wapper-header-bottom.container li:after {content: ""; width: 1px; height: 30px; background: #fff; position: absolute;top: 4px;}
 
 
 
@@ -178,14 +200,22 @@ body {background: url(images/mercer_bodybg.jpg);}
 
 
 
-
+aside.col-sm-4.main-sidebar.list-group {    display: block;}
 
 
 .list-group-item {margin-bottom: 15px !important;border: 1px solid #193c5f !important;border-radius: 0 !important;padding: 0 !important;}
 .widgettitle {font-size: 14px !important;padding: 8px 12px;background: #193c5f;color: #fff;line-height: normal;vertical-align: top;margin-bottom: 12px;font-family: 'Rockwell';}
 
-.widget_social ul {list-style: none;padding-left: 0;text-align: center;margin-bottom: 12px;}
-.widget_social ul li {display: inline-block;}
+ul.socials {list-style: none;padding-left: 0;text-align: center;margin-bottom: 12px;}
+ul.socials li {display: inline-block;}
+ul.socials li a:before {    display: none;}
+ul.socials li a i {
+    line-height: 100%;
+    display: block;
+    padding: 8px 0;
+    margin: 0px;
+}
+ul.socials li a:hover i{ color: #fff;}
 .social-item a {width: 30px;height: 30px;display: block;background: #000000;border-radius: 50%;}
 .social-item i {vertical-align: middle;color: #fff;}
 .facebook_item a {background: #4e71a8;}
@@ -226,7 +256,7 @@ body {background: url(images/mercer_bodybg.jpg);}
 .widget_text li a:before {content: ""; height: 1px; width: 100%; max-width: 225px; background: #d9d9d9; position: absolute; bottom: 0;}
 .widget_text li:last-child {padding-bottom: 0px;margin-bottom: 0px;}
 .widget_text li:last-child a:before {display: none;}
-.widget_text li i {font-size: 14px;color: #193c5f;margin-right: 5px;}
+.widget_text li i {font-size: 14px;color: #FFF;margin-right: 5px;}
 
 
 

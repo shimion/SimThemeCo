@@ -10,7 +10,8 @@
             @if($Data->Get('global.wapper') == true)
             <div class="wapper">
             @endif        
-                 @include('components.header')          
+                 @include('components.header')
+                 @include('components.header-bottom-section')            
                {{-- The main content section. It has also included the sidebar --}}
                 <section class="content">
                     <div class="container">
@@ -23,6 +24,7 @@
                         </div>
                     </div>
                 </section>
+                @include('components.footer-top-section') 
                 @include('components.footer', [])  
                       
         @php wp_footer() @endphp

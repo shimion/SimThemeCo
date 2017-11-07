@@ -16,8 +16,8 @@ return[
     'button_class'  => 'btn-outline-secondary', // ***
     'header_top' => Helpers()->DisplayHeaderTop(),
     'header' => true,
-    'menu_search' => true,
-    'menu_text' => true,
+    'menu_search' => Helpers()->Option('enable_search_header') ?? true,
+    'menu_text' => Helpers()->Option('custom_text_on_the_header') ?? '',
     'HBCWD'  => Helpers()->SideBar('HBCWD') ?? '', //home page before content widget
     'HACWD'  => Helpers()->SideBar('HACWD') ?? '', //home page before content widget
     'sidebar' => Helpers()->EnableSidebar(),

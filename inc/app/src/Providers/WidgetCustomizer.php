@@ -14,7 +14,7 @@ class WidgetCustomizer extends DWP_Widget
 	}
 	
     public function call_widget_filter_header_top($instance, $class, $args){
-        $args['before_widget'] = '<div id="%1$s" class="col-sm '.$instance['class_attr'].' %2$s">';
+        $args['before_widget'] = '<div id="'.$class->id.'" class="col-sm '.$instance['class_attr'].' widget_'.$class->id.'">';
         $class->widget( $args, $instance );
         return false;
     }
