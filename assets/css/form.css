@@ -1,0 +1,9 @@
+.simthemeco-form .form-group{
+    margin-bottom: 30px;
+}
+.st-fields-error-class{
+    text-align: right;
+    position: absolute;
+    top: -30px;
+    right: 8px;
+}

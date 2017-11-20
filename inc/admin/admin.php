@@ -1,6 +1,33 @@
 <?php 
 require _ADMIN. "option/cs-framework.php";
-//require _ADMIN. "customizer/customizer.php";
+
+
+// add a link to the WP Toolbar
+function reminify_admin_toolbar_links($wp_admin_bar) {
+    $args = array(
+        'id' => 'minify',
+        'title' => 'Minify', 
+        'href' => admin_url( 'admin-ajax.php?action=Minify' ), 
+        'meta' => array(
+            'class' => 'st-minify', 
+            'title' => 'Minify Js/Css'
+            )
+    );
+    $wp_admin_bar->add_node($args);
+}
+add_action('admin_bar_menu', 'reminify_admin_toolbar_links', 999);
+
+
+add_action('customize_controls_print_scripts', 'your_function');
+function your_function(){
+  echo  '<script type="text/javascript">';
+include(CS_URI .'/assets/js/cs-plugins.js');
+    include(CS_URI .'/assets/js/cs-framework.js');
+     echo  '</script>';
+}
+
+
+
 
 function Remove_Customizer( $wp_customize ) {
    
@@ -31,96 +58,57 @@ function Remove_Customizer( $wp_customize ) {
     
 }
 add_action( 'customize_register', 'Remove_Customizer', 99 );
-
-/********* Sanitization Functions ***********/
-if ( ! function_exists( 'mytheme_allowed_tags' ) ) {
-	/**
-	 * Allowed tags function for wp_kses()
-	 *
-	 * @return array Array of allowed HTML tags
-	 * @since 1.0.0
-	 */
-	function mytheme_allowed_tags() {
-		return array(
-			'a' => array(
-				'href' => array(),
-				'title' => array(),
-			),
-			'br' => array(),
-			'span' => array(
-				'class' => array(),
-			),
-			'em' => array(),
-			'ul' => array(),
-			'ol' => array(),
-			'li' => array(),
-			'strong' => array(),
-			'pre' => array(),
-			'code' => array(),
-			'blockquote' => array(
-				'cite' => true,
-			),
-			'i' => array(
-				'class' => array(),
-			),
-			'cite' => array(
-				'title' => array(),
-			),
-			'abbr' => array(
-				'title' => true,
-			),
-			'select' => array(
-				'id'   => array(),
-				'name' => array(),
-			),
-			'option' => array(
-				'value' => array(),
-			),
-		);
-	}
+ 
+    //  =============================
+    //  = Enquery  jquery-ui-datepicker for admin only            =
+    //  =============================
+add_action( 'admin_enqueue_scripts', 'enquery_datepicker_optionframework' );
+function enquery_datepicker_optionframework(){
+     
+         wp_enqueue_script( 'jquery-ui-datepicker' );
+        
 }
 
-if ( ! function_exists( 'mytheme_text_sanitization' ) ) {
-	/**
-	 * Text sanitization function for Customize API
-	 *
-	 * @param  string $input Input to be sanitized.
-	 * @return string        Sanitized input.
-	 * @since 1.0.0
-	 */
-	function mytheme_text_sanitization( $input ) {
-		return wp_kses_post( force_balance_tags( $input ) );
-	}
-}
+/**
+ * Adds the datepicker settings to the admin footer.
+ * Only loads on the plugin-name settings page
+ */
+function admin_footer() {
 
-if ( ! function_exists( 'mytheme_checkbox_sanitization' ) ) {
-	/**
-	 * Checkbox sanitization function for Customize API
-	 *
-	 * @param  string $input Checkbox value.
-	 * @return integer       Sanitized value.
-	 * @since 1.0.0
-	 */
-	function mytheme_checkbox_sanitization( $input ) {
-		if ( true === $input ) {
-			return 1;
-		} else {
-			return '';
-		}
-	}
-}
+	$screen = get_current_screen();
+        
+	//if ( $screen->id == 'post' ) {
 
-if ( ! function_exists( 'mytheme_sanitize_integer' ) ) {
-	/**
-	 * Integer sanitization function for Customize API
-	 *
-	 * @param  string $input Input value to check.
-	 * @return integer        Returned integer value.
-	 * @since 1.0.0
-	 */
-	function mytheme_sanitize_integer( $input ) {
-		if ( is_numeric( $input ) ) {
-			return intval( $input );
-		}
-	}
-}
+		?><script type="text/javascript">
+			jQuery(document).ready(function($){
+				
+               $("#datepicker_event_start_date").datepicker({
+					dateFormat : 'm/d/yy'
+				});
+                 $("#datepicker_event_end_date").datepicker({
+					dateFormat : 'm/d/yy'
+				});
+			});
+		</script><?php
+		
+	//}
+
+} //  admin_footer()
+add_action( 'admin_print_scripts', 'admin_footer', 1000 );
+
+/**
+ * Enqueues a Datepicker theme
+ * Only loads on the plugin-name settings page
+ */
+function enqueue_datepicker_uistyles( $hook_suffix ) {
+
+	$screen = get_current_screen();
+
+	
+
+		//wp_enqueue_style( 'jquery.ui.theme', ADMIN . '/option/assets/css/ui-date-picker.css' ), array( 'jquery-ui-core', 'jquery-ui-datepicker' ), $this->version, 'all' );
+        wp_enqueue_style('jquery-ui-css',   '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+	
+
+} // enqueue_styles()
+add_action( 'admin_enqueue_scripts', 'enqueue_datepicker_uistyles' );

@@ -10,7 +10,7 @@
  * -----------------------------------------------------------
  *
  */
-;(function ( $, window, document, undefined ) {
+jQuery(function ( $) {
   'use strict';
 
   $.CSFRAMEWORK = $.CSFRAMEWORK || {};
@@ -552,7 +552,7 @@
       });
 
       var i = 0;
-      $('.cs-add-group', _this).on('click', function( e ) {
+      $('body').on('click','.cs-add-group', function( e ) {
 
         e.preventDefault();
 
@@ -591,97 +591,6 @@
   };
   // ======================================================
 
-    
-    // ======================================================
-  // CSFRAMEWORK REPEATOR
-  // ------------------------------------------------------
-  $.fn.CSFRAMEWORK_REPEATOR = function() {
-    return this.each(function() {
-
-      var _this           = $(this),
-          field_groups    = _this.find('.cs-repeator'),
-          accordion_group = _this.find('.cs-accordion'),
-          clone_group     = _this.find('.cs-repeator:first').clone();
-
-      if ( accordion_group.length ) {
-        accordion_group.accordion({
-          header: '.cs-repeator-title',
-          collapsible : true,
-          active: false,
-          animate: 250,
-          heightStyle: 'content',
-          icons: {
-            'header': 'dashicons dashicons-arrow-right',
-            'activeHeader': 'dashicons dashicons-arrow-down'
-          },
-          beforeActivate: function( event, ui ) {
-            $(ui.newPanel).CSFRAMEWORK_DEPENDENCY( 'sub' );
-          }
-        });
-      }
-
-      field_groups.sortable({
-        axis: 'y',
-        handle: '.cs-repeator-title',
-        helper: 'original',
-        cursor: 'move',
-        placeholder: 'widget-placeholder',
-        start: function( event, ui ) {
-          var inside = ui.item.children('.cs-repeator-content');
-          if ( inside.css('display') === 'block' ) {
-            inside.hide();
-            field_groups.sortable('refreshPositions');
-          }
-        },
-        stop: function( event, ui ) {
-          ui.item.children( '.cs-repeator-title' ).triggerHandler( 'focusout' );
-          accordion_group.accordion({ active:false });
-        }
-      });
-
-      var i = 0;
-      $('.cs-add-repeator', _this).on('click', function( e ) {
-
-        e.preventDefault();
-
-        clone_group.find('input, select, textarea').each( function () {
-          this.name = this.name.replace(/\[(\d+)\]/,function(string, id) {
-            return '[' + (parseInt(id,10)+1) + ']';
-          });
-        });
-
-        var cloned = clone_group.clone().removeClass('hidden');
-        field_groups.append(cloned);
-
-        if ( accordion_group.length ) {
-          field_groups.accordion('refresh');
-          field_groups.accordion({ active: cloned.index() });
-        }
-
-        field_groups.find('input, select, textarea').each( function () {
-          this.name = this.name.replace('[_nonce]', '');
-        });
-
-        // run all field plugins
-        cloned.CSFRAMEWORK_DEPENDENCY( 'sub' );
-        cloned.CSFRAMEWORK_RELOAD_PLUGINS();
-
-        i++;
-
-      });
-
-      field_groups.on('click', '.cs-remove-repeator', function(e) {
-        e.preventDefault();
-        $(this).closest('.cs-repeator').remove();
-      });
-
-    });
-  };
- 
-    
-    
-    
-    
   // ======================================================
   // CSFRAMEWORK RESET CONFIRM
   // ------------------------------------------------------
@@ -1473,4 +1382,8 @@
     $.CSFRAMEWORK.WIDGET_RELOAD_PLUGINS();
   });
 
-})( jQuery, window, document );
+});
+
+
+
+ 

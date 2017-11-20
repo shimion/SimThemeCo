@@ -28,8 +28,9 @@ define('VIEW',RESOURCE.'views/');
 define( 'BUILDER_TEMPLATE' , 'builder.php' );
 require _ADMIN. "admin.php";
 include_once(_INC.'inc.php');
-
-
+if(file_exists(_D.'extra.php')){
+include_once(_D.'extra.php');
+}
 add_theme_support( "title-tag" );
 add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'custom-header', array() );
@@ -109,6 +110,8 @@ function EnqueryStyleAndScript(){
     wp_register_script( 'main.min', JS. 'main.min.js', 
       array('jquery'), 
       VERSION, true );
+    wp_localize_script( 'main.min', 'ajax_object',
+            array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
     wp_enqueue_script('main.min');
   
 }

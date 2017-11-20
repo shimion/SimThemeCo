@@ -17,33 +17,57 @@ $options[]    = array(
   'priority'  => 'default',
   'sections'  => array(
 
-    // begin: a section
+      
+       // begin: a section
     array(
-      'name'  => 'section_1',
-      'title' => 'Section 1',
+      'name'  => 'general',
+      'title' => 'General Setting',
       'icon'  => 'fa fa-cog',
 
       // begin: fields
       'fields' => array(
 
-        // begin: a field
-        array(
-          'id'    => 'section_1_text',
-          'type'  => 'text',
-          'title' => 'Text Field',
+        
+        // end: a field
+
+            array(
+              'id'    => 'customizer',
+              'type'  => 'switcher',
+              'title' => 'Enable Customizer for this page',
+                'default' => false
+            ),
+
         ),
+    ),
+      
+      
+    // begin: a section
+    array(
+      'name'  => 'membership',
+      'title' => 'Membership Setting',
+      'icon'  => 'fa fa-cog',
+
+      // begin: fields
+      'fields' => array(
+
+        
         // end: a field
 
         array(
-          'id'    => 'section_1_textarea',
-          'type'  => 'textarea',
-          'title' => 'Textarea Field',
+          'id'    => 'restriction',
+          'type'  => 'switcher',
+          'title' => 'Restrict This Page for Specific User Role',
         ),
 
-        array(
-          'id'    => 'section_1_upload',
-          'type'  => 'upload',
-          'title' => 'Upload Field',
+       array(
+          'id'    => 'select_user_role',
+          'type'  => 'select',
+          'title' => 'Select Restricted User Role',
+          'options'   => array(
+            'subscriber' => 'Subscriber',
+                'author' => 'Author',
+               'editor' => 'Editor'
+          ),
         ),
 
         array(
@@ -109,42 +133,115 @@ $options[]    = array(
 // Page Side Metabox Options               -
 // -----------------------------------------
 $options[]    = array(
-  'id'        => '_custom_page_side_options',
-  'title'     => 'Custom Page Side Options',
-  'post_type' => 'page',
+  'id'        => '_event_settings',
+  'title'     => 'Event Time Setting',
+  'post_type' => 'event',
   'context'   => 'side',
   'priority'  => 'default',
   'sections'  => array(
 
     array(
-      'name'   => 'section_3',
+      'name'   => 'event_setting',
       'fields' => array(
 
         array(
-          'id'        => 'section_3_image_select',
-          'type'      => 'image_select',
-          'options'   => array(
-            'value-1' => 'http://codestarframework.com/assets/images/placeholder/65x65-2ecc71.gif',
-            'value-2' => 'http://codestarframework.com/assets/images/placeholder/65x65-e74c3c.gif',
-            'value-3' => 'http://codestarframework.com/assets/images/placeholder/65x65-3498db.gif',
-          ),
-          'default'   => 'value-2',
+          'id'        => 'event_start_date',
+          'type'      => 'datepicker',
+            'class'      => 'datepicker',
+            'title'      => 'Start Date',
+         'attributes'    => array(
+            'placeholder' => 'mm/dd/yyyy'
+          )
+        ),
+       array(
+          'id'        => 'event_start_time',
+          'type'      => 'select',
+            'title'      => 'Start Time',
+             'options'    => array(
+                 '0' => '0',
+                 '1' => '1',
+                 '2' => '2',
+                 '3' => '3',
+                 '4' => '4',
+                 '5' => '5',
+                 '6' => '6',
+                 '7' => '7',
+                 '8' => '8',
+                 '9' => '9',
+                 '10' => '10',
+                 '11' => '11',
+                 '12' => '12',
+                 '13' => '13',
+                 '14' => '14',
+                 '15' => '15',
+                 '16' => '16',
+                 '17' => '17',
+                 '18' => '18',
+                 '19' => '19',
+                 '20' => '20',
+                 '21' => '21',
+                 '22' => '22',
+                 '23' => '23',
+                 '24' => '24',
+
+
+              ),
+            'default'   => current_time( 'd' ),
         ),
 
-        array(
-          'id'            => 'section_3_text',
-          'type'          => 'text',
-          'attributes'    => array(
-            'placeholder' => 'do stuff'
+
+      array(
+          'id'        => 'event_end_date',
+          'type'      => 'datepicker',
+          'class'      => 'datepicker1',
+            'title'      => 'End',
+         'attributes'    => array(
+            'placeholder' => 'mm/dd/yyyy'
           )
         ),
 
-        array(
-          'id'      => 'section_3_switcher',
-          'type'    => 'switcher',
-          'label'   => 'Are you sure ?',
-          'default' => true
+          
+       array(
+          'id'        => 'event_end_time',
+          'type'      => 'select',
+            'title'      => 'End Time',
+             'options'    => array(
+                 '0' => '0',
+                 '1' => '1',
+                 '2' => '2',
+                 '3' => '3',
+                 '4' => '4',
+                 '5' => '5',
+                 '6' => '6',
+                 '7' => '7',
+                 '8' => '8',
+                 '9' => '9',
+                 '10' => '10',
+                 '11' => '11',
+                 '12' => '12',
+                 '13' => '13',
+                 '14' => '14',
+                 '15' => '15',
+                 '16' => '16',
+                 '17' => '17',
+                 '18' => '18',
+                 '19' => '19',
+                 '20' => '20',
+                 '21' => '21',
+                 '22' => '22',
+                 '23' => '23',
+                 '24' => '24',
+
+
+              ),
+            'default'   => current_time( 'd' ) + 1,
         ),
+
+          
+          
+          
+          
+        
 
       ),
     ),
@@ -156,40 +253,40 @@ $options[]    = array(
 // Post Metabox Options                    -
 // -----------------------------------------
 $options[]    = array(
-  'id'        => '_custom_post_options',
-  'title'     => 'Custom Post Options',
-  'post_type' => 'post',
+  'id'        => '_event_additional_settings',
+  'title'     => 'Event Additional Settings',
+  'post_type' => 'event',
   'context'   => 'normal',
   'priority'  => 'default',
   'sections'  => array(
 
     array(
-      'name'   => 'section_4',
+      'name'   => 'event_additional_settings',
       'fields' => array(
 
         array(
-          'id'    => 'section_4_text',
+          'id'    => 'event_location_address',
           'type'  => 'text',
-          'title' => 'Text Field',
+          'title' => 'Address',
         ),
 
         array(
-          'id'    => 'section_4_textarea',
-          'type'  => 'textarea',
-          'title' => 'Textarea Field',
+          'id'    => 'event_location_zip',
+          'type'  => 'text',
+          'title' => 'Zip Code',
         ),
 
         array(
-          'id'    => 'section_4_upload',
-          'type'  => 'upload',
-          'title' => 'Upload Field',
+          'id'    => 'event_location_state',
+          'type'  => 'text',
+          'title' => 'State',
         ),
 
         array(
-          'id'    => 'section_4_switcher',
-          'type'  => 'switcher',
-          'title' => 'Switcher Field',
-          'label' => 'Yes, Please do it.',
+          'id'    => 'event_location_city',
+          'type'  => 'text',
+          'title' => 'City',
+          'label' => '',
         ),
 
       ),

@@ -1,7 +1,14 @@
 <?php 
 namespace ST;
 use \ST\Providers;
+use ST\Providers\FormData;
 use ST\Utilities\Button;
+use ST\Utilities\LatestEvents;
+use ST\Utilities\LatestRequests;
+use ST\Utilities\CallToAction;
+use ST\Utilities\FeaturedBox;
+use ST\Utilities\Form;
+use ST\Utilities\Posts;
 use ST\Utilities\Pagination;
 class Helpers
 {
@@ -14,6 +21,7 @@ class Helpers
     public $logo =  []; 
     public $header_top =  []; 
     private $layoutprovider =  []; 
+    
     
     
          public static function get_instance(){
@@ -29,7 +37,8 @@ class Helpers
     
     
     public function __construct(){
-        global $post; 
+        global $post;
+        
         $this->config = Config();
         $this->site['url'] = get_bloginfo('url');
         $this->site['name'] = !empty(cs_get_customize_option( 'site_title' )) ? cs_get_customize_option( 'site_title' ) : get_bloginfo('name');
@@ -42,6 +51,12 @@ class Helpers
        // $this->header_top['enable'] = self::DisplayHeaderTop();
         $this->layoutprovider  = cs_get_customize_option( 'header_top_wapper' ) ?? NULL;
         }
+    
+    
+    public static function Query(){
+        global $wp_query;
+        return $wp_query;
+    }
     
 
     public function Favicon(){
@@ -123,14 +138,70 @@ class Helpers
     }
     
     public static function Button($data){
-        $button = new Button($data);
+            $button = new Button($data);
             return $button->output();
     }
+    
+    public static function GetLatestEvents($data){
+            $LatestEvents = new LatestEvents($data);
+           return $LatestEvents->output();
+    }
+    
+
+   public static function GetLatestRequests($data){
+            $LatestRequests = new LatestRequests($data);
+           return $LatestRequests->output();
+    }
+    
+
+    
+   public static function GetCallToAction($data){
+            $LatestRequests = new CallToAction($data);
+           return $LatestRequests->output();
+    }
+    
+
+   public static function GetFeaturedBox($data){
+            $FeaturedBox = new FeaturedBox($data);
+           return $FeaturedBox->output();
+    }
+    
+
+   public static function GetForm($data){
+            $LatestRequests = new Form($data);
+           return $LatestRequests->output();
+    }
+    
+   public static function GetPosts($data){
+            $LatestRequests = new Posts($data);
+           return $LatestRequests->output();
+    }
+    
+
+    
+   public static function ImportFormData($data, $type){
+        $data =  new  \ST\Providers\FormData($data, $type, 'request');
+       //print_r(Collect($data));
+        return Collect($data);
+    }
+    
+
     
 
     public static function Pagination($data){
         $Pagination = new Pagination($data);
             return $Pagination->output();
+    }
+    
+
+    
+   public static function RestrictSidebar(){
+       
+        $enable_sidebar = false;
+        if(self::Query()->is_home() or self::Query()->is_front_page() or self::Query()->is_post_page)
+        $enable_sidebar = self::Option('disable_sidebar');
+       
+       return $enable_sidebar;
     }
     
 
@@ -151,6 +222,31 @@ class Helpers
             $image = sprintf('<%s>%s</%s>', $this->image['container'], $image, $this->image['container']);
         if(!empty($image))
             return $image;
+        
+    }
+    
+    public function CustomStyle(){
+        return   get_option( 'print_styles' );
+    }
+    
+    
+    
+    
+    public function GetAllDynamicWidget(){
+            global $wpdb; 
+            $result = [];
+                $query = $wpdb->get_results( 
+                    $wpdb->prepare("SELECT * FROM {$wpdb->prefix}postmeta WHERE meta_key=%s", '_st-page-builder') 
+                 );
+            if(!empty($query) && is_array($query)){
+                foreach($query as $sidebar){
+                    $result[] = array('id' => 'st-sidebar-'.$sidebar->post_id, 'name' => $sidebar->meta_value, 'description' => __( "This sidebar section is used for $sidebar->meta_value Body Content ." ));
+                }
+                
+            }
+          //  $result = Collect($result);
+            return $result;
+        
         
     }
     

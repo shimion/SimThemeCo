@@ -1,0 +1,416 @@
+/*
+    * # Atana Prayer Project
+    * # WebImpakt Development
+    * # Developer: Shimion B
+    * # simtheme.com
+    * # Ver: 0.1
+*/
+
+
+
+
+@-ms-viewport{
+  width: device-width;
+}
+
+
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: url('fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),  url('fonts/OpenSans-Light.woff') format('woff'), url('fonts/OpenSans-Light.ttf')  format('truetype'), url('fonts/OpenSans-Light.svg#OpenSans-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'brush-tipTerrence trial';
+    src: url('fonts/brush-tipTerrence.eot');
+    src: url('fonts/brush-tipTerrence.eot?#iefix') format('embedded-opentype'),
+        url('fonts/brush-tipTerrence.woff') format('woff'),
+        url('fonts/brush-tipTerrence.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Barkentina';
+    src: url('fonts/Barkentina.eot');
+    src: url('fonts/Barkentina.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Barkentina.woff') format('woff'),
+        url('fonts/Barkentina.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Gotham-Bold';
+  src: url('fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),  url('fonts/Gotham-Bold.otf')  format('opentype'),
+	     url('fonts/Gotham-Bold.woff') format('woff'), url('fonts/Gotham-Bold.ttf')  format('truetype'), url('fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'DroidSans-Bold';
+  src: url('fonts/DroidSans-Bold.eot?#iefix') format('embedded-opentype'),  url('fonts/DroidSans-Bold.woff') format('woff'), url('fonts/DroidSans-Bold.ttf')  format('truetype'), url('fonts/DroidSans-Bold.svg#DroidSans-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1 {font-size: 30px !important;}
+h2 {font-size: 28px !important;margin-bottom: 20px !important;font-family: initial !important;}
+h3 {font-size: 20px !important;}
+h4 {font-size: 16px !important;}
+p, span {color: #222222;font-size: 14px;}
+
+.home h2 {margin-bottom: 30px !important;}
+.lead > h2 {margin-bottom: 0px !important;}
+
+
+a:hover {
+    color: firebrick !important;
+    text-decoration: none !important;
+}
+.widget {margin-bottom: 20px;}
+
+
+
+
+body { }
+
+.container { width: 100%; max-width: 1054px; margin:0 auto;}
+
+.navbar-nav {
+    padding-top: 15px;
+    margin-right: 0px;
+}
+
+.navbar-nav>li>a:hover {
+    color: firebrick;
+}
+
+.btn {font-family: 'Barkentina';}
+.btn:hover {color: #fff !important;background: #0cd8c6 !important;}
+
+
+
+
+
+
+
+/*
+.wapper { background:url(images/Atanaha-headerbg.jpg);padding-bottom: 50px;background-position: center;background-size: cover;background-repeat: no-repeat;}*/
+#head_sec .container { background:transparent; }
+.header {padding: 0 0px;border-radius: 0px 0px 10px 10px;}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    max-width: 1054px;
+    margin: 0 auto;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.st-header-wapper {
+    background: url("images/sky-light.jpg") no-repeat;
+    background-size: cover;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #222222;
+    padding: 0px 20px;
+    font-size: 15px;
+    font-family: 'OpenSans-Light';
+}
+
+ul#menu-main {
+    padding-top: 0;
+}
+
+
+
+#menu-main-menu {text-align: right;display: block;margin-top: 5px;margin-bottom: 0;padding-top: 15px;}
+#menu-main-menu li {list-style: none;display: inline-block;}
+#menu-main-menu li a {color: #222222;padding: 0px 20px;font-size: 15px;font-family: 'OpenSans-Light';}
+.banner .widget_text {height: 410px;display: flex;align-items: center;margin-bottom: 0px;}
+.wapper-header-bottom h1 {font-family: 'Barkentina'; font-size: 42px !important; color: #318fac; line-height: 55px;}
+.wapper-header-bottom h1 samp {font-family: 'brush-tipTerrence trial';line-height: 20px;}
+.wapper-header-bottom h1 span { font-size: 42px !important;color: #318fac;line-height: 20px;}
+.banner_text { padding-left: 80px; line-height: 25px; }
+.banner_text2 { padding-left: 40px; line-height: 25px; }
+
+.wapper-text-block {
+    height: 410px;
+    display: flex;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: url("/wp-content/uploads/2017/11/Atanaha-website-handimages-1-1024x552.png") no-repeat right bottom;
+}
+
+.st-block-image-text-section {
+    align-items: center;
+    margin-bottom: 0px;
+    width: 100%;
+    position: relative;
+}
+
+
+
+
+.Form_Widget{
+    text-align: center;
+}
+
+.Latest_Request_Widget { background: #fff url(images/Atanaha-good-deeds-before.jpg);background-position: top center;background-size: 100% 10px;background-repeat: no-repeat; margin-top: -77px; border-radius: 10px; padding-bottom: 10px;
+padding-top: 30px;text-align: center;padding-left: 0;padding-right: 0;     padding-bottom: 30px;}
+.Latest_Request_Widget .textwidget, .Form_Widget .textwidget {padding-top: 30px;text-align: center;margin-bottom: 15px;}
+.Latest_Request_Widget h3.widgettitle, .Form_Widget h3.widgettitle {margin-bottom: 0px !important; position: relative;   
+    background: linear-gradient(90deg, #2ee862 0%, #1bd34f 13%, #1bafd5 30%, #1c57d5 47%, #801cd4 65%, #d01cd3 81%, #d41b9a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    font-family: 'Barkentina' !important;
+    display: inline-block;
+}
+
+.Latest_Request_Widget h3.widgettitle::before, .Form_Widget h3.widgettitle::before {position: absolute;content: '';width: 100%;/* max-width: 300px; */height: 1px;background: #ccc;left: -110%;top: 18px;display: block;}
+.Latest_Request_Widget h3.widgettitle::after, .Form_Widget h3.widgettitle::after {position: absolute;content: '';width: 100%;/* max-width: 300px; */height: 1px;background: #ccc;right: -110%;top: 18px;display: block;}
+
+.prayer_listing {padding-left: 0px;list-style: none; margin-bottom: 30px;}
+.listing_item {display: flex;}
+
+.prayer_cat_image {padding-left: 0px !important;padding-right: 0px !important;}
+.prayer_itemtext {padding-left: 0 !important;padding-right: 0px !important;}
+
+.prayer_listing h4 {margin-bottom: 0px;text-align: left; font-size: 500;}
+.prayer_listing h4 a {font-size: 14px; color: #000; font-weight: 500;}
+.prayer_listing p {margin-bottom: 0px;font-size: 12px;color: #222222; line-height: 100%;}
+.prayer_listing .dateandtime span {font-size: 12px;color: #222222;}
+.prayer_listing .listing_item {padding-bottom: 15px;}
+
+.prayer_listing li {    width: 25%;  max-width: 250px;   display: inline-block;
+}
+
+
+.prayer_listing .listing_item {    vertical-align: top; text-align: left;}
+
+.prayer_cat_image {    max-width: 35px;    display: inline-block;    vertical-align: text-bottom;}
+
+.prayer_itemtext {    float: none;    display: inline-block;    text-align: left;    max-width: 190px;    vertical-align: top;}
+
+.prayer_listing h4 {    padding-bottom: 0px}
+
+
+
+
+h3.widgettitle {
+    background: linear-gradient(90deg, #2ee862 0%, #1bd34f 13%, #1bafd5 30%, #1c57d5 47%, #801cd4 65%, #d01cd3 81%, #d41b9a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Barkentina' !important;
+    display: inline-block;
+    margin: 0 auto;
+        font-size: 28px !important;
+}
+
+
+
+
+
+
+.Form_Widget {padding: 30px 0px; background:url(images/Atanaha-submitprayer-bg.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;}
+.Form_Widget .widget {width: 100%;max-width: 795px;margin: 0 auto;text-align: center;}
+.Form_Widget h2 {text-align: center;position: relative;}
+.Form_Widget h2:before {position: absolute;content: '';width: 100%;max-width: 200px;height: 1px;background: #ccc;left: -70%;top: 18px;display: block;}
+.Form_Widget h2:after {position: absolute;content: '';width: 100%;max-width: 200px;height: 1px;background: #ccc;right: -70%;top: 18px;display: block;}
+.widget_button {text-align: center;}
+.atanaha_btn {background: #d41b9a !important;color: #fff;border-radius: 8px !important;border: 0px !important;padding: 11px 33px !important;cursor: pointer;     font-size: 18px !important;}
+#prayer_request {width: 100%;max-width: 795px;margin: 0 auto;}
+#prayer_request .form-row>.col, .form-row>[class*=col-] {padding-right: 10px !important;padding-left: 10px !important;}
+.prayer_comment {height: 130px;}
+
+.container_Form_Widget {
+    max-width: 795px;
+    overflow: hidden;
+}
+
+.before_title {
+    position: relative;
+}
+
+.container_Form_Widget input.form-control, .container_Form_Widget textarea {background: #FFF;background-color: #fff !important;}
+
+
+.form-control {border-radius: 7px !important;}
+.first_name {position: relative;}
+.first_name {background: url(images/Atanaha-firstname-icon.png) !important;background-repeat: no-repeat !important;background-position: 4px 3px !important;padding-left: 30px;}
+.location {background: url(images/Atanaha-location-icon.png) !important;background-repeat: no-repeat !important;padding-left: 30px;background-position: 8px 3px !important;}
+.prayer_comment{background: url(images/Atanaha-comment-icon.png) !important;background-repeat: no-repeat !important;background-position: 4px 3px !important;/* padding-left: 30px; */}
+.prayer_request_btn {text-align: center; display: block;width: 100%;}
+.prayer_request_btn .btn {}
+
+
+
+
+.form-control { padding-left: 40px !important;}
+
+
+
+
+
+
+
+
+.Call_To_Action_Widget { background:url(images/Atanaha-visitors-bg.jpg);background-position: bottom center;background-size: cover;background-repeat: no-repeat; padding: 20px 0px;}
+.Call_To_Action_Widget .widget_button {margin-bottom: 0px;}
+.Call_To_Action_Widget .widget_button h2 {margin-bottom: 0px !important;text-align: right;}
+.join_btn {font-size: 32px !important;color: #fff !important;border: 1px solid #fff !important;line-height: normal; background: #1b82d5;padding: 10px 30px !important;border-radius: 10px !important;}
+.Call_To_Action_Widget .widget_text h2 {margin-bottom: 0 !important;font-size: 24px !important;color: #fff;display: inline-block;padding-right: 15px;border-right: 1px solid #fff;font-family: 'Gotham-Bold' !important;}
+.Call_To_Action_Widget .widget_text span {font-size: 16px;color: #fff;padding-left: 15px;font-family: 'Gotham-Bold' !important;}
+.visitors_praying_right {align-items: center;display: flex;}
+.visitors_praying_right .widget_text {margin-bottom: 0px;align-items: center;display: flex;}
+
+
+
+
+
+
+
+
+.good_deeds_sec:before {content: ''; position: absolute; top: 0; width: 100%; height: 10px; background:url(images/Atanaha-good-deeds-before.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;}
+.good_deeds_sec { background:url(images/Atanaha-good-deedsbg.jpg);background-position: center;background-size: cover;background-repeat: no-repeat; padding: 40px 0px 30px; position: relative; }
+.gooddeeds_leftsec .widget, .gooddeeds_leftsec .widget .post_list {margin-bottom: 0px;}
+.good_deeds_sec .post_list {padding-left: 0;list-style: none;max-width: 420px;width: 100%;}
+.post_list_item p {margin-bottom: 5px;line-height: normal;}
+.post_list_item {margin-bottom: 15px;padding-bottom: 15px;border-bottom: 1px solid #e1dbe0;}
+.post_list_item h4 {line-height: normal;padding-bottom: 5px;}
+.post_list_item h4 a {color: #424242;font-family: 'DroidSans-Bold';font-size: 15px;}
+.good_deeds_sec .dateandtime {text-align: right;line-height: normal;font-size: 14px;}
+.join-now-section h3.widgettitle{ font-size: 27px !important;}
+.post_list_btn {text-align: center;}
+
+
+
+.gooddeeds_video {max-width: 100%; padding-top: 10px;}
+.gooddeeds_social { padding-left: 30px; text-align: center; }
+.gooddeeds_social a {color: #fff !important;display: inline-block;width: auto;margin: 20px 5px !important;line-height: 18px;cursor: pointer;font-size: 12px;padding: 3px 12px;}
+.gooddeeds_social .fa {color: #fff;}
+
+
+
+
+.gooddeeds_social .btn-facebook {background: #425894;}
+.gooddeeds_social .btn-twitter {background: #00adee;}
+.gooddeeds_social .btn-pinterest {background: #d01e2a;}
+.gooddeeds_social .btn-google-plus {background: #e24b35;}
+.gooddeeds_social .btn-hand-o-down {background: #4b9ddf;}
+
+
+
+
+
+
+
+
+
+#footer_sec p {color: #77a0ad;}
+.footer_menu {display: block;text-align: center;margin-top: 12px;margin-bottom: 0px;}
+.footer_menu ul ul{ display: none;}
+.footer_menu li {display: inline-block;}
+.footer_menu li a {color: #77a0ad;font-size: 12px;line-height: normal;padding: 0px 5px;font-family: arial;}
+.footer_bottom {display: block;text-align: center;padding-left: 0;margin-bottom: 35px;}
+.footer_bottom li {display: inline-block;}
+.footer_inner_center {font-family: 'Barkentina';}
+
+.st-footer p {color: #77a0ad;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .container {max-width: 100%;}
+    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {max-width: 100%;flex: 100%;}
+    .header_left {text-align: center;}
+    #menu-main-menu {padding-left: 0;padding-bottom: 10px;margin-top: 0px;text-align: center;}
+    .banner .widget_text {text-align: center;}
+    .banner .widget_text h1 {width: 100%;margin-bottom: 0;line-height: 60px;font-size: 38px !important;}
+    .banner .widget_text h1 span {line-height: normal;padding-left: 0;vertical-align: top;font-size: 38px !important;}
+    .banner .widget_text h1 samp {line-height: normal;}
+    #Latest_Request_Widget_sec {padding-left: 20px;padding-right: 20px;}
+    .prayer_listing {width: 100%;max-width: 250px;margin: 0 auto; margin-bottom: 30px;}
+    .Latest_Request_Widget h3.widgettitle:before, .Latest_Request_Widget h3.widgettitle:after {display: none;}
+    .prayer_cat_image {max-width: 40px !important;}
+    .Call_To_Action_Widget .widget_button h2 {margin-bottom: 15px !important;text-align: center;}
+    .join_btn {font-size: 24px !important;}
+    .visitors_praying_right .widget_text {display: block;text-align: center;width: 100%;}
+    .Form_Widget h2:before, .Form_Widget h2:after {display: none;}
+    .gooddeeds_leftsec .widget, .gooddeeds_leftsec .widget .post_list {margin-bottom: 30px;text-align: center;}
+    .good_deeds_sec .post_list {margin: 0 auto;}
+    .good_deeds_sec .dateandtime {text-align: center;}
+    .post_list_btn {padding-top: 20px;}
+    .good_deeds_sec h2 {text-align: center;margin-bottom: 20px !important;display: block;}
+    .gooddeeds_video {padding-right: 30px;}
+    .gooddeeds_social {margin-top: 10px;padding-left: 0px;}
+    .gooddeeds_social a {margin: 10px 5px !important;}
+    .footer_bottom li {display: block;}
+    .footer_inner_left, .footer_inner_center {margin-top: 20px;}
+}
+
+
+
+
+@media only screen and (max-width: 568px) {
+    .banner .widget_text {height: 300px;}
+    .banner .widget_text h1 {line-height: 45px;}
+    .banner .widget_text h1 span {line-height: 50px;}
+}
+
+
+
+
+@media only screen and (max-width: 414px) {
+    #menu-main-menu li {margin-bottom: 10px;}
+    .banner .widget_text h1 {font-size: 32px !important;}
+    .banner .widget_text h1 span {font-size: 32px !important;}
+    .Call_To_Action_Widget .widget_text h2 {font-size: 20px !important;}
+    .join_btn {font-size: 20px !important;}
+}
+
+
+
+@media only screen and (max-width: 375px) {
+    h2 {font-size: 24px !important;}
+    .Call_To_Action_Widget .widget_text h2 {font-size: 18px !important;}
+}
+
+
+
+@media only screen and (max-width: 320px) {
+    .banner .widget_text { height: 240px; }
+    .banner .widget_text h1 {font-size: 28px !important;}
+    .banner .widget_text h1 span {font-size: 28px !important;}
+}

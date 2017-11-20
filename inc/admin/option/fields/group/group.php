@@ -16,7 +16,6 @@ class CSFramework_Option_group extends CSFramework_Options {
   public function output() {
 
     echo $this->element_before();
-      echo '<input type="text" name="'. $this->element_name() .'" value="'. $this->element_value() .'"'. $this->element_class() . $this->element_attributes() .' class="group-helper" />';
 
     $last_id     = ( is_array( $this->value ) ) ? max( array_keys( $this->value ) ) : 0;
     $acc_title   = ( isset( $this->field['accordion_title'] ) ) ? $this->field['accordion_title'] : __( 'Adding', 'cs-framework' );
@@ -47,11 +46,11 @@ class CSFramework_Option_group extends CSFramework_Options {
     echo '</div>';
 
     echo '<div class="cs-groups cs-accordion">';
-
+     // print_r( $this->value);
       if( ! empty( $this->value ) ) {
-
+          
         foreach ( $this->value as $key => $value ) {
-
+               // print_r($value);
           $title = ( isset( $this->value[$key][$field_id] ) ) ? $this->value[$key][$field_id] : '';
 
           if ( is_array( $title ) && isset( $this->multilang ) ) {
@@ -73,7 +72,7 @@ class CSFramework_Option_group extends CSFramework_Options {
             echo cs_add_element( $field, $value, $unique );
           }
 
-          echo '<div class="cs-element cs-text-right"><a href="#" class="button cs-warning-primary cs-remove-group">'. __( 'Remove SSS', 'cs-framework' ) .'</a></div>';
+          echo '<div class="cs-element cs-text-right"><a href="#" class="button cs-warning-primary cs-remove-group">'. __( 'Remove', 'cs-framework' ) .'</a></div>';
           echo '</div>';
           echo '</div>';
 
@@ -83,7 +82,7 @@ class CSFramework_Option_group extends CSFramework_Options {
 
     echo '</div>';
 
-    echo '<a href="#" class="button button-primary cs-add-group customize_multi_add_field">'. $this->field['button_title'] .'</a>';
+    echo '<a href="#" class="button button-primary cs-add-group">'. $this->field['button_title'] .'</a>';
 
     echo $this->element_after();
 

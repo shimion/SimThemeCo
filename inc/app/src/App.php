@@ -3,6 +3,7 @@ namespace ST;
 use Illuminate\Affiliate\Affiliate as Affiliate;
 use \ST\Controller;
 use \ST\Controller\Nevi;
+use \ST\Controller\FooterNevi;
 use \ST\Controller\Config as DataResource;
 use ST\Controller\Search;
 use ST\Controller\Pagination;
@@ -30,6 +31,7 @@ class App
         'Title'     =>          self::Title(),
         'PostMeta'  =>          self::PostMeta(),
         'Menu'      =>           Nevi::Data(),
+        'FooterMenu'      =>           FooterNevi::Data(),    
         'Data'      =>           App::Config() ,
         'Search'      =>           Search::Data(), 
         'HBCWD'    => self::SideBar('HBCWD'),  

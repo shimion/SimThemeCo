@@ -10,17 +10,22 @@
       @endif
     
         @if(  ! dynamic_sidebar('hwcwd') ) @endif 
-
-     @while (have_posts()) @php(the_post())
-           <article class="col">        
-            <h1>@php(the_title())</h1>
-            <div class="">{!! $PostMeta !!}</div>
-             <div class="lead"> @php(the_content())</div>
-               {!! $ActionAfterContent !!}
-           </article>
-          @endwhile  
+        @if(! $Data->Get('global.disable_content_section'))
+         @while (have_posts()) @php(the_post())
+               <article class="col"> 
+               @if(! $Data->Get('global.disable_title'))       
+                <h1>@php(the_title())</h1>
+                @endif
+                 @if(! $Data->Get('global.disable_content'))      
+                <div class="">{!! $PostMeta !!}</div>
+                 <div class="lead"> @php(the_content())</div>
+                   {!! $ActionAfterContent !!}
+                   @endif
+               </article>
+              @endwhile  
 
         {!! $Pagination !!}
+         @endif  
             
       @if(  ! dynamic_sidebar('hacwd') ) @endif  
 
