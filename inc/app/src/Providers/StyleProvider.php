@@ -1,43 +1,60 @@
 <?php 
 namespace ST\Providers;
-use \ST\Base\Provider;
+use ST\Base\Provider;
 
 class StyleProvider extends Provider
 {
     
-    private $style;
+    protected $style = [];
+    protected $config = [];
+
     
-    private $option_name;
     
-    
-        public function __construct(){ 
-            $this->style = GetConfig('global.print_style');
-            $this->option_name = 'print_styles';
-            self::Set();
+        public function __construct($style){ 
+            $this->Get($style);
+            add_filter('filter_dynamic_css', array($this, 'Set'), 1);
         }
     
-    public function Get($style){
-        $this->style .= $style;
+     
+    
+    
+    public function Set($style){
+           
+             return $style . $this->GenerateDynamicCss();
+        }
+    
+    
+    
+    public function Get( $style){
+        
+        $this->style = array_merge($this->style, $style);
+        //print_r($this->style);
     }
     
     
-    
-    private function Set(){
-
-            if ( get_option( $this->option_name ) !== false ) {
-
-                // The option already exists, so we just update it.
-                update_option( $this->option_name, $this->style );
-
-                    } else {
-
-                // The option hasn't been added yet. We'll add it with $autoload set to 'no'.
-                $deprecated = null;
-                $autoload = 'no';
-                add_option( $this->option_name, $this->style, $deprecated, $autoload );
+    public function GenerateDynamicCss(){
+    $css = [];
+    $output = '';
+        $css = $this->style;
+       // print_r($css);
+        foreach($css as $key => $value){
+            if( !empty($key) && !empty($value)){ 
+                    if(is_array($value)){
+                        $ot = '';
+                        foreach($value as $k=>$v){
+                            $ot .= sprintf('%s:%s;', $k, $v);
+                        }
+                        $value = $ot;
+                    }
+                    $output .= sprintf('%s{%s}', $key, $value);
+                }
             }
-
-        }
+    
+    //$output = sprintf('<style>%s</style>', $output);
+    return $output;
+    }
+    
+    
     
     
 }

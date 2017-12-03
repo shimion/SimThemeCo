@@ -1,0 +1,14 @@
+.scale-up-center-intrection{
+margin-left: -6px;
+position: absolute;
+opacity: 1;
+-webkit-transform: scale(1.5);
+-ms-transition: all 200ms ease-in;
+-ms-transform: scale(1.5);
+-moz-transition: all 200ms ease-in;
+-moz-transform: scale(1.5);
+animation-iteration-count: 1000;
+}
+
+
+B<strong  class="scale-up-center-intrection class-and">&amp;</strong><strong class="bforbusiness">B</strong> <strong class="logo-v1">V1</strong>

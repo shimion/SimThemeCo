@@ -23,16 +23,19 @@ class WidgetCustomizer extends DWP_Widget
     
     public function WidgetLayoutBefore($instance, $class, $args){
         $html = '';
+        $layoutWidget = isset($instance['layout_widget']) ? $instance['layout_widget'] : 'default';
         $class_attr = !empty($instance['class_attr']) ? $instance['class_attr'] : '';
-        if(isset($instance['layout_widget']) && !empty($instance['layout_widget'])){
-           if( $instance['layout_widget'] == 'fullwidth'){
+        if(isset($layoutWidget) && 'default' != $layoutWidget){
+           if( $layoutWidget == 'fullwidth'){
                $html .= '<section class="'.str_replace(' ', '_', $class->name).'">';
                 $html .= '<div class="container container_'.str_replace(' ', '_', $class->name).'">';
-                }elseif( $instance['layout_widget'] == 'fullwidth_stretch' ){
+                }elseif( $layoutWidget == 'fullwidth_stretch' ){
                 $html .= '<section class="'.str_replace(' ', '_', $class->name).'">';  
                 $html .= '<div class="container-full container_'.str_replace(' ', '_', $class->name).'">';  
            }
        
+            }elseif( $layoutWidget == 'default'){
+                $html .= '<div id="'.$class->id.'" class="col-sm '.str_replace(' ', '_', $class->name).' '.$class_attr.' widget widget_'.$class->id.'">';
             }else{
                 $html .= '<div id="'.$class->id.'" class="col-sm '.str_replace(' ', '_', $class->name).' '.$class_attr.' widget widget_'.$class->id.'">';
             }
@@ -44,16 +47,19 @@ class WidgetCustomizer extends DWP_Widget
 	
     public function WidgetLayoutAfter($instance, $class, $args){
        $html = '';
-        if(isset($instance['layout_widget'] ) && !empty($instance['layout_widget'] )){
+        $layoutWidget = isset($instance['layout_widget']) ? $instance['layout_widget'] : 'default';
+       if(isset($layoutWidget) && 'default' != $layoutWidget){
         
-            if( $instance['layout_widget'] == 'fullwidth'){
+            if( $layoutWidget == 'fullwidth'){
          
             $html .= '</div>';
             $html .= '</section>';
-            }elseif( $instance['layout_widget'] == 'fullwidth_stretch' ){
+            }elseif( $layoutWidget == 'fullwidth_stretch' ){
             $html .= '</div>';
             $html .= '</section>';
             }
+        }elseif( $layoutWidget == 'default'){
+           $html .= '</div>';
         }else{
          $html .= '</div>';
        }
@@ -66,7 +72,7 @@ class WidgetCustomizer extends DWP_Widget
 	public function AddAdditionalFormFields( $widget, $return, $instance ) {
  
   
- 
+        $sid = isset( $instance['sid'] ) ? $instance['sid'] : $this->UniqueID();
         // Display the class_attr option.
         $class_attr = isset( $instance['class_attr'] ) ? $instance['class_attr'] : '';
         ?>
@@ -76,6 +82,10 @@ class WidgetCustomizer extends DWP_Widget
                     <?php _e( 'Show class', NAME ); ?>
                 </label>
             </p>
+           
+                <input class="input" type="hidden" id="<?php echo $widget->get_field_id('sid'); ?>" name="<?php echo $widget->get_field_name('sid'); ?>" value="<?php echo $sid; ?>" />
+                
+            
         <?php
         
         
@@ -114,11 +124,14 @@ class WidgetCustomizer extends DWP_Widget
     
          $instance['class_attr'] = $new_instance['class_attr'];
        $instance['layout_widget'] = $new_instance['layout_widget'];
+       $instance['sid'] = $new_instance['sid'];
     return $instance;
     }
 
 
-    
+   public  function UniqueID(){
+     return  uniqid('section_');
+   } 
     
 	
 }

@@ -104,15 +104,18 @@ array_map(function ($file) use ($st_error) {
 // Register Style & Scripts
 add_action('wp_enqueue_scripts', 'EnqueryStyleAndScript');
 function EnqueryStyleAndScript(){
-   wp_register_style( 'main.min', CSS . 'main.min.css', array(), VERSION, 'all' );
-    wp_enqueue_style( 'main.min' ); 
-    
-    wp_register_script( 'main.min', JS. 'main.min.js', 
-      array('jquery'), 
-      VERSION, true );
-    wp_localize_script( 'main.min', 'ajax_object',
-            array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
-    wp_enqueue_script('main.min');
+        wp_deregister_script('jquery');
+        wp_enqueue_script('jquery');  
+        wp_register_script('jquery', '/wp-includes/js/jquery/jquery.js', false, '3.2.1', true);
+        wp_register_style( 'main.min', CSS . 'main.min.css', array(), VERSION, 'all' );
+        wp_enqueue_style( 'main.min' ); 
+        
+        
+        
+        wp_register_script( 'main.min', JS. 'main.min.js', 
+        array('jquery'), VERSION, true );
+        wp_localize_script( 'main.min', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+        wp_enqueue_script('main.min');
   
 }
 

@@ -1,4 +1,4 @@
-<div class="wapper-header-bottom container">
+<div class="wapper-header-bottom">
         @if(! dynamic_sidebar('header-bottom') )
         @endif     
 </div>

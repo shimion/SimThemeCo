@@ -1,7 +1,6 @@
 <?php 
 require _ADMIN. "option/cs-framework.php";
-
-
+require _ADMIN. "slider-meta.php";
 // add a link to the WP Toolbar
 function reminify_admin_toolbar_links($wp_admin_bar) {
     $args = array(
@@ -18,13 +17,13 @@ function reminify_admin_toolbar_links($wp_admin_bar) {
 add_action('admin_bar_menu', 'reminify_admin_toolbar_links', 999);
 
 
-add_action('customize_controls_print_scripts', 'your_function');
+/*add_action('customize_controls_print_scripts', 'your_function');
 function your_function(){
   echo  '<script type="text/javascript">';
 include(CS_URI .'/assets/js/cs-plugins.js');
     include(CS_URI .'/assets/js/cs-framework.js');
      echo  '</script>';
-}
+}*/
 
 
 
@@ -34,21 +33,10 @@ function Remove_Customizer( $wp_customize ) {
     $wp_customize->remove_section( 'title_tagline' );
      $wp_customize->remove_section( 'header_image' );
     
-    $wp_customize->add_section('sidebar-sidebar', array(
-        'title'    => __('Color Scheme', 'themename'),
-        'description' => '',
-        'priority' => 120,
-    ));
- 
+  
     //  =============================
     //  = Text Input                =
     //  =============================
-    $wp_customize->add_setting('sidebar-sidebar-widgets', array(
-        'default'        => 'value_xyz',
-        'capability'     => 'edit_theme_options',
-        'type'           => 'option',
- 
-    ));
  
     $wp_customize->add_control('themename_text_test', array(
         'label'      => __('Text Test', 'themename'),
@@ -112,3 +100,48 @@ function enqueue_datepicker_uistyles( $hook_suffix ) {
 
 } // enqueue_styles()
 add_action( 'admin_enqueue_scripts', 'enqueue_datepicker_uistyles' );
+
+
+
+add_action('admin_footer', function(){
+    
+    
+    ?>
+    
+    <style>
+            body.post-php .cs-element.cs-element-no-title.cs-field-heading {
+            font-size: 15px;
+        }
+
+        body.post-php .cs-title {
+            float: none;
+            display: block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        body.post-php .cs-fieldset {
+            margin-left: 0;
+        }
+
+        body.post-php input[type="text"] {
+            /* width: 100%; */
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        body.post-php .cs-element.cs-element-no-title.cs-field-color_picker.cs-pseudo-field {
+            top: 0;
+            margin-top: auto;
+            vertical-align: -webkit-baseline-middle;
+            margin-bottom: 0;
+        }
+        
+       body.post-php .cs-field-group .st-colors-sideyside .cs-element {
+            max-width: 50%;
+            display: inline-block;
+}
+    </style>
+    <?php
+    
+});

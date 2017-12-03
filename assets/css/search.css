@@ -10,3 +10,9 @@
     margin-right: 0px !important;
     width: 100%;
 }
+
+
+.header .form-inline .form-control{
+    border: 1px solid rgb(181, 32, 21);
+    background-color: transparent;
+}

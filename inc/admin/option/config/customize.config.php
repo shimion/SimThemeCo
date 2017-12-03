@@ -13,15 +13,8 @@ $options[]            = array(
   'name'              => 'branding',
   'title'             => 'Branding',
     'priority'        => 99,
-  'settings'          => array(
-
-
-
-
-      
-
- 
-  )
+  'settings'          => array( 
+        )
 );
 
 
@@ -187,6 +180,21 @@ $options[]            = array(
             ),
 
         
+        array(
+              'name'          => 'enable_header_text',
+              'control'       => array(
+                'type'        => 'cs_field',
+                'options'     => array(
+                  'type'      => 'switcher',
+                  'title'     => 'Enable Additional Text',
+                  'label'     => 'Enable to view additional text on the header',
+                  'help'      => '',
+                  'default'      => false,
+                ),
+              ),
+            ),
+
+          
        array(
               'name'          => 'custom_text_on_the_header',
               'control'       => array(
@@ -197,6 +205,59 @@ $options[]            = array(
                   'label'     => 'Display additional text on the header',
                   'help'      => '',
                   'default'      => true,
+                  'dependency'   => array( 'enable_header_text', '!=', 'false' ), 
+                ),                  
+              ),
+            ),
+
+        
+          
+          
+          
+          
+        
+        array(
+              'name'          => 'menu_button_enable',
+              'control'       => array(
+                'type'        => 'cs_field',
+                'options'     => array(
+                  'type'      => 'switcher',
+                  'title'     => 'Enable Button',
+                  'label'     => 'Enable to view button on the header',
+                  'help'      => '',
+                  'default'      => false,
+                ),
+              ),
+            ),
+
+        
+       array(
+              'name'          => 'menu_button_text',
+              'control'       => array(
+                'type'        => 'cs_field',
+                'options'     => array(
+                  'type'      => 'text',
+                  'title'     => 'Button Text',
+                  'label'     => 'Provide button text here',
+                  'help'      => '',
+                  'default'      => 'Download',
+                  'dependency'   => array( 'menu_button_enable', '!=', 'false' ),   
+                ),
+              ),
+            ),
+
+        
+       array(
+              'name'          => 'menu_button_link',
+              'control'       => array(
+                'type'        => 'cs_field',
+                'options'     => array(
+                  'type'      => 'text',
+                  'title'     => 'Button Link',
+                  'label'     => 'Provide button link here',
+                  'help'      => '',
+                  'default'      => '',
+                  'dependency'   => array( 'menu_button_enable', '!=', 'false' ),  
                 ),
               ),
             ),
@@ -211,163 +272,385 @@ $options[]            = array(
   // end: sections
 
 );
-$content_section = [];
-      // begin: Sidebar section
-  $content_section[]=  array(
-      'name'          => 'sidebar-widgets-hwcwd',   
-      'title'         => 'Before Content Section',
-      'settings'      => array(
-          
-       ),
-    );
-    // end: section
-    
-    $content_section[] =   array(
-              'name'          => 'panel-widgets',   
-              'title'         => 'Content Editor',
-              'settings'      => array(
 
-               )
-            );
-      
-      
-      // begin: Sidebar section
-   $content_section[] =   array(
-      'name'          => 'sidebar-widgets-hacwd',   
-      'title'         => 'After Content Section',
-      'settings'      => array(
-          
-       ),
-    );
-    // end: section
-    
-      
-      
-     
+
+
       
       
       
       
-    // begin: Sidebar section
-    $content_section[] =  array(
-      'name'          => 'sidebar-widgets-sidebar',
-      'title'         => 'Main Sidebar Section',
-      'settings'      => array(
-          
-       ),
-    );
-    // end: section
+       
+      /*
+       * End Layout
+      */
       
-       // begin: section
-    $content_section[] =  array(
-      'name'          => 'content-additional',
-      'title'         => 'Additional Settings',
-      'settings'      => array(
-
-        array(
-              'name'          => 'fullwidth_layout',
-              'control'       => array(
-                'type'        => 'cs_field',
-                'options'     => array(
-                  'type'      => 'switcher',
-                  'title'     => 'Enable Fullwidth Layout',
-                  'label'     => 'Enable to set the content section fullwidth.',
-                  'help'      => '',
-                  'default'      => false,
-                ),
-              ),
-            ),
-
-        
-       array(
-              'name'          => 'disable_sidebar',
-              'control'       => array(
-                'type'        => 'cs_field',
-                'options'     => array(
-                  'type'      => 'switcher',
-                  'title'     => 'Disable Sidebar',
-                  'label'     => 'Disable to hide the sidebar from content area.',
-                  'help'      => '',
-                  'default'      => false,
-                ),
-              ),
-            ),
-
- 
-          
-      array(
-              'name'          => 'disable_content_section',
-              'control'       => array(
-                'type'        => 'cs_field',
-                'options'     => array(
-                  'type'      => 'switcher',
-                  'title'     => 'Disable Default Content Section',
-                  'label'     => 'It will let you hide the default title and content section.',
-                  'help'      => '',
-                  'default'      => false,
-                ),
-              ),
-            ),
-
-        
-
-          
-          
-          
-
-       array(
-              'name'          => 'disable_title',
-              'control'       => array(
-                'type'        => 'cs_field',
-                'options'     => array(
-                  'type'      => 'switcher',
-                  'title'     => 'Disable Default Title',
-                  'label'     => 'Enable to hide title from the page.',
-                  'help'      => '',
-                  'default'      => false,
-                'dependency'   => array( 'disable_content_section', '!=', 'true' ), 
-                ),
-              ),
-            ),
-
-        
-
-       array(
-              'name'          => 'disable_content',
-              'control'       => array(
-                'type'        => 'cs_field',
-                'options'     => array(
-                  'type'      => 'switcher',
-                  'title'     => 'Disable Default Content',
-                  'label'     => 'Enable to hide content from the page.',
-                  'help'      => '',
-                  'default'      => false,
-                    'dependency'   => array( 'disable_content_section', '!=', 'true' ), 
-                ),
-              ),
-            ),
-
-        
-
-      ),
-    );
-    // end: section
-
+      
 
 $options[]            = array(
-  'name'              => 'content_section',
-  'title'             => 'Content Section',
-  'description'       => 'Customize the content section.',
-  'sections'          => $content_section
+  'name'              => 'sidebar_section',
+  'title'             => 'Sidebar Sections',
+  'description'       => 'Customize different sidebar section.',
+  'sections'          => array(
+ 
+                       array(
+                          'name'          => 'content-additional',
+                          'title'         => 'Settings',
+                          'settings'      => array(
+                               
+
+                
+                              array(
+                                      'name'          => 'heading_x',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'heading',
+                                          'content'     => 'Home Page Sidebar Settings',
+                                         // 'label'     => 'Enable to set the content section fullwidth.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+                               array(
+                                      'name'          => 'enable_sidebar_home',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Home Sidebar',
+                                          'label'     => 'Enable to show Home page sidebar instent of default sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                              
+                              
+                              
+                              array(
+                                      'name'          => 'enable_bc_home',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Home Before Content Sidebar Section',
+                                          'label'     => 'Enable to show Home page before content sidebar instent of default before content sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                              
+                             array(
+                                      'name'          => 'enable_ac_home',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Home Sidebar',
+                                          'label'     => 'Enable to show Home page after content sidebar instent of default after content sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                              array(
+                                      'name'          => 'heading_p',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'heading',
+                                          'content'     => 'Page Sidebar Settings',
+                                         // 'label'     => 'Enable to set the content section fullwidth.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+                             
+                              
+
+                              array(
+                                      'name'          => 'enable_sidebar_page',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Page Sidebar',
+                                          'label'     => 'Enable to show page sidebar instent of default sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+                             
+                              array(
+                                      'name'          => 'enable_bc_page',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Page Before Content Sidebar Section',
+                                          'label'     => 'Enable to show page before content sidebar instent of default before content sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                              
+                             array(
+                                      'name'          => 'enable_ac_page',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Page After Content Sidebar',
+                                          'label'     => 'Enable to show page after content sidebar instent of default after content sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                              
+                              
+                              
+                         
+                              
+ 
+                              array(
+                                      'name'          => 'heading_a',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'heading',
+                                          'content'     => 'Archive Page Sidebar Settings',
+                                         // 'label'     => 'Enable to set the content section fullwidth.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+                             
+                              
+
+                             array(
+                                      'name'          => 'enable_sidebar_archive',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Archive Page Sidebar',
+                                          'label'     => 'Enable to show archive sidebar instent of default sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+                              
+                              array(
+                                      'name'          => 'enable_bc_archive',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Archive Before Content Sidebar Section',
+                                          'label'     => 'Enable to show archive page before content sidebar instent of default before content sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                              
+                             array(
+                                      'name'          => 'enable_ac_archive',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Archive Page After Content Sidebar',
+                                          'label'     => 'Enable to show archive page after content sidebar instent of default after content sidebar.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                              
+                              
+                              
+                         
+                              
+                              
+                              
+                              
+                              
+                              
+
+
+                              /*array(
+                                      'name'          => 'disable_content_section',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Disable Default Content Section',
+                                          'label'     => 'It will let you hide the default title and content section.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+
+
+
+
+
+                               array(
+                                      'name'          => 'disable_title',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Disable Default Title',
+                                          'label'     => 'Enable to hide title from the page.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        'dependency'   => array( 'disable_content_section', '!=', 'true' ), 
+                                        ),
+                                      ),
+                                    ),
+
+
+
+                               array(
+                                      'name'          => 'disable_content',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Disable Default Content',
+                                          'label'     => 'Enable to hide content from the page.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                            'dependency'   => array( 'disable_content_section', '!=', 'true' ), 
+                                        ),
+                                      ),
+                                    ),
+*/
+        
+
+                              ),
+                            ),
 
       
       
+                              array(
+                              'name'          => 'sidebar-widgets-bc-home',   
+                              'title'         => 'Before Content Section',
+                              'settings'      => array(
 
-  
-    
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-ac-home',   
+                              'title'         => 'After Content Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-sidebar-home',
+                              'title'         => 'Main Sidebar Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                             array(
+                              'name'          => 'sidebar-widgets-bc-page',   
+                              'title'         => 'Before Content Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-ac-page',   
+                              'title'         => 'After Content Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-sidebar-page',
+                              'title'         => 'Main Sidebar Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                             array(
+                              'name'          => 'sidebar-widgets-bc-archive',   
+                              'title'         => 'Before Content Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-ac-archive',   
+                              'title'         => 'After Content Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-sidebar-archive',
+                              'title'         => 'Main Sidebar Section',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                             array(
+                              'name'          => 'sidebar-widgets-bc',   
+                              'title'         => 'Before Content Section- Default',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-ac',   
+                              'title'         => 'After Content Section- Default',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                            array(
+                              'name'          => 'sidebar-widgets-sidebar',
+                              'title'         => 'Main Sidebar Section- Default',
+                              'settings'      => array(
+
+                               ),
+                            ),
+                        
+                        ),
   // end: sections
 
-);
+        );
 
 
  $options[]            = array(
@@ -425,6 +708,57 @@ $options[]            = array(
               'title'             => 'Additional Setting',
               'description'       => 'Site additional Settings',
               'sections'          => array(
+                                        array(
+                                          'name'          => 'layout-settings',
+                                          'title'         => 'Layout Settings',
+                                          'settings'      => array(
+
+                                array(
+                                      'name'          => 'heading_h',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'heading',
+                                          'content'     => 'Layout Setting',
+                                         // 'label'     => 'Enable to set the content section fullwidth.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+                                array(
+                                      'name'          => 'fullwidth_layout',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Enable Fullwidth Layout',
+                                          'label'     => 'Enable to set the content section fullwidth.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+
+
+                               array(
+                                      'name'          => 'disable_sidebar',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'switcher',
+                                          'title'     => 'Disable Sidebar Section',
+                                          'label'     => 'Disable to hide the sidebar section from content area and make it full width.',
+                                          'help'      => '',
+                                          'default'      => false,
+                                        ),
+                                      ),
+                                    ),
+            
+  
+                    )
+                ),
 
                              array(
                               'name'          => 'general',
@@ -490,13 +824,449 @@ $options[]            = array(
                               ),
                             ),
 
+ 
+                  
+                 
+                  
+
+  ),
+  // end: sections
+
+);
       
+
+
+
+
+     $options[]            = array(
+              'name'              => 'colors',
+              'title'             => 'Styles',
+              'description'       => 'Customize the theme style',
+              'sections'          => array(
+
+
+                 
+                              array(
+                              'name'          => 'colors',
+                              'title'         => 'Header Styles',
+                              'settings'      => array(
+
+                                     array(
+                                      'name'          => 'header_background',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Backgrund Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'header_textcolor',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'header_textcolor_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'header_menu_bg_color',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Menu Background Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'header_menu_bg_color_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Menu Background Hover Color',
+                                          'default'     => '',
+                                         // 'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                                     array(
+                                      'name'          => 'header_menu_color',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Menu Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'header_menu_color_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'header_button_color',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Button Color',
+                                          'default'     => '',
+                                         // 'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                                    array(
+                                      'name'          => 'header_button_color_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Button Color Hover',
+                                          'default'     => '',
+                                          //'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                                    array(
+                                      'name'          => 'header_button_text_color',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Button Color',
+                                          'default'     => '',
+                                         // 'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                                    array(
+                                        'name'          => 'header_button_text_color_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Button Color',
+                                          'default'     => '',
+                                         // 'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+               
+
+                
+                  
+                               ),
+                            ),
+
+                 
+                  
+                              array(
+                              'name'          => 'footer-colors',
+                              'title'         => 'Footer Colors',
+                              'settings'      => array(
+
+                                     array(
+                                      'name'          => 'footer_backgrounds',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'background',
+                                          'title'     => 'Footer Background Colors',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                    
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize footer text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color_title',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_color_title_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_alignment',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'select',
+                                          'title'     => 'Text Alignment',
+                                          'default'     => '',
+                                          'desc'      => 'Set the text alignment for the footer coppyright',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                            'options' => array(
+                                                ''      => 'Default',
+                                                'left'      => 'Left',
+                                                'right'      => 'Right',
+                                                'center'      => 'Center',
+                                            )
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                               ),
+                            ),
+
+                 
+                             array(
+                              'name'          => 'footer-widget-styles',
+                              'title'         => 'Footer Widget Styles',
+                              'settings'      => array(
+
+                                     array(
+                                      'name'          => 'footer_backgrounds_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'background',
+                                          'title'     => 'Footer Widget Background Color',
+                                          'default'     => '',
+                                          //'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                    
+                  
+                                     array(
+                                      'name'          => 'footer_color_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Text Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize footer text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color_hover_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize footer text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color_title_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_color_title_hover_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_alignment_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'select',
+                                          'title'     => 'Text Alignment',
+                                          'default'     => '',
+                                          'desc'      => 'Set the text alignment for the footer coppyright',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                            'options' => array(
+                                                ''      => 'Default',
+                                                'left'      => 'Left',
+                                                'right'      => 'Right',
+                                                'center'      => 'Center',
+                                            )
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                               ),
+                            ),
+
+                 
+                  
 
   ),
   // end: sections
 
 );
         
+
           
 
 

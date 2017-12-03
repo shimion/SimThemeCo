@@ -8,8 +8,12 @@
     </div>
     {!! get_search_form(false) !!}
       @endif
-    
-        @if(  ! dynamic_sidebar('hwcwd') ) @endif 
+        
+           
+         @include('components.bc')
+        
+        
+        
         @if(! $Data->Get('global.disable_content_section'))
          @while (have_posts()) @php(the_post())
                <article class="col"> 
@@ -27,7 +31,7 @@
         {!! $Pagination !!}
          @endif  
             
-      @if(  ! dynamic_sidebar('hacwd') ) @endif  
+               @include('components.ac')
 
 
 

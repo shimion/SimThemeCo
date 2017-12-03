@@ -1,6 +1,7 @@
 <?php 
 namespace ST;
 use Illuminate\Affiliate\Affiliate as Affiliate;
+use Northwoods\Config\ConfigFactory;
 use \ST\Controller;
 use \ST\Controller\Nevi;
 use \ST\Controller\FooterNevi;
@@ -32,7 +33,7 @@ class App
         'PostMeta'  =>          self::PostMeta(),
         'Menu'      =>           Nevi::Data(),
         'FooterMenu'      =>           FooterNevi::Data(),    
-        'Data'      =>           App::Config() ,
+        'Data'      =>           self::Config() ,
         'Search'      =>           Search::Data(), 
         'HBCWD'    => self::SideBar('HBCWD'),  
         'HACWD'    => self::SideBar('HACWD'),
@@ -46,7 +47,14 @@ class App
     }
     
     public static function Config(){
-     return   DataResource::get_instance();
+        global $Data;
+        
+        $data = new ConfigFactory();
+            
+               $config = $data::make([
+                    'directory' => _INC . 'config',
+                ]); 
+     return   $config;
             
     }
     

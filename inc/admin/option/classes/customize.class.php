@@ -41,8 +41,10 @@ class CSFramework_Customize extends CSFramework_Abstract {
 
     $this->options = apply_filters( 'cs_customize_options', $options );
 
+    do_action( 'cs_customize_options_config', $this->options );
+
     if( ! empty( $this->options ) ) {
-      $this->addAction( 'customize_register', 'customize_register', 999 );
+      $this->addAction( 'customize_register', 'customize_register' );
     }
 
   }
@@ -57,21 +59,10 @@ class CSFramework_Customize extends CSFramework_Abstract {
 
   // customize register
   public function customize_register( $wp_customize ) {
-      if(is_page() || is_single() )
-    {
-         $ObjID = get_the_ID();
 
-    }
-
-     // parse_str( $_SERVER['QUERY_STRING'], $url);
-      // $postID = url_to_postid( $url ) ?? $post->ID;
-       //$uuid = $wp_customize->changeset_uuid() ;
-   // $postID = set_url_scheme($wp_customize->get_return_url( ));;
-      //echo 'echo'. $_GET['url'];
-      //print_r(wp_parse_args())
     // load extra WP_Customize_Control
     cs_locate_template( 'functions/customize.php' );
-    do_action( 'cs_customize_register' );
+    do_action( 'cs_customize_register', $wp_customize );
 
     $panel_priority = 1;
 

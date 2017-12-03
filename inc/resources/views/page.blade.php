@@ -4,16 +4,28 @@
 
   @if (!have_posts())
     <div class="alert alert-warning">
-      {{ __('Sorry, no results were found.', 'sage') }}
+      {{ __('Sorry, no results were found.', NAME) }}
     </div>
     {!! get_search_form(false) !!}
-  @endif
+      @endif
+        
+           
+         @include('components.bc')
+        
+        
+        
+        @if(! $Data->Get('global.disable_content_section'))
+         @while (have_posts()) @php(the_post())
+               <article class="col">    
+                <h1>@php(the_title())</h1>     
+                <div class="">{!! $PostMeta !!}</div>
+                 <div class="lead"> @php(the_content())</div>
+                   {!! $ActionAfterContent !!}  
+               </article>
+              @endwhile  
 
- @while (have_posts()) @php(the_post())
-           <article class="col">
-            <h1><a href="@php(the_permalink())"> {{ $Title }}</a></h1>
-               <div clas="meta-data">{!! $PostMeta !!}</p>
-             <div class="lead"> @php(the_content())</div>
-           </article>
-    @endwhile   
+        {!! $Pagination !!}
+         @endif  
+            
+     @include('components.ac')
 @endsection

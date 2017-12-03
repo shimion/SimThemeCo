@@ -12,7 +12,7 @@ if( ! function_exists( 'cs_get_icons' ) ) {
 
     do_action( 'cs_add_icons_before' );
 
-    $jsons = glob( CS_DIR . '/fields/icon/*.json' );
+    $jsons = apply_filters( 'cs_add_icons_json', glob( CS_DIR . '/fields/icon/*.json' ) );
 
     if( ! empty( $jsons ) ) {
 
@@ -25,11 +25,11 @@ if( ! function_exists( 'cs_get_icons' ) ) {
           echo ( count( $jsons ) >= 2 ) ? '<h4 class="cs-icon-title">'. $object->name .'</h4>' : '';
 
           foreach ( $object->icons as $icon ) {
-            echo '<a class="cs-icon-tooltip" data-icon="'. $icon .'" data-title="'. $icon .'"><span class="cs-icon cs-selector"><i class="'. $icon .'"></i></span></a>';
+            echo '<a class="cs-icon-tooltip" data-cs-icon="'. $icon .'" data-title="'. $icon .'"><span class="cs-icon cs-selector"><i class="'. $icon .'"></i></span></a>';
           }
 
         } else {
-          echo '<h4 class="cs-icon-title">'. __( 'Error! Can not load json file.', 'cs-framework' ) .'</h4>';
+          echo '<h4 class="cs-icon-title">'. esc_html__( 'Error! Can not load json file.', 'cs-framework' ) .'</h4>';
         }
 
       }
@@ -79,9 +79,9 @@ if( ! function_exists( 'cs_export_options' ) ) {
 if( ! function_exists( 'cs_set_icons' ) ) {
   function cs_set_icons() {
 
-    echo '<div id="cs-icon-dialog" class="cs-dialog" title="'. __( 'Add Icon', 'cs-framework' ) .'">';
-    echo '<div class="cs-dialog-header cs-text-center"><input type="text" placeholder="'. __( 'Search a Icon...', 'cs-framework' ) .'" class="cs-icon-search" /></div>';
-    echo '<div class="cs-dialog-load"><div class="cs-icon-loading">'. __( 'Loading...', 'cs-framework' ) .'</div></div>';
+    echo '<div id="cs-icon-dialog" class="cs-dialog" title="'. esc_html__( 'Add Icon', 'cs-framework' ) .'">';
+    echo '<div class="cs-dialog-header cs-text-center"><input type="text" placeholder="'. esc_html__( 'Search a Icon...', 'cs-framework' ) .'" class="cs-icon-search" /></div>';
+    echo '<div class="cs-dialog-load"><div class="cs-icon-loading">'. esc_html__( 'Loading...', 'cs-framework' ) .'</div></div>';
     echo '</div>';
 
   }

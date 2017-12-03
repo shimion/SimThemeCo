@@ -8,16 +8,16 @@ class Access
     private $post = [];
     private $redirection;
     private $role;
-    
+
     
       public function __construct(){
-          global $post, $wp_query;
-          self::GetPageAccessability();
-          if(is_user_logged_in())
-            $this->User = wp_get_current_user();         
-          if(is_singular() or is_single() or is_home() )
-            $this->post = $post;
-           $this->restriction = false;
+          
+          if(!is_user_logged_in()){
+              wp_redirect(GetConfig('account.login_page')); exit();
+          }else{
+              
+          }
+            
         }
     
     
@@ -32,3 +32,4 @@ class Access
     
     
 }
+

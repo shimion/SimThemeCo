@@ -21,6 +21,8 @@ var SimThemeCo = function(options){
     var Action = '';
     var Form = '';
     var Loading = false;
+    var Slider = '';
+    var Bg = '';
     /*
      * Can access this.method
      * inside other methods using
@@ -33,10 +35,13 @@ var SimThemeCo = function(options){
      */
     this.construct = function(options){
         $.extend(vars , options);
+        this.Slider = $('.carousel');
         this.Form = $('.simthemeco-form');
+        this.Bg = $('.caption-inner-wapper');
         this.ActionType = $('.simthemeco-form').attr('data-form-type');
-        
         this.SubmitForm();
+        this.STCarousel();
+        this.SectionBG();
     };
 
 
@@ -151,7 +156,26 @@ var SimThemeCo = function(options){
    }
    
    
+    this.STCarousel = function (){
+        let self = this;
+        self.Slider.carousel({
+                interval: 6000
+            })
+
+   }
    
+   this.SectionBG       = function (){
+        let self = this;
+       
+       self.Bg.each(function () {
+			var $this = $(this),
+				$animationType = $this.data('background');
+			$this.css('background', $animationType);
+		});       
+   }
+   
+   
+  
    
    
    

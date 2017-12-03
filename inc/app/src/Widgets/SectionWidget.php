@@ -25,15 +25,18 @@ use WP_Widget as DWP_Widget;
       extract( $args );
       //echo apply_filters( 'Action_Wapper_Controller', $instance );
         if( $instance['start_section'])   echo '<section class="'.$instance['section_class'].'">'; 
- 
         if( $instance['start_container'])   echo '<div class="container">'; 
         if( $instance['enable_section_title']):
         echo '<div class="row">'; 
         echo '<h3 class="widgettitle">'.$instance['section_title'].'</h3>';
         echo '</div>';
         endif;
-        if( $instance['start_section'])   echo '<div class="row">';
-        if( $instance['end_section'])   echo '</div>';       
+        if( $instance['start_row'])   echo '<div class="row">';
+        
+        if( $instance['start_col'])   echo sprintf('<div class="col-%s">', $instance['col']);
+        if( $instance['end_col'])   echo '</div>';       
+        
+        if( $instance['end_row'])   echo '</div>';       
         if( $instance['end_container'])   echo '</div>'; 
          if( $instance['end_section'])   echo '</section>';       
     }
@@ -51,7 +54,12 @@ use WP_Widget as DWP_Widget;
       $instance['end_section']    = $new_instance['end_section'];    
       $instance['start_container']    = $new_instance['start_container'];
       $instance['end_container']    = $new_instance['end_container'];
-
+     $instance['start_row']    = $new_instance['start_row'];
+      $instance['end_row']    = $new_instance['end_row'];
+    $instance['start_col']    = $new_instance['start_col'];
+      $instance['end_col']    = $new_instance['end_col'];
+    $instance['col']    = $new_instance['col'];
+ 
       return $instance;
 
     }
@@ -71,6 +79,11 @@ use WP_Widget as DWP_Widget;
         'end_section'    => false,
         'start_container'    => false,
         'end_container'    => false,
+        'start_row'    => false,
+        'end_row'    => false,
+        'start_col'    => false,
+        'end_col'    => false,
+        'col'    => '',
       ));
 
       //
@@ -87,7 +100,7 @@ use WP_Widget as DWP_Widget;
 
       echo cs_add_element( $text_field, $text_value );
 
-     // Start Section Controller
+     // Enable Title
       // -------------------------------------------------
       $text_value = esc_attr( $instance['enable_section_title'] );
       $text_field = array(
@@ -100,7 +113,7 @@ use WP_Widget as DWP_Widget;
 
       echo cs_add_element( $text_field, $text_value );
 
-     // Start Section Controller
+     // Title
       // -------------------------------------------------
       $text_value = esc_attr( $instance['section_title'] );
       $text_field = array(
@@ -112,12 +125,7 @@ use WP_Widget as DWP_Widget;
       );
 
       echo cs_add_element( $text_field, $text_value );
-
-        
-        
-        
-        
-      // Start Section Controller
+      // Section Class
       // -------------------------------------------------
       $text_value = esc_attr( $instance['section_class'] );
       $text_field = array(
@@ -130,7 +138,7 @@ use WP_Widget as DWP_Widget;
 
       echo cs_add_element( $text_field, $text_value );
 
-      // Start Section Controller
+      // Section Background
       // -------------------------------------------------
       $text_value = esc_attr( $instance['section_background'] );
       $text_field = array(
@@ -143,7 +151,7 @@ use WP_Widget as DWP_Widget;
 
       echo cs_add_element( $text_field, $text_value );
 
-      // Start Section Controller
+      // SSection Color
       // -------------------------------------------------
       $text_value = esc_attr( $instance['section_color'] );
       $text_field = array(
@@ -155,9 +163,7 @@ use WP_Widget as DWP_Widget;
       );
 
       echo cs_add_element( $text_field, $text_value );
-
-       //
-      // End Section Controller
+      // End Section
       // -------------------------------------------------
       $text_value = esc_attr( $instance['end_section'] );
       $text_field = array(
@@ -168,9 +174,7 @@ use WP_Widget as DWP_Widget;
       );
 
       echo cs_add_element( $text_field, $text_value );
-
-        //
-      // End Section Controller
+      // Start Container
       // -------------------------------------------------
       $text_value = esc_attr( $instance['start_container'] );
       $text_field = array(
@@ -181,9 +185,7 @@ use WP_Widget as DWP_Widget;
       );
 
       echo cs_add_element( $text_field, $text_value );
-
-       //
-      // End Section Controller
+      // End Container
       // -------------------------------------------------
       $text_value = esc_attr( $instance['end_container'] );
       $text_field = array(
@@ -195,9 +197,62 @@ use WP_Widget as DWP_Widget;
 
       echo cs_add_element( $text_field, $text_value );
 
+      // Start Row
+      // -------------------------------------------------
+      $value = esc_attr( $instance['start_row'] );
+      $field = array(
+        'id'    => $this->get_field_name('start_row'),
+        'name'  => $this->get_field_name('start_row'),
+        'type'  => 'switcher',
+        'title' => 'Start Row',
+      );
 
+      echo cs_add_element( $field, $value );
+      // End Row Controller
+      // -------------------------------------------------
+      $value = esc_attr( $instance['end_row'] );
+      $field = array(
+        'id'    => $this->get_field_name('end_row'),
+        'name'  => $this->get_field_name('end_row'),
+        'type'  => 'switcher',
+        'title' => 'End Row',
+      );
+        echo cs_add_element( $field, $value );
+      // Start Col
+      // -------------------------------------------------
+      $value = esc_attr( $instance['start_col'] );
+      $field = array(
+        'id'    => $this->get_field_name('start_col'),
+        'name'  => $this->get_field_name('start_col'),
+        'type'  => 'switcher',
+        'title' => 'Start Column',
+        'help' => 'Make sure to use same widget to close the column. ',
+      );
+        echo cs_add_element( $field, $value );   
+     // -------------------------------------------------
+      $value = esc_attr( $instance['col'] );
+      $field = array(
+        'id'    => $this->get_field_name('col'),
+        'name'  => $this->get_field_name('col'),
+        'type'  => 'number',
+        'title' => 'Column',
+         'help' => 'Get the column number. Use anything bitween 1 to 12. ', 
+      );
 
-      //
+      echo cs_add_element( $field, $value );
+      
+        // End Col
+      // -------------------------------------------------
+      $value = esc_attr( $instance['end_col'] );
+      $field = array(
+        'id'    => $this->get_field_name('end_col'),
+        'name'  => $this->get_field_name('end_col'),
+        'type'  => 'switcher',
+        'title' => 'End Column',
+        'help' => 'Only enable if you have any other Column section is enable. ', 
+      );
+
+      echo cs_add_element( $field, $value );
 
     }
   }

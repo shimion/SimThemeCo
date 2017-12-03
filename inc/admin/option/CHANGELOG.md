@@ -1,5 +1,31 @@
 # Codestar Framework Changelog
 
+## 1.0.2
+- Added: Support for WP Nav Menus select
+- Added: Taxonomy framework clear form elements after saving
+- Added: A filter for external icon-jsons load
+- Added: An action `cs_customize_options_config` for customize config options
+- Added: Auto Class name for all fields and generating classname by field title
+- Added: Chinese language po/mo
+- Added: Post type list support
+- Added: Typenow param for specific metabox options
+- Added: Light theme for framework
+- Changed: Action from `cs_validate_save` to `cs_validate_save_after` for save after framework options
+- Fixed: Color picker appears twice in widgets
+- Fixed: Clear button of color-picker in customizer
+- Fixed: Fieldset default value option
+- Fixed: Minor bugs
+- Updated: Chosen jquery plugin v1.6.1
+- Updated: Google Fonts json for Typography field
+- Updated: Font Awesome 4.7.0 icons package
+- Updated: textdomain updates from __() to esc_html_e() - esc_html__()
+- Updated: Backup field idea, changed from base64 encode/decode to seraize/unserialize
+- Improved: Icons select field for avoid conflict
+- Improved: Locate path function for windows servers
+- Improved: Languages packages
+- Removed: call_user_function idea
+- Removed: custom/callback function support for field options
+
 ## 1.0.1
 - Added: Taxonomy options framework
 - Added: Taxonomy css styles and rtl support

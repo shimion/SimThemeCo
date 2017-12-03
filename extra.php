@@ -18,6 +18,20 @@ add_action('init', function(){
    PostType($type, $tax); 
 });
 
+// Register Posttype event
+add_action('init', function(){
+    $type = array(
+        'name' => 'st-slider',
+        'slug' => 'st-slider',
+        'singular' => 'Slider',
+        'plural' => 'Sliders',
+        'public' => false,
+        'taxonomy_support' => false
+        );
+    $tax = array();
+   PostType($type, $tax); 
+});
+
 // Register Posttype Request
 add_action('init', function(){
     $type = array(

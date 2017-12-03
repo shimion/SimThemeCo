@@ -10,12 +10,13 @@ use ST\Utilities\FeaturedBox;
 use ST\Utilities\Form;
 use ST\Utilities\Posts;
 use ST\Utilities\Pagination;
+use ST\Utilities\Sliders;
 class Helpers
 {
     
     protected static $instance;
     public $site =  [];
-    private $image = [];
+    public $image = [];
     private $post =  [];
     private $config =  [];
     public $logo =  []; 
@@ -45,8 +46,7 @@ class Helpers
         $this->site['description'] = !empty(cs_get_customize_option( 'site_tagline' )) ? cs_get_customize_option( 'site_tagline' ) : get_bloginfo('description');
         $this->post = $post;
        
-        $this->logo = self::Logo();
-        $this->logo .= self::DisplayTitleTag();
+        
         $this->header_top = self::DisplayHeaderTop();
        // $this->header_top['enable'] = self::DisplayHeaderTop();
         $this->layoutprovider  = cs_get_customize_option( 'header_top_wapper' ) ?? NULL;
@@ -62,6 +62,40 @@ class Helpers
     public function Favicon(){
         
     }
+    
+    public function Site(){
+        $this->site['url'] = get_bloginfo('url');
+        $this->site['name'] = !empty(cs_get_customize_option( 'site_title' )) ? cs_get_customize_option( 'site_title' ) : get_bloginfo('name');
+        $this->site['description'] = !empty(cs_get_customize_option( 'site_tagline' )) ? cs_get_customize_option( 'site_tagline' ) : get_bloginfo('description');
+        return $this->site;
+    }
+    
+    public function SetLogo(){
+        $this->logo = $this->Logo();
+        $this->logo .= $this->DisplayTitleTag();
+        return $this->logo;
+    }
+    
+    public static function AddAdditionalScript(array $newValue, $type = 'css'){
+        $option = Collect(unserialize (get_option('st-scripts-register')));
+         $data = $option[$type];
+      //  print_r($option);
+       
+        if(array_key_exists($newValue[0], $data)) return false;
+        if ( $option !== false ) {
+            $option[$type] = array_merge($newValue, $data);
+                // The option already exists, so we just update it.
+                update_option( 'st-scripts-register', serialize ($option) );
+            //print_r($option[$type]);
+            } else {
+                // The option hasn't been added yet. We'll add it with $autoload set to 'no'.
+                $deprecated = null;
+                $autoload = 'no';
+            $option[$type] = $newValue;
+                add_option( 'st-scripts-register', serialize ($option), $deprecated, $autoload );
+            }
+    }
+
     
     public function Logo(){
         $this->image['id'] = NULL;
@@ -82,7 +116,7 @@ class Helpers
         return $content;
     }
      
-
+    
     
     public function EnableSidebar(){
         $enable = true;
@@ -133,8 +167,8 @@ class Helpers
     
     
     public function DisplayTitleTag(){
-        if(cs_get_customize_option( 'switcher_title_tagline' ) != false)
-       return sprintf('<div class="site-title-description-wapper">%s <span>%s</span></div>', $this->site['name'], $this->site['description']);
+        if($this->option( 'switcher_title_tagline' ) != false)
+       return sprintf('<div class="site-title-description-wapper pb-2">%s <span>%s</span></div>', self::Site()['name'], self::Site()['description']);
     }
     
     public static function Button($data){
@@ -172,6 +206,11 @@ class Helpers
            return $LatestRequests->output();
     }
     
+   public static function GetSlider($data){
+            $Sliders = new Sliders($data);
+           return $Sliders->output();
+    }
+    
    public static function GetPosts($data){
             $LatestRequests = new Posts($data);
            return $LatestRequests->output();
@@ -196,11 +235,12 @@ class Helpers
 
     
    public static function RestrictSidebar(){
-       
+       global $post;
         $enable_sidebar = false;
         if(self::Query()->is_home() or self::Query()->is_front_page() or self::Query()->is_post_page)
         $enable_sidebar = self::Option('disable_sidebar');
-       
+        elseif(is_singular())
+        $enable_sidebar = get_post_meta($post->ID, 'disable_sidebar', false);  
        return $enable_sidebar;
     }
     
@@ -231,6 +271,30 @@ class Helpers
     
     
     
+    public static function GenerateDynamicCss(){
+    $css = [];
+    $output = '';
+        $css = GetConfig('css');
+         $css = apply_filters('Action_Widget_CSS', $css);
+        foreach($css as $key => $value){
+            if( !empty($key) && !empty($value)){ 
+                    if(is_array($value)){
+                        $ot = '';
+                        foreach($value as $k=>$v){
+                            $ot .= sprintf('%s:%s;', $k, $v);
+                        }
+                        $value = $ot;
+                    }
+                    $output .= sprintf('%s{%s}', $key, $value);
+                }
+            }
+    
+    //$output = sprintf('<style>%s</style>', $output);
+    return $output;
+    }
+    
+    
+    
     
     public function GetAllDynamicWidget(){
             global $wpdb; 
@@ -248,6 +312,35 @@ class Helpers
             return $result;
         
         
+    }
+    
+    
+    public static function TemplateBasedSidebarDetector($sidebar){
+        global $wp_query;
+        $result = '';
+        if(is_home() or is_front_page() or $wp_query->post_page){
+            if(Helpers::Option("enable_".$sidebar."_home") == false) return $sidebar;
+            $result = $sidebar . '-' . 'home';
+        }elseif(is_page()){
+            if(Helpers::Option("enable_".$sidebar."_page") == false) return $sidebar;
+            $result = $sidebar . '-' . 'page';
+        }elseif(is_archive()){
+            if(Helpers::Option("enable_".$sidebar."_archive") == false) return $sidebar;
+            $result = $sidebar . '-' . 'archive';
+        }elseif(is_single()){
+            if(Helpers::Option("enable_".$sidebar."_single") == false) return $sidebar;
+            $result = $sidebar . '-' . 'single';
+        }elseif(is_singular()){
+            if(Helpers::Option("enable_".$sidebar."_single") == false) return $sidebar;
+            $result = $sidebar . '-' . 'single';
+        }else{
+            $result = $result ;
+        }
+        
+       // if(is_active_sidebar( $result ))
+       //     return $result;
+        //else
+            return $result;
     }
     
     

@@ -37,6 +37,13 @@ $options[]    = array(
                 'default' => false
             ),
 
+          array(
+              'id'    => 'disable_sidebar',
+              'type'  => 'switcher',
+              'title' => 'Disable Sidebar',
+                'default' => false
+            ),
+
         ),
     ),
       

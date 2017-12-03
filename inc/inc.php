@@ -1,19 +1,25 @@
 <?php
 require _APP."vendor/autoload.php";
+//require _APP."src//scss.inc.php";
+//use ST\Scss\scssphp;
 use Northwoods\Config\ConfigFactory;
 use ST\Minify\Minifier;
 use MatthiasMullie\Minify;
+use \ST\Controller\Minifing;
 use Philo\Blade;
+use ST\Providers\SliderData;
 use ST\App;
 use ST\Helpers; // it helps to set data for config.php
 use ST\Providers\DynamicSidebar;
 use ST\Controller\Search;
 use ST\Controller\DynamicContent;
+
 use ST\Providers\WidgetCustomizer;
 use ST\Helpers\CommentsWalker;
 use ST\Providers\PostTypeProvider;
 use ST\Providers\ButtonWidget;
 use ST\Ajax\Ajax;
+use ST\Helpers\Sidebar;
 $template_directory =  _INC . '/resources/views';
 if (!is_dir($template_directory)) {
 mkdir($template_directory , 0755, true);
@@ -27,6 +33,20 @@ $views = $template_directory;
 $cache = $wp_content_dir . '/cache/blade';
 $GLOBALS['blade_engine'] = new \Philo\Blade\Blade($views, $cache);
 
+
+
+/*function Scss($style){
+    if(empty($style)) return false;
+    $scss = new scssphp();
+    return $scss->compile($style);
+}
+
+function TheScss(){
+    new scssphp();
+   
+}
+
+*/
 
 
 /**
@@ -43,6 +63,15 @@ function SetDefault($main, $default){
           return  $default;
             
 }
+
+/**
+ * -f Post
+ * -D Set extra fields for all the widgets
+ * @param string/array $default
+ */
+add_action('wp_head', function(){
+    new SliderData();
+});
 
 
 
@@ -71,13 +100,18 @@ add_action('init', function(){
 
 
 /**
+ * -f Dynamic Sidebar Inisilize
+ */
+add_action('widgets_init', function(){
+    new Sidebar();
+});
+
+/**
  * -f Dynamic COntent Inisilize
  */
 add_action('widgets_init', function(){
     new DynamicSidebar();
 });
-
-
 
 
 /**
@@ -318,13 +352,25 @@ add_filter('Action_Featured_Box_Widget', function($instance){
 
 /**
  * -f function
- * -D add filter on call to action widget to inject call to action utilities
+ * -D add filter on form widget to inject call to action utilities
  * @return string that built from widget $instance
  */
 
 add_filter('Action_Form', function($instance){
     //if( ! is_singular())
     return Helpers::GetForm($instance);
+}, 20);
+
+
+/**
+ * -f function
+ * -D add filter on slider widget to inject call to action utilities
+ * @return string that built from widget $instance
+ */
+
+add_filter('Action_Sliders', function($instance){
+    //if( ! is_singular())
+    return Helpers::GetSlider($instance);
 }, 20);
 
 
@@ -356,12 +402,79 @@ add_filter('Action_Latest_Requests_listing', function($instance){
 
 
 
-
+/**
+ * -filter filter_copy_right_wapper
+ * -D Footer coppyrightfilter
+ * @param string $content
+ * @return string
+ */
 add_filter('filter_copy_right_wapper', function($content){
     
     return sprintf('<p>%s</p>', $content);
     
 }, 20);
+
+/**
+ * -filter filter_header_extra_text
+ * -D Header filter for additional text
+ * @param string $content
+ * @return string
+ */
+add_filter('filter_header_extra_text', function($content){
+    if(Helpers()->Option('enable_header_text'))
+    return sprintf('<div class="header-custom-text pl-2 pr-2">%s</div>', $content);
+    
+}, 20);
+
+
+
+/**
+ * -filter action_nevigation_additional_elements
+ * -D Header add elements to header menu section. can apply other elements via this filter beside menu/nevigation.
+ * @param string $menu
+ * @return string
+ */
+add_filter('action_nevigation_additional_elements', function($menu){
+   // if(Helpers()->Option('enable_header_text'))
+    return $menu . GetConfig('global.menu_text');
+    
+}, 20);
+
+
+/**
+ * -filter action_nevigation_additional_elements
+ * -D Header filter for additional text
+ * @param string $content
+ * @return string
+ */
+add_filter('action_nevigation_additional_elements', function($menu){
+   if(GetConfig('global.menu_search')){
+    return $menu . Search::Data();
+    }else{
+       return $menu;
+   }
+}, 20);
+
+
+
+/**
+ * -filter action_nevigation_additional_elements
+ * -D Header filter for additional text
+ * @param string $content
+ * @return string
+ */
+add_filter('action_nevigation_additional_elements', function($menu){
+   if(GetConfig('global.menu_button_enable')){
+    $data = array(
+        'class' => sprintf('d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3 %s', GetConfig('global.button_class')),
+        'link' => GetConfig('global.menu_button_link'),
+        'text' => GetConfig('global.menu_button_text')
+    );   
+    return $menu . Helpers()->Button($data);
+    }else{
+       return $menu;
+   }
+}, 15);
 
 
 
@@ -403,6 +516,7 @@ return $GLOBALS['blade_engine']->view()->make($view, $attributes);
 */
 add_action('after_setup_theme', function(){
    add_theme_support( 'menus' ); 
+   add_theme_support( 'customize-selective-refresh-widgets' ); 
        add_theme_support( 'custom-logo', array(
         'height'      => 50,
         'width'       => 150,
@@ -499,116 +613,10 @@ add_action( 'widgets_init', function(){
 
 
 
-//add_shortcode('STST', 'STST');
-//function STST(){
-//render_blade_view('components/basic', [
-//'title' => "Welcome",
-//'text' => 'Welcome TO BD',
-//]);   
-//}
 
-// Sidebar Registration
-add_action('widgets_init', 'st_register_sidebar');
-function st_register_sidebar(){
-    
-    register_sidebar(array(
-    	'id' => 'sidebar',
-    	'name' => 'Main Sidebar',
-    	'description' => 'Default sidebar for all the pages.',
-    	'before_widget' => '<div id="%1$s" class="widget list-group-item %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<h3 class="widgettitle">',
-    	'after_title' => '</h3>',
-    ));  
-    
- 
-    
-    register_sidebar(array(
-    	'id' => 'header-top',
-    	'name' => 'Header Top',
-    	'description' => 'Use this wisget to show widget on the very top. Specifically for phone number, social icons, text, call to action button etc ',
-    	'before_widget' => '<div id="%1$s" class="col-sm %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<div class="before_title"><h4 class="widgettitle">',
-    	'after_title' => '</h4></div>',
-    ));  
-    
-    
-
-   register_sidebar(array(
-    	'id' => 'header-bottom',
-    	'name' => 'Header Bottom Widget Area',
-    	'description' => 'Use this widget to show content after the header/menu section and before the main content and sidebar section',
-    	'before_widget' => '<div id="%1$s" class="col-sm %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<div class="before_title"><h3 class="widgettitle">',
-    	'after_title' => '</h3></div>',
-    ));  
-    
-    
-
-    
-    
-register_sidebar(array(
-    	'id' => 'hwcwd',
-    	'name' => 'Home Page Before Content',
-    	'description' => 'It will show content before home page content',
-    	'before_widget' => '<div id="%1$s" class="col list-group-item %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<div class="before_title"><h3 class="widgettitle">',
-    	'after_title' => '</h3></div>',
-    ));
-    
-    register_sidebar(array(
-    	'id' => 'hacwd',
-    	'name' => 'Home Page After Content',
-    	'description' => 'It will show content after home page content',
-    	'before_widget' => '<div id="%1$s" class="col list-group-item %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<div class="before_title"><h3 class="widgettitle">',
-    	'after_title' => '</h3></div>',
-    ));
-    
-    
-     register_sidebar(array(
-    	'id' => 'before-footer',
-    	'name' => 'Before Footer Widget Area',
-    	'description' => 'Use this widget to show content after the main content and sidebar section and before the footer section.',
-    	'before_widget' => '<div id="%1$s" class="col-sm list-group-item %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<div class="before_title"><h3 class="widgettitle">',
-    	'after_title' => '</h3></div>',
-    ));  
-    
-    
-
-    register_sidebar(array(
-    	'id' => 'footer-widget-section',
-    	'name' => 'Footer Widget Area',
-    	'description' => 'Full wapper will be devided depends on the number of widget used on this section.',
-    	'before_widget' => '<div id="%1$s" class="col-sm list-group-item %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<h3 class="widgettitle">',
-    	'after_title' => '</h3>',
-    ));  
-    
-    
-
-   register_sidebar(array(
-    	'id' => 'footer',
-    	'name' => 'Footer Coppyright Area',
-    	'description' => 'Full wapper will be devided depends on the number of widget used on this section.',
-    	'before_widget' => '<div id="%1$s" class="col-sm %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<h3 class="widgettitle">',
-    	'after_title' => '</h3>',
-    ));  
-    
-    
-
-  
-    
-}
+add_action('wp_footer', function(){
+   echo sprintf('<style>%s</style>', apply_filters('filter_dynamic_css', GetConfig('global.dynamic_css')));
+});
 
 
 
@@ -621,46 +629,8 @@ example: http://mercer.simtheme.com/wp-admin/admin-ajax.php?action=Minify
 add_action( 'wp_ajax_Minify', 'Minify' );
 add_action( 'wp_ajax_nopriv_Minify', 'Minify' );
 function Minify(){
-$styles = [];
-$bootstrap = _CSS.'bootstrap.css';
-$styles[] = _CSS.'font-awesome.min.css';
-$styles[] = _CSS.'style.css';
-$styles[] = _CSS.'header.css';    
-$styles[] = _CSS.'wp.css';
-$styles[] = _CSS.'form.css';
-$styles[] = _CSS.'loading.css';
-$styles[] = _CSS.'post.css';
-$styles[] = _CSS.'comments.css';
-$styles[] = _CSS.'wp-calender.css';
-$styles[] = _CSS.'sidebar.css';
-$styles[] = _CSS.'footer.css';
-/* Load all control css here */  
-$styles[] = _CSS.'search.css';  
-$styles = apply_filters('filter_minify_css', $styles);    
-$main = _CSS.'main.min.css';
-$mainjs = _JS.'main.min.js';
-$js = [];   
-$popperjs[] = _JS.'popper.min.js';     
-$js[] = _JS.'bootstrap.min.js'; 
-$js[] = _JS.'simthemeco.js'; 
-$js = apply_filters('filter_minify_js', $js);  
-//$js  = implode(',', $js);  
-$minifier = new Minify\CSS($bootstrap);
-$jsminifier = new Minify\JS($popperjs);    
-
-    foreach($styles  as $style){
-        $minifier->add($style);
-    }
-    
-   foreach($js  as $j){
-        $jsminifier->add($j);
-    }
-    
-    
-    
-echo $jsminifier->minify($mainjs);
-echo $minifier->minify($main);
-    //wp_redirect('/');
+    $class = new Minifing();
+    //print_r($class);
     exit();
 
 }

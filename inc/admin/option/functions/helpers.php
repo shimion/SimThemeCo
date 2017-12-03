@@ -17,6 +17,7 @@ if ( ! function_exists( 'cs_add_element' ) ) {
     $languages  = cs_language_defaults();
     $class      = 'CSFramework_Option_' . $field['type'];
     $wrap_class = ( isset( $field['wrap_class'] ) ) ? ' ' . $field['wrap_class'] : '';
+    $el_class   = ( isset( $field['title'] ) ) ? sanitize_title( $field['title'] ) : 'no-title';
     $hidden     = ( isset( $field['show_only_language'] ) && ( $field['show_only_language'] != $languages['current'] ) ) ? ' hidden' : '';
     $is_pseudo  = ( isset( $field['pseudo'] ) ) ? ' cs-pseudo-field' : '';
 
@@ -27,7 +28,7 @@ if ( ! function_exists( 'cs_add_element' ) ) {
       $depend .= ' data-'. $sub .'value="'. $field['dependency'][2] .'"';
     }
 
-    $output .= '<div class="cs-element cs-field-'. $field['type'] . $is_pseudo . $wrap_class . $hidden .'"'. $depend .'>';
+    $output .= '<div class="cs-element cs-element-'. $el_class .' cs-field-'. $field['type'] . $is_pseudo . $wrap_class . $hidden .'"'. $depend .'>';
 
     if( isset( $field['title'] ) ) {
       $field_desc = ( isset( $field['desc'] ) ) ? '<p class="cs-text-desc">'. $field['desc'] .'</p>' : '';
@@ -45,57 +46,7 @@ if ( ! function_exists( 'cs_add_element' ) ) {
       $element->output();
       $output .= ob_get_clean();
     } else {
-      $output .= '<p>'. __( 'This field class is not available!', 'cs-framework' ) .'</p>';
-    }
-
-    $output .= ( isset( $field['title'] ) ) ? '</div>' : '';
-    $output .= '<div class="clear"></div>';
-    $output .= '</div>';
-
-    return $output;
-
-  }
-}
-
-if ( ! function_exists( 'cs_add_element_multi' ) ) {
-  function cs_add_element_multi( $field = array(), $value = '', $unique = '' ) {
-
-    $output     = '';
-    $depend     = '';
-    $sub        = ( isset( $field['sub'] ) ) ? 'sub-': '';
-    $unique     = ( isset( $unique ) ) ? $unique : '';
-    $languages  = cs_language_defaults();
-    $class      = 'CSFramework_Option_' . $field['type'];
-    $wrap_class = ( isset( $field['wrap_class'] ) ) ? ' ' . $field['wrap_class'] : '';
-    $hidden     = ( isset( $field['show_only_language'] ) && ( $field['show_only_language'] != $languages['current'] ) ) ? ' hidden' : '';
-    $is_pseudo  = ( isset( $field['pseudo'] ) ) ? ' cs-pseudo-field' : '';
-
-    if ( isset( $field['dependency'] ) ) {
-      $hidden  = ' hidden';
-      $depend .= ' data-'. $sub .'controller="'. $field['dependency'][0] .'"';
-      $depend .= ' data-'. $sub .'condition="'. $field['dependency'][1] .'"';
-      $depend .= ' data-'. $sub .'value="'. $field['dependency'][2] .'"';
-    }
-
-    $output .= '<div class="cs-element cs-field-'. $field['type'] . $is_pseudo . $wrap_class . $hidden .'"'. $depend .'>';
-
-    if( isset( $field['title'] ) ) {
-      $field_desc = ( isset( $field['desc'] ) ) ? '<p class="cs-text-desc">'. $field['desc'] .'</p>' : '';
-      $output .= '<div class="cs-title"><h4>' . $field['title'] . '</h4>'. $field_desc .'</div>';
-    }
-
-    $output .= ( isset( $field['title'] ) ) ? '<div class="cs-fieldset">' : '';
-
-    $value   = ( !isset( $value ) && isset( $field['default'] ) ) ? $field['default'] : $value;
-    $value   = ( isset( $field['value'] ) ) ? $field['value'] : $value;
-
-    if( class_exists( $class ) ) {
-      ob_start();
-      $element = new $class( $field, $value, $unique );
-      $element->output();
-      $output .= ob_get_clean();
-    } else {
-      $output .= '<p>'. __( 'This field class is not available!', 'cs-framework' ) .'</p>';
+      $output .= '<p>'. esc_html__( 'This field class is not available!', 'cs-framework' ) .'</p>';
     }
 
     $output .= ( isset( $field['title'] ) ) ? '</div>' : '';
@@ -117,7 +68,7 @@ if ( ! function_exists( 'cs_add_element_multi' ) ) {
  */
 if ( ! function_exists( 'cs_encode_string' ) ) {
   function cs_encode_string( $string ) {
-    return rtrim( strtr( call_user_func( 'base'. '64' .'_encode', addslashes( gzcompress( serialize( $string ), 9 ) ) ), '+/', '-_' ), '=' );
+    return serialize( $string );
   }
 }
 
@@ -131,7 +82,7 @@ if ( ! function_exists( 'cs_encode_string' ) ) {
  */
 if ( ! function_exists( 'cs_decode_string' ) ) {
   function cs_decode_string( $string ) {
-    return unserialize( gzuncompress( stripslashes( call_user_func( 'base'. '64' .'_decode', rtrim( strtr( $string, '-_', '+/' ), '=' ) ) ) ) );
+    return unserialize( $string );
   }
 }
 

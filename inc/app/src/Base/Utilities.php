@@ -1,7 +1,8 @@
 <?php 
 namespace ST\Base;
 use ST\Base\Core;
-use ST\Providers\StyleProvider;
+use \ST\Providers\StyleProvider;
+use \ST\Providers\ScssProvider;
 abstract class Utilities extends Core
 {
     protected $instance;
@@ -10,6 +11,8 @@ abstract class Utilities extends Core
     protected $path;
     protected $path_url;
     protected $file;
+    protected $css = [];
+    protected $sid;
     
     public function __construct($DATA){
         $this->register = $this->register();
@@ -17,7 +20,22 @@ abstract class Utilities extends Core
         $this->path_url = _VIEW. 'utilities/';
         $this->file = $this->path.$this->register;
         $this->data = $DATA;
-        //echo  $this->file;
+       // $this->sid = $this->data['sid'];
+        $this->sid = sprintf('#%s', $this->sid);
+        if(!empty($this->Css()) && is_array($this->Css())){
+          $styleprovider =  new StyleProvider($this->Css());
+          
+        }
+        
+        if(!empty($this->Scss())){
+          $styleprovider =  new ScssProvider($this->Scss());
+          
+        }
+        
+        
+         
+        
+        
          }
    
     public static function get_instance(){
@@ -60,5 +78,17 @@ abstract class Utilities extends Core
                     return $this->data;
             }
     
+    
+        public function Css(){
+            return [];
+        }
+
+        public function Scss(){
+            return '';
+        }
+
+        public function StyleSheet(){
+                add_filter('filter_minify_css', array($this, 'StyleSheet'), 10, 1);
+        }
     
 }

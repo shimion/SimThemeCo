@@ -12,7 +12,8 @@ class init{
         \ST\Widgets\SectionWidget::class,
         \ST\Widgets\PostTypeWidget::class,
         \ST\Widgets\FeaturedBoxWidget::class,
-        \ST\Widgets\MenuWidget::class  
+        \ST\Widgets\MenuWidget::class,
+        \ST\Widgets\SlidersWidget::class,
       );
 
     
