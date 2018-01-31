@@ -1,0 +1,46 @@
+/********************           Header Two            *******************/
+
+
+.header_two {background-color: #343a40!important;}
+.header_two .navbar {padding-left: 0; padding-right: 0;}
+.header_two .logo {font-family: initial;text-transform: uppercase;width: 100%; max-width: 120px;display: block !important;line-height: 20px  !important;font-size: 22px !important; color: #fff;}
+.header_two .logo spam {display: block;font-size: 20px;text-transform: capitalize;}
+.header_two .navbar>.container-fluid {display: block !important;padding-left: 0;padding-right: 0;}
+.header_two .navbar-header {float: left;}
+.header_two .collapsed {display: none;}
+.header_two .navbar-collapse.collapse {display: block !important;height: 50px !important;padding-bottom: 0;overflow: visible!important; width: auto;text-align: right;}
+
+.header_two .navbar-nav {display: inline-block !important;margin: 0;margin-top: 2px;}
+.header_two .navbar-nav>li {float: left;padding: 10px;margin-left: 10px;line-height: 16px;}
+.header_two .navbar-nav>li a {color: #fff;line-height: 16px;}
+
+.header_two .form-control {font-size: 14px !important;line-height: normal !important;}
+.header_two .navbar-form {width: auto;padding-top: 7px;padding-bottom: 0;margin-right: 0;margin-left: 0;border: 0;}
+.header_two .navbar-form button {line-height: 19px;vertical-align: top;cursor: pointer;}
+
+.header_two .navbar-left {display: inline-block; vertical-align: top;}
+.header_two .navbar-left .form-group {margin-bottom: 0px;display: inline-block;}
+
+
+
+
+
+@media (max-width: 768px) {
+    .header_two .navbar-toggler {display: block;border: 1px solid #fff;padding: 6px 12px;position: absolute;right: 15px;top: 16px;}
+    .header_two .navbar {padding-left: 15px; padding-right: 15px;}
+    
+    .header_two .fa-bars {color: #fff;}
+    
+    .header_two #main_menu.navbar-nav {display: none !important;}
+    .header_two .in #main_menu.navbar-nav {display: block !important; margin-bottom: 20px;}
+    
+    .header_two .navbar-collapse.collapse.in {position:fixed;width: 45% !important;top: 0;left: 0;background: #333;padding: 30px;height: 100vh !important;z-index: 999999;display: block;}
+    
+    .header_two .in .navbar-nav li {float: none;margin-bottom: 10px;padding: 0px;}
+    .header_two .in .navbar-nav li a {display: block;padding: 10px;background: #343a40;}
+}
+
+
+
+
+/********************      X     Header Two End     X      *******************/

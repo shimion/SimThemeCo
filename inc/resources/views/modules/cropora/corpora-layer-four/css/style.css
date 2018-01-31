@@ -1,0 +1,17 @@
+/*==========================services==========================*/
+
+.services{padding:90px 0px 70px 0px;}
+.service-box{position:relative; padding:20px; padding-left:50px; text-align:left;}
+.service-box i {position:absolute;left:0px; top:22px; display: block; color: #9f9f9f; font-size: 42px; line-height: 42px; -webkit-transition: all 0.3s; transition: all 0.3s;}
+
+
+
+.service-box.style_2{position:relative; padding:20px; padding-right:50px; text-align:right;}
+.style_2 i {position:absolute; right:0px !important; top:22px; display: block; color: #9f9f9f; font-size: 42px; line-height: 42px; -webkit-transition: all 0.3s; transition: all 0.3s;}
+
+
+
+.service-box:hover a, .service-box:hover > i { color: #06886A;}
+.services img{margin:0 auto;}
+
+/*==========================services==========================*/

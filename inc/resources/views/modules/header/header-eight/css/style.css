@@ -1,0 +1,52 @@
+/********************           Header Eight        *******************/
+
+
+#header_eight { background-color: #343a40 !important;}
+#header_eight .collapsed { display: none; }
+#header_eight .collapse { display:inline-block; flex-basis: auto; text-align: right; }
+
+#header_eight .navbar {padding: 10px 0px !important;display: block;}
+#header_eight .navbar-nav {display: block;padding-top: 50px;}
+#header_eight .navbar-nav li {display: inline-block;}
+#header_eight .navbar-nav li a {padding: 5px 15px;color: #fff;display: block;}
+
+#header_eight .icon-bar {display: block;width: 100%;position: absolute;top: 18px;padding-left: 15px;right: 15px; z-index: 111;}
+#header_eight .icon-bar .btn {color: #fff;background: #33383b;line-height: normal;padding: 7px 12px;cursor: pointer;}
+#header_eight .fa {color: #fff;}
+
+#header_eight .purchase a { border: 2px solid #005fa6; line-height: normal; padding: 8px 20px !important; }
+
+#header_eight .navbar>.container, #header_eight .navbar>.container-fluid {position: relative;}
+
+#header_eight .navbar-header {z-index: 9999999;}
+#header_eight .navbar-header a {padding: 10px;text-align: center;color: #fff;text-transform: uppercase;margin-top: 10px;margin-bottom: 10px;}
+
+
+@media (max-width: 768px) {
+    #header_eight .navbar-header {z-index: 555;}
+    
+    #header_eight .icon-bar {position: relative;top: auto;right: auto;text-align: center !important;padding-left: 0;}
+    #header_eight .navbar {padding: 10px 15px !important;}
+    
+    #header_eight .navbar-toggler {display: block;border: 1px solid #fff;padding: 6px 12px;position: absolute;right: 15px;top: 32px;}
+
+    #header_eight .navbar-collapse.collapse.in {position:fixed;width: 45% !important;top: 0;left: 0;background: #333;padding: 30px;height: 100vh !important;z-index: 999999;display: block;}
+    #header_eight .navbar-collapse.collapse.in #main_menu.navbar-nav {padding-top: 0px;}
+    #header_eight .in .navbar-nav li {float: none;margin-bottom: 10px;padding: 0px;}
+    #header_eight .in .navbar-nav li a {display: block;padding: 10px;background: #343a40;}
+    
+    #header_eight .navbar-header {display: block;width: 100%;position: relative;}
+    #header_eight .logo {margin: auto;float: left;position: relative;top: auto;max-width: 140px;padding: 10px;}
+    #header_eight .logo img {width: 100%;}
+}
+
+
+@media (max-width: 320px) {
+    #header_eight .icon-bar .btn {padding: 5px 10px;}
+    #header_eight .navbar-toggler {top: 24px;}
+    
+    #header_eight #signform .form-group {margin-bottom: 10px;}
+}
+
+
+/********************      X     Header Eight End    X      *******************/

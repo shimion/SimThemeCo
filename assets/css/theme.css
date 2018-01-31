@@ -1,0 +1,354 @@
+/*
+Theme Name: Marijuana
+Theme URI: https://wordpress.org/themes/twentyseventeen/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Version: 1.0
+*/
+
+
+/*  Style Sheet  */
+
+
+@font-face {
+  font-family: 'AdobeNaskh-Medium';
+  src: url('fonts/AdobeNaskh-Medium.eot?#iefix') format('embedded-opentype'),  url('fonts/AdobeNaskh-Medium.otf')  format('opentype'),
+	     url('fonts/AdobeNaskh-Medium.woff') format('woff'), url('fonts/AdobeNaskh-Medium.ttf')  format('truetype'), url('fonts/AdobeNaskh-Medium.svg#AdobeNaskh-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'MizoArial';
+  src: url('fonts/MizoArial.eot?#iefix') format('embedded-opentype'),  url('fonts/MizoArial.woff') format('woff'), url('fonts/MizoArial.ttf')  format('truetype'), url('fonts/MizoArial.svg#MizoArial') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Arial-BoldMT';
+  src: url('fonts/Arial-BoldMT.eot?#iefix') format('embedded-opentype'),  url('fonts/Arial-BoldMT.woff') format('woff'), url('fonts/Arial-BoldMT.ttf')  format('truetype'), url('fonts/Arial-BoldMT.svg#Arial-BoldMT') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Gotham-Bold';
+  src: url('fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),  url('fonts/Gotham-Bold.otf')  format('opentype'),
+	     url('fonts/Gotham-Bold.woff') format('woff'), url('fonts/Gotham-Bold.ttf')  format('truetype'), url('fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'GothamNarrow-Light';
+  src: url('fonts/GothamNarrow-Light.eot?#iefix') format('embedded-opentype'),  url('fonts/GothamNarrow-Light.otf')  format('opentype'),
+	     url('fonts/GothamNarrow-Light.woff') format('woff'), url('fonts/GothamNarrow-Light.ttf')  format('truetype'), url('fonts/GothamNarrow-Light.svg#GothamNarrow-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'GothamNarrow-Bold';
+  src: url('fonts/GothamNarrow-Bold.eot?#iefix') format('embedded-opentype'),  url('fonts/GothamNarrow-Bold.otf')  format('opentype'),
+	     url('fonts/GothamNarrow-Bold.woff') format('woff'), url('fonts/GothamNarrow-Bold.ttf')  format('truetype'), url('fonts/GothamNarrow-Bold.svg#GothamNarrow-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'GreenEggsandSpam';
+  src: url('fonts/GreenEggsandSpam.eot?#iefix') format('embedded-opentype'),  url('fonts/GreenEggsandSpam.woff') format('woff'), url('fonts/GreenEggsandSpam.ttf')  format('truetype'), url('fonts/GreenEggsandSpam.svg#GreenEggsandSpam') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+
+p {color: #616161;font-family: 'MizoArial';}
+ul li {color: #616161;font-family: 'MizoArial';}
+
+
+h1, h2, h3, h4 {font-family: 'AdobeNaskh-Medium' !important;}
+
+
+
+a:hover {text-decoration: none !important;color: #b3be3d !important;}
+.active a {color: #577903 !important;}
+
+
+.btn {border-radius: 0px !important;white-space: unset !important;cursor: pointer;}
+
+
+.fa {vertical-align: middle;}
+
+
+.container { width: 100% !important; max-width: 1160px !important;}
+
+
+
+
+
+
+
+
+
+
+/****    Header    ****/
+
+
+#header-top {background: #577903;padding: 10px 0px;text-align: right;}
+#header-top .icon-bar .btn {color: #fff;padding: 0 !important;line-height: 16px;}
+#header-top .phone-number {display: inline-block;}
+#header-top .btn-tell {color: #fff;font-family: 'Gotham-Bold';padding: 0;line-height: normal;margin-right: 15px;}
+#header-top .btn-tell span {vertical-align: bottom;line-height: normal;}
+#header-top .btn-tell img {margin-right: 5px;vertical-align: middle;line-height: normal;padding: 3px 2px;border: 1px solid #fff;border-radius: 50%;}
+#header-top .icon-bar {display: inline-block;}
+#header-top .icon-bar .btn .fa {font-size: 14px;padding: 0px;margin: 0px 5px;vertical-align: top;}
+.icon-bar .btn:hover {color: #333;background: tr}
+.btn-social-icon {color: #fff !important;padding: 0px 5px !important;border-radius: 3px !important;cursor: pointer;}
+
+.navbar-toggler {display: none;}
+.navbar-header {display: inline-block;}
+.logo {padding: 0 !important;}
+.collapse {display: block !important;width: auto;text-align: right;flex-basis: auto !important;}
+
+#header .navbar {padding: 15px 1rem;}
+#header .navbar-nav {display: block !important;}
+#header .navbar-nav li {display: inline-block;padding: 0px 20px;}
+#header .navbar-nav li:last-child {padding: 0;}
+#header .navbar-nav li a {}
+
+
+.donate-now a:hover {background: #000 !important;color: #fff !important;}
+
+
+/****    Header End    ****/
+
+
+
+
+
+
+
+
+/****    Banner    ****/
+
+
+#banner {background: url(images/LFC-bannerbg.jpg); background-repeat: no-repeat;background-position: center;background-size: cover;}
+#banner .panel {display: flex;align-items: center;height: 500px;}
+#banner .panel .textwidget {display: block;width: 100%;}
+#banner .panel .textwidget h1 {color: #fff;line-height: 44px;margin-bottom: 0px;text-transform: uppercase;}
+#banner .panel .textwidget .panel-heading1 {font-family: 'GothamNarrow-Light' !important;font-size: 84px !important;line-height: 75px;text-shadow: 0 0 9px #00000094;}
+#banner .panel .textwidget .panel-heading2 {font-family: 'Gotham-Bold' !important;font-size: 50px !important;margin-bottom: 15px;text-shadow: 0 0 9px #00000094;}
+#banner .panel .textwidget .panel-heading2 samp {font-family: 'GreenEggsandSpam' !important;}
+#banner .panel .textwidget .panel-heading3 {margin-bottom: 12px;font-family: 'GothamNarrow-Bold' !important;color: #577903;font-size: 48px !important;}
+#banner .panel .textwidget .banner_border {max-width: 190px;width: 100%;margin: 0 auto;height: 4px;border-top: 1px solid #fff;border-bottom: 1px solid #fff;}
+
+
+/****    Banner End    ****/
+
+
+
+
+
+/****    SCHEDULE    ****/
+
+
+.schedule {background-image: url(images/lfc-attorney-bg.jpg);background-repeat: no-repeat;background-position: center;padding: 35px 0px;background-color: #577903;background-size: auto 100%;}
+.schedule h3 {color: #fff;margin-bottom: 0px;font-family: 'AdobeNaskh-Medium';font-size: 56px !important;text-transform: uppercase;line-height: 40px;vertical-align: bottom;font-weight: normal;padding-top: 15px;}
+.schedule p {margin-bottom: 0px;color: #fff;font-size: 22px;line-height: normal;}
+.schedule p strong {font-family: 'Arial-BoldMT';}
+.schedule .btn {color: #ffffff;font-family: 'Gotham-Bold';background: #577903;padding: 15px 25px;text-transform: uppercase;line-height: normal;box-shadow: 0 0 30px #ffffff8c;border: 1px solid #ffffff7a;}
+
+
+/****    SCHEDULE End    ****/
+
+
+
+
+
+
+
+
+
+/****    About    ****/
+
+
+#about {padding: 55px 0px;background:url(images/cannabis-1062904.jpg) no-repeat;background-attachment: fixed;}
+#about h2 {font-size: 48px !important;color:#fff;}
+#about p {text-align: justify;color:#fff;}
+#about p b {color: #000;font-family: 'Arial-BoldMT';}
+#about p:first-child {margin-bottom: 28px;}
+#about p:last-child {margin-bottom: 0px;}
+#about img {border: 5px solid #dfdfdf;width: 100%;}
+
+
+/****    About End    ****/
+
+
+
+
+
+
+
+
+
+/****    Solution    ****/
+
+
+#solution {background-color: #f5f5f5;background-image: url(images/marijuana_leaf2.png);background-position: right bottom; background-repeat: no-repeat;background-size: auto 95%;padding: 40px 0px 50px;}
+#solution h2 {font-size: 48px !important;color: #577903;}
+#solution h2 samp {font-family: inherit;}
+#solution p {margin-bottom: 28px;font-size: 15.888px;}
+#solution p:last-child {margin-bottom: 0px;}
+
+
+/****    Solution End    ****/
+
+
+
+
+
+
+
+
+
+
+/****    Ebook    ****/
+
+
+#ebook {background-color: #272727;}
+#ebook .textwidget {width: 100%;max-width: 940px;margin: 0 auto;}
+#ebook .textwidget img {margin-right: 100px;}
+#ebook .panel-heading {color: #fff;font-size: 48px !important;padding-top: 30px;text-align: center;}
+#ebook .form-ebook {display: inline-block;width: 100%;max-width: 520px;text-align: center;}
+#ebook .form-ebook .form-control {background: transparent;border-radius: 8px !important;height: 50px;}
+#ebook .form-ebook .btn {font-family: 'Gotham-Bold';text-transform: uppercase;background: transparent;border: 1px solid #fff;padding: 13px 60px;line-height: normal;}
+
+
+/****    Ebook End    ****/
+
+
+
+
+
+
+/****    Client Logo    ****/
+
+
+#client_logo {padding: 35px 0px 40px;}
+#client_logo h2 {font-size: 50px !important;line-height: 40px;padding-top: 25px;color: #06125e;}
+#client_logo ul {list-style: none;margin-bottom: 0px;}
+#client_logo ul li {display: inline-block;margin: 0px 15px;}
+#client_logo ul li:last-child {margin-right: 0px;}
+
+
+/****    Client Logo End    ****/
+
+
+
+
+
+
+
+
+
+/****    Testimonial    ****/
+
+
+#lfc_testimonial {padding: 40px 0px;background-image: url(images/LFC-testi-bg.jpg);background-repeat: repeat;background-position: top left;background-size: auto;}
+#lfc_testimonial .textwidget {background: #669933;height: 100%;padding-left: 35px;position: relative;}
+#lfc_testimonial .pull-right img {margin-left: 20px;}
+#lfc_testimonial .textwidget:before {content: '';background-image: url(images/lfc-testimonial-after.png);background-repeat: no-repeat; position: absolute;bottom: -20px;left: 30%;width: 30px;height: 24px;}
+#lfc_testimonial .para {color: #fff;margin-bottom: 28px;font-size: 16.777px;}
+#lfc_testimonial .client_name {color: #fff;font-size: 25px !important;line-height: normal;font-family: 'MizoArial' !important;}
+#lfc_testimonial .lfc-testi-icon {margin-top: 15px;margin-bottom: 10px;}
+
+
+/****    Testimonial End    ****/
+
+
+
+
+
+/****    LFC BIO    ****/
+
+
+#lfc_bio {padding: 30px 0px 40px;}
+#lfc_bio h3 {color: #06125e;font-size: 28px !important;line-height: 30px;text-transform: uppercase;}
+#lfc_bio p {margin-bottom: 0;line-height: normal;color: #9f9f9f;}
+#lfc_bio p a {color: #9f9f9f;}
+
+
+/****    LFC BIO End    ****/
+
+
+
+
+
+/****    Footer    ****/
+
+
+footer {background: #272727;padding: 25px 0px 25px;}
+
+footer p {color: #fff;font-size: 14px;margin-bottom: 0;font-family: sans-serif;}
+.footer-icons {margin-bottom: 5px;}
+.footer-icons a {color: #fff;padding: 0px;line-height: 18px;margin-left: 7px;vertical-align: top;transition: unset;}
+.footer-icons a .fa {font-size: 14px;}
+
+
+.footer-links {list-style: none;padding-left: 0;text-align: center;margin-bottom: 10px;}
+.footer-links li {display: inline-block;border-right: 1px solid #fff;line-height: 18px;}
+.footer-links li a {padding: 0px 15px;display: block;line-height: 18px;color: #fff;font-size: 13px;vertical-align: top;}
+.footer-links li:last-child {border-right: 0px;}
+.footer-links li:last-child a {padding-right: 0px;}
+
+.footer-right p {font-size: 13px;}
+.footer-right p samp {font-size: 10px;vertical-align: top;}
+
+
+/****    Footer End    ****/
+
+
+
+
+
+
+
+
+
+
+/****    Responsive    ****/
+
+
+@media (max-width: 768px) {
+    
+    h2 {font-size: 32px !important;}
+    
+    .container {max-width: 100% !important;}
+    
+    .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {max-width: 100% !important;flex: 100% !important;}
+    
+}

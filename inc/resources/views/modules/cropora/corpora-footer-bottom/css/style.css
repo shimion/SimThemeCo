@@ -1,0 +1,17 @@
+<!--================= Footer Bottom ================ -->
+
+.footer-bottom-area {
+  background: #212121;
+  padding: 20px 0;
+}
+.copyright {
+  margin-top: 4px;
+}
+.copyright p {
+  color: #d5d5d5;
+  margin: 0;
+}
+.copyright p a{color:#EB3B60}
+.copyright p a:hover{text-decoration:underline}
+
+<!--================= Footer Bottom ================ -->

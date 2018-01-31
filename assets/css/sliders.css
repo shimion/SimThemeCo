@@ -1,0 +1,72 @@
+div#carouselDefaultCaptions .carousel-caption h3 {
+    font-size: 560%;
+}
+
+div#carouselDefaultCaptions .carousel-item{ 
+    height: 560px;
+    font-weight: bold;
+}
+div#carouselDefaultCaptions .carousel-item .st_image_wapper {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-attachment: fixed;
+    z-index: -1;
+}
+.caption-inner-wapper {
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    padding: 50px 0;
+    display: inline-table;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.carousel-fade .carousel-inner .carousel-item {
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .carousel-item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .carousel-control-next,
+.carousel-fade .carousel-inner .carousel-control-prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  transform: translate3d(0,0,0);
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+

@@ -1,0 +1,22 @@
+.woo-price-atc-wapper {
+    position: absolute;
+    display: block;
+    width: 100%;
+    text-align: right;
+    top: 5px;
+}
+
+p.product-price-tickr {
+    /* position: absolute; */
+    padding: 5px 10px;
+    background: #007bffbd;
+    display: inline-block;
+    color: #fff;
+}
+
+.woo-image-price-atc-wapper {
+    position: relative;
+}
+body.woocommerce h4{ font-size: 110%;}
+.woo-row-wapper > .woo-col{ margin-bottom: 50px;}
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{font-size: 70%;font-weight: normal;}

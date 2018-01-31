@@ -1,0 +1,13 @@
+/*===================about-wilson-top=========================*/
+
+.about-wilson-top img{margin:0 auto;}
+.about-wilson-top .fa{width:40px; height:40px; background:#01414e; text-align:center; color:#fff; font-size:20px; padding-top:10px; border-radius:5px; margin-bottom:30px;}
+/*===================about-wilson=========================*/
+.about-wilson{ border-bottom:#CCC 2px solid; text-align:center; max-width:1900px; margin:1px auto;}
+.about-wilson .container{ border-bottom:#CCC 2px solid; margin-bottom:1px;}
+.about-wilson .container .col-md-3{border-bottom:#CCC 2px solid; margin-bottom:1px; border-right:#CCC 2px solid; padding:30px;}
+.about-wilson .container .col-md-3:last-child{border-bottom:#CCC 2px solid; border-right:none;}
+.about-wilson .container .col-md-3:hover{color:#01414e;}
+
+.purchase{border-radius:5px;}
+.purchase a{background:#F6C905; padding:10px 15px; border-radius:4px;}

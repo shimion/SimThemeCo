@@ -1,0 +1,18 @@
+.main-sidebar form.form-inline.st-search-form {
+    position: relative;
+}
+.main-sidebar #searchsubmit{position: absolute;right: 3px;border-radius: 0 4px 4px 0; right: 0;}
+.main-sidebar .form-inline .form-control{    
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    right: 0px;
+    display: block;
+    margin-right: 0px !important;
+    width: 100%;
+}
+
+
+.header .form-inline .form-control{
+    border: 1px solid rgb(181, 32, 21);
+    background-color: transparent;
+}

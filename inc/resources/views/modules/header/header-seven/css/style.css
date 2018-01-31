@@ -1,0 +1,45 @@
+/********************           Header Six        *******************/
+
+
+#header_seven { background-color: #343a40 !important; margin-top: 25px;display: flex;}
+#header_seven .collapsed { display: none; }
+
+#header_seven .navbar {width: 100%;}
+#header_seven ul.align-left {display: block;float: left;max-width: 40%;width: 100%;}
+
+#header_seven .nav {text-align: center;}
+#header_seven .nav li {display: inline-block;}
+#header_seven .nav li a { color: #fff;line-height: normal;padding: 5px 12px; }
+
+#header_seven .navbar-header {max-width: 20%;width: 100%;display: block;float: left;position: relative;}
+#header_seven .logo {margin-right: 0px;background: #343a40;position: absolute;top: -44px;display: block;padding: 10px 8px;width: 100%;max-width: 200px;}
+#header_seven .logo h2 {text-align: center;text-transform: uppercase;color: #fff; margin-bottom: 0 !important;}
+
+
+#header_seven ul.align-right {display: block;float: right;max-width: 40%;width: 100%;}
+
+#header_seven .fa {color: #fff;}
+
+
+
+
+@media (max-width: 768px) {
+    
+    #header_seven {margin-top: 0px;}
+    
+    #header_seven .navbar-toggler {display: block;border: 1px solid #fff;padding: 6px 12px;position: absolute;right: 16px;top: 25px;}
+
+    #header_seven .navbar-collapse.collapse.in {position:fixed;width: 45% !important;top: 0;left: 0;background: #333;padding: 30px;height: 100vh !important;z-index: 999999;display: block;}
+    #header_seven .in .navbar-nav li {float: none;margin-bottom: 10px;padding: 0px;}
+    #header_seven .in .navbar-nav li a {display: block;padding: 10px;background: #343a40;}
+    
+    
+    #header_seven .navbar-header {display: block;padding-left: 0px;max-width: unset;}
+    #header_seven .logo {margin: auto;float: left;position: relative;top: auto; max-width: 140px;}
+    #header_seven .logo img {width: 100%;}
+    #header_seven #menu_left {display: none;}
+    #header_seven #menu_right {display: none;}
+}
+
+
+/********************      X     Header Six      X      *******************/

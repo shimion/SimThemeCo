@@ -1,0 +1,9 @@
+/*--======================= team ============================-*/
+.team{ padding-top: 100px; padding-bottom: 100px;}
+.team_i a i{text-align:center; width:40px; height:40px; background:#01414e; color:#fff; padding-top:10px; font-size:20px; margin:0px 5px;}
+.team_i h3{margin:0px; font-size:24px;}
+.team_i h4{margin:0px; font-size:18px; display:block; color:#C63; border-bottom:1px #999 solid;}
+.team_i p{margin:10px 0px;}
+.team_i .col-md-3:hover{color:#CE0C21 ;}
+.team_i .col-md-3:hover p{color:#CE0C21 ;}
+/*-======================= team ============================--*/

@@ -1,0 +1,29 @@
+/*====================theme-content==================*/
+
+.btn.btn-black { 
+    background-color: #1c2239; 
+    color:#FFF; 
+}
+
+.btn {
+    position: relative;
+    z-index: 1;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 0;
+    background-color: #06886A;
+    color: #fff;
+    font-family:Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.theme-content { padding:50px 0px 20px 0px;border-bottom: 1px solid #fff;background-color: #06886A;color:#FFF; }
+.theme-content h2 span { color:#000; padding:0px 10px; }

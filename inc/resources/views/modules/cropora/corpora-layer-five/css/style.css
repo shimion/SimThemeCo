@@ -1,0 +1,9 @@
+/*======================testimonial=======================*/
+
+.testimonial {padding:150px 0px; text-align:center;background:url(../images/testimonial.jpg) center center no-repeat; background-size:cover; color:#FFF;}
+
+.testimonial img {margin:20px auto;}
+
+.testimonial .carousel-control {background:none;}
+
+/*======================testimonial=======================*/
