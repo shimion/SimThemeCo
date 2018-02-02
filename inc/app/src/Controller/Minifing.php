@@ -31,6 +31,7 @@ class Minifing {
             //$this->styles['bootstrap'] = _CSS.'bootstrap.css';
             $this->styles['animation'] = _CSS.'animation.css';
             $this->styles['font-awesome'] = _CSS.'font-awesome.min.css';
+            $this->styles['slide'] = _CSS.'slide.css';
             $this->styles['style'] = _CSS.'style.css';
             $this->styles['header'] = _CSS.'header.css';    
             $this->styles['wp'] = _CSS.'wp.css';

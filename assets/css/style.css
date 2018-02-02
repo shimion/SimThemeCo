@@ -56,7 +56,7 @@ section.content {
     padding-top: 30px;
     background: #FFF;
 }
-
+body.page-template section.content{ padding-top: 0px;}
 .main.main-builder{display: block; width: 100%;}
 
 /*

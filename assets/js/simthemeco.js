@@ -192,42 +192,67 @@ var SimThemeCo = function(options){
    
   
    this.Color       = function (){
-        let self = this;
+        //let self = this;
        
-       self.Colorize.each(function () {
-			var $this = $(this),
+       this.Colorize.each(function () {
+			var __this = $(this),
 
-                            $background = $this.data('background');
+                            $background = __this.data('background');
                             if($background){
-                             $this.css('background-color', $background);
-                            }
-                            $color = $this.data('color');
-                            if($color){
-                             $this.css('color', $color);
+                             __this.css('background-color', $background);
                             }
 
-                $this.mouseover(
+                            $background = __this.data('background-image');
+                            if($background){
+                             __this.css('background-image', $background);
+                            }
+           
+           
+                            $border = __this.data('border');
+                            if($border){
+                             __this.css('border-color', $border);
+                            }
+
+           
+           
+           
+
+                __this.mouseover(
                         function(){
-                        $background = $this.data('background-hover');
+                        $background = __this.data('background-hover');
                             if($background){
-                             $this.css('background-color', $background);
+                             __this.css('background-color', $background);
                             }
-                            $color = $this.data('color-hover');
+                            $color = __this.data('color-hover');
                             if($color){
-                             $this.css('color', $color);
+                             __this.css('color', $color);
                             }
+                            
+                             $border = __this.data('border-hover');
+                            if($border){
+                             __this.css('border-color', $border);
+                            }
+                            
+                            
+                            
                     });
 
-              $this.mouseout(
+              __this.mouseout(
                         function(){
-                        $background = $this.data('background');
+                        $background = __this.data('background');
                             if($background){
-                             $this.css('background-color', $background);
+                             __this.css('background-color', $background);
                             }
-                            $color = $this.data('color');
+                            $color = __this.data('color');
                             if($color){
-                             $this.css('color', $color);
+                             __this.css('color', $color);
                             }
+                            
+                             $border = __this.data('border');
+                            if($border){
+                             __this.css('border-color', $border);
+                            }
+                            
                     }
 
 

@@ -41,10 +41,14 @@ use WP_Widget as DWP_Widget;
 
     function update( $new_instance, $old_instance ) {
             
-            $instance            = $old_instance;
-              $instance['title']   = $new_instance['title']?? '';
-            $instance['slider']   = maybe_serialize($new_instance['slider']);
-        
+    $instance                           = $old_instance;
+    $instance['title']                = $new_instance['title']?? '';
+    $instance['slider']                 = maybe_serialize($new_instance['slider']);
+    $instance['pagination_color']       = $new_instance['pagination_color'];
+    $instance['pagination_active_color']    = $new_instance['pagination_active_color'];        
+    $instance['slider_height']               = $new_instance['slider_height'];       
+    $instance['overlay']                     = $new_instance['overlay'];       
+    $instance['slider_height']               = $new_instance['slider_height'];
         
         
         
@@ -96,7 +100,11 @@ use WP_Widget as DWP_Widget;
           'accordion_title' => 'Add New Field',
             'type'            => 'repeat',
           'fields'          => array(
-
+            array(
+              'type'    => 'content',
+                'id'    => 'tts',
+              'content' => 'Title Settings',
+            ),  
             array(
              'id'          => 'title',
                  'name'          => 'title',
@@ -109,6 +117,25 @@ use WP_Widget as DWP_Widget;
             ),
 
             array(
+             'id'          => 'title_color',
+                 'name'          => 'title_color',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Title Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+              
+          array(
+              'type'    => 'content',
+              'id'    => 'ts',
+              'content' => 'Text Settings',
+            ),  
+              
+              
+
+            array(
              'name'          => 'text',
                'id'          => 'text',
               'type'        => 'textarea',
@@ -119,12 +146,28 @@ use WP_Widget as DWP_Widget;
             ),
               
               
+           array(
+             'id'          => 'text_color',
+             'name'          => 'text_color',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Text Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
               
+          array(
+              'type'    => 'content',
+              'id'    => 'bts',
+              'content' => 'Button Settings',
+            ),  
               
-                         array(
+             array(
              'id'          => 'link_text',
               'type'        => 'text',
-              'title'       => 'Link Text',
+              'title'       => 'Button Text',
                 'attribute'       => array(
                   'class' =>  'class-captchure'
                 ),
@@ -134,15 +177,95 @@ use WP_Widget as DWP_Widget;
              'id'          => 'link',
                // 'id'          => '[title]', 
               'type'        => 'text',
-              'title'       => 'Link Url',
+              'title'       => 'Button Url',
                 'attribute'       => array(
                   'class' =>  'class-captchure'
                 ),
             ),
 
               
+           array(
+             'id'          => 'link_color',
+             'name'          => 'link_color',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Button Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
               
+             
+           array(
+             'id'          => 'link_color_hover',
+             'name'          => 'link_color_hover',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Button Color Hover',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
               
+             
+           array(
+             'id'          => 'link_color_text',
+             'name'          => 'link_color_text',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Button Text Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+             
+             array(
+             'id'          => 'link_color_text_hover',
+             'name'          => 'link_color_text_hover',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Button Text Hover Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+          array(
+             'id'          => 'link_border_color',
+             'name'          => 'link_border_color',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Button Border Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+             
+             array(
+             'id'          => 'link_border_color_hover',
+             'name'          => 'link_border_color_hover',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Button Border Hover Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+           array(
+              'type'    => 'content',
+                'id'    => 'bs',
+              'content' => 'Background Settings',
+            ),  
+             
 
 
            array(
@@ -161,8 +284,142 @@ use WP_Widget as DWP_Widget;
 
 
               
+          array(
+              'type'    => 'content',
+              'id'    => 'cbs',
+              'content' => 'Caption Box Settings',
+            ),  
               
               
+              array(
+             'id'          => 'caption_box_background',
+             'name'          => 'caption_box_background',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Box Background Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+
+            /*  array(
+             'id'          => 'caption_box_background_hver',
+             'name'          => 'caption_box_background_hver',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Box Background Hover Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+*/
+              
+
+              array(
+             'id'          => 'caption_box_width',
+             'name'          => 'caption_box_width',
+            // 'help'          => '', 
+              'type'        => 'number',
+                'default'     => '300', 
+              'title'       => 'Box Width',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+             array(
+             'id'          => 'caption_box_border',
+             'name'          => 'caption_box_border',
+            // 'help'          => '', 
+              'type'        => 'color_picker',
+             //   'default'     => '300', 
+              'title'       => 'Box Border Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+             
+           /*   
+             array(
+             'id'          => 'caption_box_border_hover',
+             'name'          => 'caption_box_border_hover',
+            // 'help'          => '', 
+              'type'        => 'color_picker',
+               // 'default'     => '300', 
+              'title'       => 'Box Border Hover Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              */
+             
+              
+             
+              
+              array(
+             'id'          => 'caption_box_position_x',
+             'name'          => 'caption_box_position_x',
+           //  'help'          => '', 
+              'type'        => 'select',
+              'title'       => 'Box Horizantal Position',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+                'options'        => array(
+                    ''          => 'Default',
+                    'left'          => 'Left',
+                    'center'          => 'Center',
+                    'right'     => 'Right'
+              ),  
+            ),
+
+              
+             
+             array(
+             'id'          => 'caption_box_position_y',
+             'name'          => 'caption_box_position_y',
+           //  'help'          => '', 
+              'type'        => 'select',
+              'title'       => 'Box Vertical Position',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+                'options'        => array(
+                     ''          => 'Default',
+                    'top'          => 'Top',
+                    'middle'          => 'Middle',
+                    'bottom'     => 'Bottom'
+              ),  
+            ),
+
+              
+             
+           array(
+              'type'    => 'content',
+              'id'    => 'ho',
+              'content' => 'Overlay Settings',
+            ),  
+              
+              
+        array(
+             'id'          => 'overlay',
+             'name'          => 'overlay',
+               // 'id'          => '[title]', 
+              'type'        => 'color_picker',
+              'title'       => 'Slider Overlay Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+              
+             
               
               
 
@@ -174,6 +431,78 @@ use WP_Widget as DWP_Widget;
 
       echo cs_add_element( $slider_field, $slider_value );
 
+        
+        
+        
+     $text_value = esc_attr( $instance['slider_addition'] ?? '' );
+      $text_field = array(
+        'id'    => $this->get_field_name('slider_addition'),
+        'name'  => $this->get_field_name('slider_addition'),
+        'type'  => 'heading',
+          'content' => '',
+        'title' => 'Slider Additional Settings',
+      );
+
+      echo cs_add_element( $text_field, $text_value );
+
+       
+       
+   $text_value = esc_attr( $instance['slider_height'] ?? '' );
+      $text_field = array(
+        'id'    => $this->get_field_name('slider_height'),
+        'name'  => $this->get_field_name('slider_height'),
+        'type'  => 'text',
+        'title' => 'Slider Height',
+      );
+
+      echo cs_add_element( $text_field, $text_value );
+
+       
+       
+  $text_value = esc_attr( $instance['overlay'] ?? '' );
+      $text_field = array(
+        'id'    => $this->get_field_name('overlay'),
+        'name'  => $this->get_field_name('overlay'),
+        'type'  => 'color_picker',
+        'note'  => '',  
+        'title' => 'Slider Overlay',
+      );
+
+      echo cs_add_element( $text_field, $text_value );
+
+       
+       
+  $text_value = esc_attr( $instance['pagination_color'] ?? '' );
+      $text_field = array(
+        'id'    => $this->get_field_name('pagination_color'),
+        'name'  => $this->get_field_name('pagination_color'),
+        'type'  => 'color_picker',
+        'note'  => '',  
+        'title' => 'Pagination & Arrow Color',
+      );
+
+      echo cs_add_element( $text_field, $text_value );
+
+       
+       
+  $text_value = esc_attr( $instance['pagination_active_color'] ?? '' );
+      $text_field = array(
+        'id'    => $this->get_field_name('pagination_active_color'),
+        'name'  => $this->get_field_name('pagination_active_color'),
+        'type'  => 'color_picker',
+        'note'  => '',  
+        'title' => 'Pagination & Arrow Active Color',
+      );
+
+      echo cs_add_element( $text_field, $text_value );
+
+       
+       
+        
+        
+        
+        
+        
     }
   }
 

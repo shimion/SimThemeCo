@@ -700,7 +700,26 @@ fieldset.background-setting-wapper .cs-element.cs-element-no-title.cs-field-colo
    /* .cs-element.cs-element-add-section.cs-field-group {
     display: block !important;
     }*/
-
+body.wp-customizer .cs-element.cs-element-no-title.cs-field-content {
+    background: #008ec2;
+    color: #fff;
+}
+    
+    
+body.wp-customizer h4.cs-group-title-sub {
+    margin-left:  -10px;
+    margin-right:  -10px;
+    background: #043d52;
+    padding: 12px 10px;
+    color: #efefef;
+    line-height: normal;
+}  
+    
+body.wp-customizer span.ui-accordion-header-icon.ui-icon.dashicons {
+    display: inline-block;
+    color: #fff;
+    text-indent: inherit;
+}
 
     </style>
     <?php
