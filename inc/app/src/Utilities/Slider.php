@@ -1,42 +1,42 @@
-<?php 
+<?php
 namespace ST\Utilities;
 use \ST\Base\Utilities;
 
 class Slider extends Utilities
 {
     public $data;
-     
+
     public function __construct($DATA){
         parent::__construct($DATA);
-        
+
         $this->data['Action'] = $this->Set();
-        
+
         }
-   
+
     public function register(){
                 return 'slider';
             }
-    
+
         public function Set(){
                 $Array = $this->data;
                 $Array['title'] = $this->data['heading'] ?? '';
                 $Array['pagination'] = $this->data['pagination'] ?? true;
                 $Array['pagination_color'] = $this->data['pagination_color'] ?? 'rgba(255,255,255,.5)';
                 $Array['pagination_active_color'] = $this->data['pagination_active_color'] ?? '#FFF';
-                $Array['height'] = $this->data['height'] ?? '500px';
+                $Array['height'] = $this->data['slider_height'] ?? '500px';
                 $Array['width'] = $this->data['width'] ?? '100%';
-                $Array['arrow'] = $this->data['arrow'] ?? true; 
-                $Array['overlay'] = $this->data['overlay'] ?? ''; 
+                $Array['arrow'] = $this->data['arrow'] ?? true;
+                $Array['overlay'] = $this->data['overlay'] ?? '';
                 $Array['paralax'] = $this->data['paralax'] ?? false;
                 $Array['sliders'] = $this->HTMLImplementation();
-                
+
         // print_r($Array['sliders']);
              return $Array;
             }
-    
-    
-    
-      
+
+
+
+
     public function HTMLImplementation(){
         $slider = [];
         $helper_slider = [];
@@ -51,19 +51,19 @@ class Slider extends Utilities
             $helper_slider['overlay'] = $data['overlay'] ?? '';
             $slider[] = $helper_slider;
         }
-        
+
         return $slider;
     }
-    
-    
+
+
     public static function ButtonMethod($arr = []){
      $class =   apply_filters('slider_button_class', 'button-slider');
-     return  sprintf('<a class="btn btn-primary js-colorize %s" href="%s" data-color="%s" data-color-hover="%s" data-background="%s" data-background-hover="%s" data-border="%s" data-border-hover="%s"  role="button">%s</a>', $class, $arr['link'] ?? '', $arr['link_color_text'] ?? '', $arr['link_color_text_hover'] ?? '', $arr['link_color'] ?? '',  $arr['link_color_hover'] ?? '', $arr['link_border_color'] ?? '', $arr['link_border_color_hover'] ?? '', $arr['link_text'] ?? 'Read More');
-    } 
-    
-    
-    
-    
+     return  sprintf('<a class="btn btn-primary js-colorize %s" href="%s" data-color="%s" data-color-hover="%s" data-background="%s" data-background-hover="%s" data-border="%s" data-border-hover="%s"  role="button" style="color:%s">%s</a>', $class, $arr['link'] ?? '', $arr['link_color_text'] ?? '', $arr['link_color_text_hover'] ?? '', $arr['link_color'] ?? '',  $arr['link_color_hover'] ?? '', $arr['link_border_color'] ?? '', $arr['link_border_color_hover'] ?? '', $arr['link_color_text'] ?? '', $arr['link_text'] ?? 'Read More');
+    }
+
+
+
+
     public static function SetPosition($attr){
         $data = '';
         if(!empty($attr['caption_box_position_x'])){
@@ -73,7 +73,7 @@ class Slider extends Utilities
             $data .= 'margin-right:0;';
         if($attr['caption_box_position_x'] =='center')
             $data .= 'margin-right:auto; margin-right: auto;';
-            
+
         }
         if(!empty($attr['caption_box_position_y'])){
        if($attr['caption_box_position_y'] =='top')
@@ -84,10 +84,10 @@ class Slider extends Utilities
             $data .= 'margin-top:auto;margin-bottom:auto;';
         }
         return $data;
-        
-        
+
+
     }
-    
-    
-    
+
+
+
 }

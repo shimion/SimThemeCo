@@ -1,4 +1,5 @@
 <?php 
+// Get Object of Specific Post Type
 namespace ST\Base;
 use    ST\Base\Core;
 abstract class ObjectQuery{

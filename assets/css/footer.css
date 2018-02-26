@@ -1,6 +1,10 @@
 /*
 FOOTER STYLE
 */
+
+footer#footer{ margin-top: 0; margin-bottom: 0;}
+.footer-widget-section, footer#footer{ position: relative;}
+
 .footer-widget-section, footer{ padding-top: 30px; padding-bottom: 30px;}
 .st-footer {
     padding: 4rem 0;
@@ -9,6 +13,10 @@ FOOTER STYLE
     text-align: center;
    
 }
+
+.footer-widget-section .list-group-item{ border: none; background-color: transparent;}
+
+
 .footer-widget-section ul{
     padding-left: 0;
    

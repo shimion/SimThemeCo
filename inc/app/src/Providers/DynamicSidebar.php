@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace ST\Providers;
 use \ST\Base\Provider;
 class DynamicSidebar extends Provider{
@@ -11,31 +11,31 @@ class DynamicSidebar extends Provider{
     private $option = [];
     private $entry = [];
     public $fields = [];
-    
+
     public function __construct() {
        global $post;
-         $this->fields = array('before_widget' => '<div id="widget-area" class="widget-area" role="complementary">','before_title' => '<h2 class="widget-title">','after_widget' => '</div>', 'after_widget' => '</h2>' );
+         $this->fields = array('before_widget' => '<div id="widget-area" class="widget-area" role="complementary">','before_title' => '<h2 class="widget-title">','after_widget' => '</div>', 'after_title' => '</h2>' );
         $this->option = GetConfig('global.dynamic_widgets') ?? false;
-        
+
        // add_action( 'widgets_init', array(self, 'RegisterSidebar') );
         add_action( 'save_post', array($this, 'RegisterPagesForDynamicContent') );
         $this->init();
        // print_r($this->Option());
-       
+
 	}
-	
-    
-    
+
+
+
     public function Option(){
         return $this->option;
     }
-    
-    
+
+
     	/**
 	 * Register Dynamic sidebar depends on page posts settings.
 	 */
-	public function init(){ 
-       
+	public function init(){
+
         if(!empty($this->option) && is_array($this->option)){
            // print_r($this->option);
 			foreach($this->option as $value){
@@ -45,21 +45,21 @@ class DynamicSidebar extends Provider{
                 $this->fields['name'] = $value['name'];
                 $this->fields['description'] = $value['description'];
                 register_sidebar(  $this->fields );
-            }	
-            
-        
+            }
+
+
         }
-			
+
 	}
-    
-    
-    
-     
+
+
+
+
    public function register(){
             return 'dynamic-sidebar';
     }
-    
-    
+
+
     public function RegisterPagesForDynamicContent($post_id){
         if(empty($post_id)) return error_log($post_id);;
        // error_log($post_id);
@@ -74,18 +74,18 @@ class DynamicSidebar extends Provider{
         $this->permission = !empty($meta['customizer']) ? $meta['customizer'] : false;
         //add_post_meta($post_id, 'post-meta-option', $meta['customizer'], false);
         if($this->permission){
-            if ( ! add_post_meta( $post_id, '_st-page-builder', get_the_title($post_id), true ) ) { 
+            if ( ! add_post_meta( $post_id, '_st-page-builder', get_the_title($post_id), true ) ) {
                update_post_meta( $post_id, '_st-page-builder', get_the_title($post_id) );
             }
         }else{
              delete_post_meta( $post_id, '_st-page-builder');
-            
+
         }
-        
-        
+
+
     }
-    
-    
+
+
     private function NewOption($post_id){
         $array = [];
        // $array[$post_id] = $post_id;
@@ -93,24 +93,24 @@ class DynamicSidebar extends Provider{
         print_r($this->Option());
         if(array_key_exists($post_id, $this->Option())) return false;
         if(empty($this->option) or $this->option == false) return $array;
-        return array_merge($this->option, $array);  
-        
-        
+        return array_merge($this->option, $array);
+
+
     }
-    
+
 
     private function Entry($post_id){
-        
+
         if(! empty($post_id) && $post_id != 0 ){
             if($this->permission == true)
                 $this->entry[$post_id] = $this->postTitle;
         }
-         
-        
-        
+
+
+
     }
-    
 
 
-	
+
+
 }

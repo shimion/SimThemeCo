@@ -135,8 +135,8 @@ a:hover {text-decoration: none;color: #b3be3d;}
 .collapse {display: block;width: auto;text-align: right;flex-basis: auto;}
 
 #header .navbar {padding: 15px 1rem;}
-#header .navbar-nav {display: block;}
-#header .navbar-nav li {display: inline-block;padding: 0px 20px;}
+#header .navbar-nav {}
+#header .navbar-nav li {}
 #header .navbar-nav li:last-child {padding: 0;}
 #header .navbar-nav li a {}
 

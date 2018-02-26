@@ -1,9 +1,9 @@
-<?php 
+<?php
 namespace ST\Widgets;
 use ST\Widgets\Load;
 /**
  * D: This CLass is created for showing latest event
- * Class: LatestEventWidget 
+ * Class: LatestEventWidget
  *
  */
 
@@ -26,13 +26,11 @@ use ST\Widgets\Load;
 
       echo $before_widget;
 
-      if ( ! empty( $instance['title'] ) ) {
-        echo $before_title . $instance['title'] . $after_title;
-      }
 
       echo '<div class="textwidget">';
        // print_r($instance);
-      echo apply_filters( 'Action_Featured_Box_Widget', $instance );
+     // echo apply_filters( 'Action_Featured_Box_Widget', $instance );
+        echo Helpers::GetFeaturedBox($instance);
       echo '</div>';
 
       echo $after_widget;
@@ -40,129 +38,191 @@ use ST\Widgets\Load;
     }
 
     function update( $new_instance, $old_instance ) {
-
-      $instance            = $old_instance;
-      $instance['title']   = $new_instance['title'];
-      $instance['image']   = $new_instance['image'];
-      $instance['text']   = $new_instance['text'];  
-      $instance['button_text']    = $new_instance['button_text'];
-      $instance['link']    = $new_instance['link'];
-      $instance['social_share']    = $new_instance['social_share'];
-       $instance['text_alignment']    = $new_instance['text_alignment'];  
-
+        $instance = array();
+        $instance = Load::preupdate($new_instance, $old_instance);
+        $instance['text']        =   $new_instance['text'];
+        $instance['link']         =   $new_instance['link'];
+        $instance['title']   = $new_instance['title'];
+        $instance['image']   = $new_instance['image'];
+        $instance['text']   = $new_instance['text'];
+        $instance['button_text']    = $new_instance['button_text'];
+        $instance['link']    = $new_instance['link'];
+        $instance['social_share']    = $new_instance['social_share'];
+        $instance['text_alignment']    = $new_instance['text_alignment'];
+        $instance['featured_box']    = $new_instance['featured_box'];
       return $instance;
 
     }
 
-    function form( $instance ) {
+    function UpdateForm( $instance ) {
 
-      //
-      // set defaults
-      // -------------------------------------------------
-      $instance   = wp_parse_args( $instance, array(
-        'title'   => 'Latest Events',
-        'image'    => '',
-        'text'    => '',
-        'button_text'    => 'Find Out More',
-        'link'    => '',
-        'social_share'    => false,
-          'text_alignment'  => 'center'
-      ));
+    $lay = array(array('title'=> '', 'text' => ''));
+    $instance   = wp_parse_args( $instance, array('title' => '', 'featured_box' => $lay ));
 
 
-      $text_value = esc_attr( $instance['title'] );
-      $text_field = array(
-        'id'    => $this->get_field_name('title'),
-        'name'  => $this->get_field_name('title'),
-        'type'  => 'text',
-        'title' => 'Title',
-      );
 
-      echo cs_add_element( $text_field, $text_value );
+     // $value =  $this->get_field_name('slider') ;
 
-      $ivalue = esc_attr( $instance['image'] );
-      $ifield = array(
-        'id'    => $this->get_field_name('image'),
-        'name'  => $this->get_field_name('image'),
-        'type'  => 'upload',
-        'title' => 'Upload Image',
-        'default' => '',
-        'info'  => '',
-      );
+        $html = '';
+      $slider_value = maybe_unserialize($instance['featured_box'])  ?? [];
+       // print_r($slider_value);
+     // $slider_field =
+         $featured_box = $this->get_field_name('featured_box');
 
-      echo cs_add_element( $ifield, $ivalue );
+         $slider_field =  array(
 
-    
-        $tvalue = esc_attr( $instance['text'] );
-      $tfield = array(
-        'id'    => $this->get_field_name('text'),
-        'name'  => $this->get_field_name('text'),
-        'type'  => 'textarea',
-        'title' => 'Text',
-        'default' => '',
-        'info'  => '',
-      );
+          'id'      => $featured_box,
+            'name'      => $featured_box,
+          'title'           => 'Group Field',
+          'button_title'    => 'Add New',
+          // 'default' => $slider_value,
+          'accordion_title' => 'Add New Field',
+            'type'            => 'repeat',
+          'fields'          => array(
+            array(
+              'type'    => 'content',
+                'id'    => 'tts',
+              'content' => 'Title Settings',
+            ),
+            array(
+             'id'          => 'title',
+                 'name'          => 'title',
+               // 'id'          => '[title]',
+              'type'        => 'text',
+              'title'       => 'Title',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
 
-      echo cs_add_element( $tfield, $tvalue );
-       
-      $bvalue = esc_attr( $instance['button_text'] );
-      $bfield = array(
-        'id'    => $this->get_field_name('button_text'),
-        'name'  => $this->get_field_name('button_text'),
-        'type'  => 'text',
-        'title' => 'Button Text',
-        'default' => '',
-        'info'  => '',
-      );
 
-      echo cs_add_element( $bfield, $bvalue );
+          array(
+              'type'    => 'content',
+              'id'    => 'ts',
+              'content' => 'Text Settings',
+            ),
 
-      $link_value = esc_attr( $instance['link'] );
-      $link_field = array(
-        'id'    => $this->get_field_name('link'),
-        'name'  => $this->get_field_name('link'),
-        'type'  => 'text',
-        'title' => 'Link',
-        'default' => '',
-        'info'  => '',
-      );
 
-      echo cs_add_element( $link_field, $link_value );
-        
-     $social_share_value = esc_attr( $instance['social_share'] );
-      $social_share_field = array(
-        'id'    => $this->get_field_name('social_share'),
-        'name'  => $this->get_field_name('social_share'),
-        'type'  => 'switcher',
-        'title' => 'Social Share Buttons',
-        'default' => '',
-        'info'  => 'Enable to view social share buttons',
-      );
 
-      echo cs_add_element( $social_share_field, $social_share_value );
-        
-     $social_share_value = esc_attr( $instance['text_alignment'] );
-      $social_share_field = array(
-        'id'    => $this->get_field_name('text_alignment'),
-        'name'  => $this->get_field_name('text_alignment'),
-        'type'  => 'select',
-        'title' => 'Social Share Buttons',
-        'default' => '',
-        'options' => array(
-            'left'  => 'left',
-            'center'  => 'center',
-            'right'  => 'Right',
-        ),
-        'info'  => 'Enable to view social share buttons',
-      );
+            array(
+             'name'          => 'text',
+               'id'          => 'text',
+              'type'        => 'textarea',
+              'title'       => 'Text',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
 
-      echo cs_add_element( $social_share_field, $social_share_value );
-        
-        
-        
-        
-        
-        
+
+
+          array(
+              'type'    => 'content',
+              'id'    => 'bts',
+              'content' => 'Button Settings',
+            ),
+
+             /*array(
+             'id'          => 'link_text',
+              'type'        => 'text',
+              'title'       => 'Button Text',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),*/
+
+            array(
+             'id'          => 'link',
+               // 'id'          => '[title]',
+              'type'        => 'text',
+              'title'       => 'Button Url',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+
+
+
+
+            /*  array(
+             'id'          => 'caption_box_background_hver',
+             'name'          => 'caption_box_background_hver',
+               // 'id'          => '[title]',
+              'type'        => 'color_picker',
+              'title'       => 'Box Background Hover Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+*/
+
+
+          array(
+              'type'    => 'content',
+              'id'    => 'bts',
+              'content' => 'Box Setting',
+            ),
+
+
+              array(
+             'id'          => 'box_size',
+             'name'          => 'box_size',
+            // 'help'          => '',
+              'type'        => 'select',
+                'default'     => '4',
+              'title'       => 'Box Size',
+                'attribute'       => array(
+                  'class' =>  'class-captchure',
+                   'minlength'   => '1',
+                     'maxlength'   => '10',
+                ),
+                   'options'  => array(
+                        '1'  => '1',
+                        '2'  => '2',
+                       '3'  => '3',
+                       '4'  => '4',
+                       '5'  => '5',
+                       '6'  => '6',
+                       '7'  => '7',
+                       '8'  => '8',
+                       '9'  => '9',
+                       '10'  => '10',
+                        '11'  => '11',
+                        '12'  => '12',
+                      ),
+            ),
+
+
+    /*         array(
+             'id'          => 'caption_box_border',
+             'name'          => 'caption_box_border',
+            // 'help'          => '',
+              'type'        => 'color_picker',
+             //   'default'     => '300',
+              'title'       => 'Box Border Color',
+                'attribute'       => array(
+                  'class' =>  'class-captchure'
+                ),
+            ),
+
+*/
+
+
+
+
+
+
+          ),
+        );
+
+
+
+      $html .= cs_add_element( $slider_field, $slider_value );
+
+
+        return $html;
+
 
     }
   }

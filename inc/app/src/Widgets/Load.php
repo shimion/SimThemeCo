@@ -1,9 +1,10 @@
-<?php 
+<?php
 namespace ST\Widgets;
+use \ST\Providers\ArrayProvider;
 use WP_Widget as DWP_Widget;
 /**
  * D: This CLass is created for showing latest event
- * Class: LatestEventWidget 
+ * Class: LatestEventWidget
  *
  */
 
@@ -22,13 +23,41 @@ use WP_Widget as DWP_Widget;
      * @param array $instance The settings for the particular instance of the widget.
      */
         public function widget( $args, $instance ) {
-            die('function WP_Widget::widget() must be over-ridden in a sub-class.');
+            echo $this->widget_wapper( $args, $instance );
         }
-      
-      
-      
-      
-      
+
+      /*
+        - Prepare widget before it call
+      */
+
+       public function prepare_widget( $args, $instance ) {
+
+        }
+
+      /*
+        - Add Dynamic wapper before it call
+      */
+
+
+
+      public function widget_wapper( $args, $instance ){
+          $html = '';
+          extract( $args );
+          $html .= $before_widget;
+          if($instance['enable_paralax_overlay'])
+          $html .= '<div class="paralax-sticky"><div class="sticky">';
+
+          $html .= $this->prepare_widget( $args, $instance );
+          if($instance['enable_paralax_overlay'])
+          $html .= '</div></div>';
+            $html .= $after_widget;
+
+          return $html;
+      }
+
+
+
+
      public function preupdate($new_instance, $old_instance ) {
 
         $instance            = $old_instance;
@@ -39,80 +68,90 @@ use WP_Widget as DWP_Widget;
         // $instance['section_background']    = $new_instance['section_background'] ?? '';
         $instance['section_title_color']    = $new_instance['section_title_color'] ?? '';
          $instance['section_color']    = $new_instance['section_color'] ?? '';
-        $instance['section_link_color']    = $new_instance['section_link_color'] ?? ''; 
-        $instance['section_background_image']    = $new_instance['section_background_image'] ?? 'none'; 
-        $instance['section_background_repeat']    = $new_instance['section_background_repeat'] ?? 'no-repeat'; 
-        $instance['section_background_position']    = $new_instance['section_background_position'] ?? 'none'; 
-        $instance['section_background_attachment']    = $new_instance['section_background_attachment'] ?? ''; 
-        $instance['section_background_size']    = $new_instance['section_background_size'] ?? ''; 
-        $instance['section_background_color']    = $new_instance['section_background_color'] ?? '#FFF';  
-        $instance['section_padding_top']    = $new_instance['section_padding_top'] ?? '50px'; 
-         $instance['section_margin_top']    = $new_instance['section_margin_top'] ?? 'inherit'; 
-        $instance['section_padding_bottom']    = $new_instance['section_padding_bottom'] ?? '50px'; 
-         $instance['section_margin_bottom']    = $new_instance['section_margin_bottom'] ?? 'inherit'; 
-        $instance['module_type']    = $new_instance['module_type'] ?? ''; 
-        $instance['border_size']    = $new_instance['border_size'] ?? '0'; 
-        $instance['border_position_top']    = $new_instance['border_position_top'] ?? ''; 
-        $instance['border_position_bottom']    = $new_instance['border_position_bottom'] ?? ''; 
-        $instance['border_position_left']    = $new_instance['border_position_left'] ?? ''; 
-        $instance['border_position_right']    = $new_instance['border_position_right'] ?? ''; 
-        $instance['border_color']    = $new_instance['border_color'] ?? 'none'; 
-        $instance['title_aligment']    = $new_instance['title_aligment'] ?? 'none'; 
-        $instance['text_aligment']    = $new_instance['text_aligment'] ?? 'none'; 
-        $instance['section_link_color']    = $new_instance['section_link_color'] ?? 'inherit'; 
+        $instance['section_link_color']    = $new_instance['section_link_color'] ?? '';
+        $instance['section_background_image']    = $new_instance['section_background_image'] ?? 'none';
+        $instance['section_background_repeat']    = $new_instance['section_background_repeat'] ?? 'no-repeat';
+        $instance['section_background_position']    = $new_instance['section_background_position'] ?? 'none';
+        $instance['section_background_attachment']    = $new_instance['section_background_attachment'] ?? '';
+        $instance['section_background_size']    = $new_instance['section_background_size'] ?? '';
+        $instance['section_background_color']    = $new_instance['section_background_color'] ?? '#FFF';
+        $instance['section_padding_top']    = $new_instance['section_padding_top'] ?? '50px';
+         $instance['section_margin_top']    = $new_instance['section_margin_top'] ?? '';
+        $instance['section_padding_bottom']    = $new_instance['section_padding_bottom'] ?? '50px';
+         $instance['section_margin_bottom']    = $new_instance['section_margin_bottom'] ?? '';
+        $instance['module_type']    = $new_instance['module_type'] ?? '';
+        $instance['border_size']    = $new_instance['border_size'] ?? '0';
+        $instance['border_position_top']    = $new_instance['border_position_top'] ?? '';
+        $instance['border_position_bottom']    = $new_instance['border_position_bottom'] ?? '';
+        $instance['border_position_left']    = $new_instance['border_position_left'] ?? '';
+        $instance['border_position_right']    = $new_instance['border_position_right'] ?? '';
+        $instance['border_color']    = $new_instance['border_color'] ?? 'none';
+        $instance['title_aligment']    = $new_instance['title_aligment'] ?? 'none';
+        $instance['text_aligment']    = $new_instance['text_aligment'] ?? 'none';
+        $instance['section_link_color']    = $new_instance['section_link_color'] ?? 'inherit';
         $instance['section_link_color_hover']    = $new_instance['section_link_color_hover'] ?? 'inherit';
         $instance['paralax_overlay_opacity'] = $new_instance['paralax_overlay_opacity'] ?? '';
         $instance['paralax_overlay_color'] = $new_instance['paralax_overlay_color'] ?? '';
         $instance['enable_paralax_overlay'] = $new_instance['enable_paralax_overlay'] ?? false;
+         $instance['enable_vertical_center'] = $new_instance['enable_vertical_center'] ?? false;
+         $instance['section_height'] = $new_instance['section_height'] ?? '0px';
+         $instance['section_text_top_space'] = $new_instance['section_text_top_space'] ?? '';
+         $instance['section_text_bottom_space'] = $new_instance['section_text_bottom_space'] ?? '';
         $instance['section_additional_class'] = $new_instance['section_additional_class'] ?? '';
         $instance['section_content_bottom_space'] = $new_instance['section_content_bottom_space'] ?? '';
         $instance['section_enable_animation'] = $new_instance['section_enable_animation'] ?? false;
+        $instance['button_text_color'] = $new_instance['button_text_color'] ?? '';
+            $instance['button_text_hover_color'] = $new_instance['button_text_hover_color'] ?? '';
+       $instance['button_bg_color'] = $new_instance['button_bg_color'] ?? '';
+            $instance['button_bg_hover_color'] = $new_instance['button_bg_hover_color'] ?? '';
+       $instance['button_border_color'] = $new_instance['button_border_color'] ?? '';
+            $instance['button_border_hover_color'] = $new_instance['button_border_hover_color'] ?? '';
         //$instance = $this->AllConfigFieldsUpdateValue($new_instance, $instance);
        // print_r($instance);
-       
+
         return $instance;
 
     }
-      
-      
-      
+
+
+
      protected function AllConfigFieldsUpdateValue($new_instance, $instance){
-          
-          
+
+
             foreach ($this->configs as $key => $values) {
-                
+
                   $instance[$values['id']] = $new_instance[$values['id']];
-                
+
             }
-          
+
          return $instance;
-          
+
         }
-      
-      
-            
+
+
+
       public function NewConfig(){
           return array();
       }
-      
-       
-      
+
+
+
     function form( $instance ) {
 
 
       $instance   = wp_parse_args( $instance, array(
           'heading'   => '',
-          'content'   => '', 
-          'section_wapper'   => '', 
+          'content'   => '',
+          'section_wapper'   => '',
           'section_background_image'   => '',
-          'section_background_repeat'   => '', 
-          'section_background_position'   => '', 
-          'section_background_attachment'   => '', 
+          'section_background_repeat'   => '',
+          'section_background_position'   => '',
+          'section_background_attachment'   => '',
           'section_background_size'   => '',
           'section_background_color'   => '',
-          'section_color'   => '', 
-          'section_title_color'   => '', 
-          'section_link_color'   => '', 
+          'section_color'   => '',
+          'section_title_color'   => '',
+          'section_link_color'   => '',
           'module_type' => '',
           'border_size' => '',
           'border_position_top' => '',
@@ -134,56 +173,28 @@ use WP_Widget as DWP_Widget;
            'section_content_bottom_space' => '',
           'section_enable_animation' => false,
           'layout' => '',
+           'button_text_color'   => '',
+          'button_text_hover_color'   => '',
+          'button_bg_color'   => '',
+          'button_bg_hover_color'   => '',
+         'button_border_color'   => '',
+          'button_border_hover_color'   => '',
       ));
-        
+
        // $this->Default('layout');
 
-        
- 
-   
 
-        
-   echo '<div class="cs-title General_field_field_editor_content custom-style"><h4 style="margin-top: 0px; margin-bottom: 0px;">Widget Fields</h4></div>';   
-        
-        
-        echo '<div class="dynamic-config-main-wapper">';
-        
-        echo '<div class="dynamic-config-wapper">';
-        
-      $value = esc_attr( $instance['heading'] );
-      $field = array(
-        'id'    => $this->get_field_name('heading'),
-        'name'  => $this->get_field_name('heading'),
-        'type'  => 'text',
-        'title' => 'Title',
-        'attributes'      => array(
-          'class'     => 'default_data_field',
-        ),
-      );
 
-      echo cs_add_element( $field, $value );
-        
-        
-      $value = esc_attr( $instance['content'] ?? '');
-      $field = array(
-        'id'    => $this->get_field_name('content'),
-        'name'  => $this->get_field_name('content'),
-        'type'  => 'textarea',
-        'title' => 'Description',
-       
-      );
+            echo  $this->WidgetFields($instance);
 
-        echo cs_add_element( $field, $value );
-        echo  $this->UpdateForm($instance);
-        
-        echo '</div>';
-        echo '</div>';
-        
-        
-        
+
+
+
+
+
              $settings = '<div class="cs-title settings_title custom-style"><h4>Section Settings</h4></div>';
             $settings .= '<div class="st_settings_wapper" style="display: none;">';
-       
+
             $value = esc_attr( $instance['section_wapper'] ?? '' );
             $field = array(
                 'id'    => $this->get_field_name('section_wapper'),
@@ -197,12 +208,12 @@ use WP_Widget as DWP_Widget;
             );
 
             $settings .= cs_add_element( $field, $value );
-        
-        
+
+
     $settings .= '<div class="st-clospore-panel" >';
     $settings .= '<div class="cs-title closepore_title_widget custom-style"><h4>Background Settings</h4></div>';
-        
-        
+
+
     $settings .= '<fieldset class="background-setting-wapper clospore_content" >';
     $value = esc_attr( $instance['section_background_image'] ?? '' );
     $field = array(
@@ -214,14 +225,14 @@ use WP_Widget as DWP_Widget;
     );
 
     $settings .= cs_add_element( $field, $value );
-           
-        
-        
-        
-        
+
+
+
+
+
    // background attributes
-     
-     $value = esc_attr( $instance['section_background_repeat'] ?? '' );   
+
+     $value = esc_attr( $instance['section_background_repeat'] ?? '' );
      $settings .= cs_add_element( array(
          'pseudo'          => true,
         'type'            => 'select',
@@ -238,7 +249,7 @@ use WP_Widget as DWP_Widget;
           'data-atts'     => 'repeat',
         ),
         ),  $value);
-      $value = esc_attr( $instance['section_background_position'] ?? '' );    
+      $value = esc_attr( $instance['section_background_position'] ?? '' );
      $settings .= cs_add_element( array(
         'pseudo'          => true,
         'type'            => 'select',
@@ -260,7 +271,7 @@ use WP_Widget as DWP_Widget;
         ),
 
     ), $value );
-    $value = esc_attr( $instance['section_background_attachment'] ?? '' );      
+    $value = esc_attr( $instance['section_background_attachment'] ?? '' );
      $settings .= cs_add_element( array(
         'pseudo'          => true,
         'type'            => 'select',
@@ -291,7 +302,7 @@ use WP_Widget as DWP_Widget;
           'data-atts'     => 'size',
         ),
     ), $value );
-     $value = esc_attr( $instance['section_background_color'] ?? '' );   
+     $value = esc_attr( $instance['section_background_color'] ?? '' );
      $settings .= cs_add_element( array(
         'pseudo'          => true,
          'name'            => $this->get_field_name('section_background_color'),
@@ -302,21 +313,21 @@ use WP_Widget as DWP_Widget;
         ),
          'rgba'            => '',
     ), $value );
-            
-        
-        
+
+
+
         $settings .= '</fieldset>';
         $settings .= '</div>';
-        
-         
-        
+
+
+
             $settings .= '<div class="st-clospore-panel" >';
              $settings .= '<div class="cs-title closepore_title_widget custom-style"><h4>Section Spacing</h4></div>';
-        
-        
+
+
             $settings .= '<fieldset class="background-setting-wapper clospore_content" >';
-        
-            $value = esc_attr( $instance['section_margin_top'] ?? '' );   
+
+            $value = esc_attr( $instance['section_margin_top'] ?? '' );
             $settings .= cs_add_element( array(
            // 'pseudo'          => true,
              'name'            => $this->get_field_name('section_margin_top'),
@@ -325,11 +336,11 @@ use WP_Widget as DWP_Widget;
             'attributes'      => array(
               'placeholder' => '30px',
             ),
-                
+
              'title'            => 'Margin Top',
         ), $value );
-        
-        $value = esc_attr( $instance['section_margin_bottom'] ?? '' );   
+
+        $value = esc_attr( $instance['section_margin_bottom'] ?? '' );
             $settings .= cs_add_element( array(
          //   'pseudo'          => true,
              'name'            => $this->get_field_name('section_margin_bottom'),
@@ -340,9 +351,9 @@ use WP_Widget as DWP_Widget;
             ),
              'title'            => 'Margin Bottom',
         ), $value );
-      
-        
-     $value = esc_attr( $instance['section_padding_top'] ?? '' );   
+
+
+     $value = esc_attr( $instance['section_padding_top'] ?? '' );
      $settings .= cs_add_element( array(
       //  'pseudo'          => true,
          'name'            => $this->get_field_name('section_padding_top'),
@@ -354,7 +365,7 @@ use WP_Widget as DWP_Widget;
          'title'            => 'Padding Top',
     ), $value );
 
-    $value = esc_attr( $instance['section_padding_bottom'] ?? '' );   
+    $value = esc_attr( $instance['section_padding_bottom'] ?? '' );
      $settings .= cs_add_element( array(
       //  'pseudo'          => true,
          'name'            => $this->get_field_name('section_padding_bottom'),
@@ -368,17 +379,17 @@ use WP_Widget as DWP_Widget;
 
         $settings .= '</fieldset>';
         $settings .= '</div>';
-      
-   
-    
-    //border start    
+
+
+
+    //border start
     $settings .= '<div class="st-clospore-panel" >';
     $settings .= '<div class="cs-title closepore_title_widget custom-style"><h4>Section Border</h4></div>';
-        
-        
+
+
     $settings .= '<fieldset class="background-setting-wapper clospore_content" >';
-       
-     $value = esc_attr( $instance['border_size'] ?? '' );   
+
+     $value = esc_attr( $instance['border_size'] ?? '' );
      $settings .= cs_add_element( array(
         //'pseudo'          => true,
          'name'            => $this->get_field_name('border_size'),
@@ -387,8 +398,8 @@ use WP_Widget as DWP_Widget;
          'title'            => 'Border size',
     ), $value );
 
-        
-     $value = esc_attr( $instance['border_position_top'] ?? '' );   
+
+     $value = esc_attr( $instance['border_position_top'] ?? '' );
      $settings .= cs_add_element( array(
         //'pseudo'          => true,
          'name'            => $this->get_field_name('border_position_top'),
@@ -397,8 +408,8 @@ use WP_Widget as DWP_Widget;
          'title'        => 'Enable Border top   '
     ), $value );
 
-        
-    $value = esc_attr( $instance['border_position_right'] ?? '' );   
+
+    $value = esc_attr( $instance['border_position_right'] ?? '' );
      $settings .= cs_add_element( array(
       //  'pseudo'          => true,
          'name'            => $this->get_field_name('border_position_right'),
@@ -406,8 +417,8 @@ use WP_Widget as DWP_Widget;
         'type'            => 'switcher',
          'title'        => 'Enable Border right   '
     ), $value );
-                 
-    $value = esc_attr( $instance['border_position_bottom'] ?? '' );   
+
+    $value = esc_attr( $instance['border_position_bottom'] ?? '' );
      $settings .= cs_add_element( array(
       //  'pseudo'          => true,
          'name'            => $this->get_field_name('border_position_bottom'),
@@ -416,8 +427,8 @@ use WP_Widget as DWP_Widget;
          'title'        => 'Enable Border bottom   '
     ), $value );
 
-        
-    $value = esc_attr( $instance['border_position_left'] ?? '' );   
+
+    $value = esc_attr( $instance['border_position_left'] ?? '' );
      $settings .= cs_add_element( array(
        // 'pseudo'          => true,
          'name'            => $this->get_field_name('border_position_left'),
@@ -426,42 +437,42 @@ use WP_Widget as DWP_Widget;
          'title'        => 'Enable Border left   '
     ), $value );
 
-   $value = esc_attr( $instance['border_color'] ?? '' );   
+   $value = esc_attr( $instance['border_color'] ?? '' );
      $settings .= cs_add_element( array(
       //  'pseudo'          => true,
          'name'            => $this->get_field_name('border_color'),
         'id'            => $this->get_field_name('border_color'),
         'type'            => 'color_picker',
            'title'            => 'Border Color',
-    ), $value );      
-        
-        
-           
-       
-           
+    ), $value );
+
+
+
+
+
          $settings .= '</fieldset>';
         $settings .= '</div>';
-      
-   
 
-        
- // $settings .= '</fieldset" >';      
-        
-        
-        
-       
-        
-        
-      //Section content styles        
-        
+
+
+
+ // $settings .= '</fieldset" >';
+
+
+
+
+
+
+      //Section content styles
+
              $settings .= '<div class="st-clospore-panel" >';
              $settings .= '<div class="cs-title closepore_title_widget custom-style"><h4>Section Content Style</h4></div>';
-        
-        
+
+
             $settings .= '<fieldset class="background-setting-wapper clospore_content" >';
-        
-       
-        
+
+
+
             $value = esc_attr( $instance['section_title_color'] ?? '' );
             $field = array(
                 'id'    => $this->get_field_name('section_title_color'),
@@ -470,11 +481,11 @@ use WP_Widget as DWP_Widget;
                 'title' => 'Section Title Color',
             );
 
-       
+
         $settings .= cs_add_element( $field, $value );
-        
-        
-       
+
+
+
             $value = esc_attr( $instance['section_color'] ?? '' );
             $field = array(
                 'id'    => $this->get_field_name('section_color'),
@@ -484,7 +495,7 @@ use WP_Widget as DWP_Widget;
             );
 
             $settings .= cs_add_element( $field, $value );
-        
+
             $value = esc_attr( $instance['section_link_color'] ?? 'inherant' );
             $field = array(
                 'id'    => $this->get_field_name('section_link_color'),
@@ -494,7 +505,7 @@ use WP_Widget as DWP_Widget;
             );
 
             $settings .= cs_add_element( $field, $value );
-           
+
             $value = esc_attr( $instance['section_link_color_hover'] ?? 'inherant' );
             $field = array(
                 'id'    => $this->get_field_name('section_link_color_hover'),
@@ -504,7 +515,7 @@ use WP_Widget as DWP_Widget;
             );
 
             $settings .= cs_add_element( $field, $value );
-        
+
             $value = esc_attr( $instance['title_aligment'] ?? '' );
             $field = array(
                 'id'    => $this->get_field_name('title_aligment'),
@@ -516,11 +527,11 @@ use WP_Widget as DWP_Widget;
                     'left' => 'Left',
                     'right' => 'Right',
                 )
-                
+
             );
 
             $settings .= cs_add_element( $field, $value );
-        
+
             $value = esc_attr( $instance['text_aligment'] ?? '' );
             $field = array(
                 'id'    => $this->get_field_name('text_aligment'),
@@ -535,8 +546,10 @@ use WP_Widget as DWP_Widget;
             );
 
         $settings .= cs_add_element( $field, $value );
-        
-         $value = esc_attr( $instance['section_content_bottom_space'] ?? '' );   
+
+
+
+         $value = esc_attr( $instance['section_content_bottom_space'] ?? '' );
              $settings .= cs_add_element( array(
               //  'pseudo'          => true,
                  'name'            => $this->get_field_name('section_content_bottom_space'),
@@ -546,20 +559,192 @@ use WP_Widget as DWP_Widget;
                     'placeholder' => '50px',
                 ),
                 'title'            => 'Content Bottom Space',
-                'help'            => 'This space will add under the title and content section. It helps when you have additional content after the main title and content.', 
-            ), $value );      
+                'help'            => 'This space will add under the title and content section. It helps when you have additional content after the main title and content.',
+            ), $value );
 
-        
-        
-        
-        
+
+
+
+       //$settings .= cs_add_element( $field, $value );
+
+         $value = esc_attr( $instance['section_text_top_space'] ?? '' );
+             $settings .= cs_add_element( array(
+              //  'pseudo'          => true,
+                 'name'            => $this->get_field_name('section_text_top_space'),
+                'id'            => $this->get_field_name('section_text_top_space'),
+                'type'            => 'text',
+                    'attributes'      => array(
+                    'placeholder' => '50px',
+                ),
+                'title'            => 'Content Text Top Space',
+                'help'            => 'This space will add space top of the default content text.',
+            ), $value );
+
+
+
+
+      // $settings .= cs_add_element( $field, $value );
+
+         $value = esc_attr( $instance['section_text_bottom_space'] ?? '' );
+             $settings .= cs_add_element( array(
+              //  'pseudo'          => true,
+                 'name'            => $this->get_field_name('section_text_bottom_space'),
+                'id'            => $this->get_field_name('section_text_bottom_space'),
+                'type'            => 'text',
+                    'attributes'      => array(
+                    'placeholder' => '50px',
+                ),
+                'title'            => 'Content Text Bottom Space',
+                'help'            => 'This space will add space top of the default content text.',
+            ), $value );
+
+       //  $settings .= cs_add_element( $field, $value );
+
+
+
         $settings .= '</fieldset>';
         $settings .= '</div>';
-        
-        
+
+        $settings .= '<div class="st-clospore-panel" >';
+        $settings .= '<div class="cs-title closepore_title_widget custom-style"><h4>Section Button Style</h4></div>';
+
+
+        $settings .= '<fieldset class="background-setting-wapper clospore_content" >';
+
+      // Call to action button url
+      // -------------------------------------------------
+      $date_value = esc_attr( $instance['button_text_color'] );
+      $date_field = array(
+        'id'    => $this->get_field_name('button_text_color'),
+        'name'  => $this->get_field_name('button_text_color'),
+        'type'  => 'color_picker',
+        'title' => 'Button Text Color',
+        'default' => '',
+        'info'  => '',
+      );
+
+        $settings .= cs_add_element( $date_field, $date_value );
+
+    $date_value = esc_attr( $instance['button_text_hover_color'] );
+      $date_field = array(
+        'id'    => $this->get_field_name('button_text_hover_color'),
+        'name'  => $this->get_field_name('button_text_hover_color'),
+        'type'  => 'color_picker',
+        'title' => 'Button Text Hover Color',
+        'default' => '',
+        'info'  => '',
+      );
+
+
+        $settings .= cs_add_element( $date_field, $date_value );
+
+
+
+        // Call to action button url
+      // -------------------------------------------------
+      $date_value = esc_attr( $instance['button_bg_color'] );
+      $date_field = array(
+        'id'    => $this->get_field_name('button_bg_color'),
+        'name'  => $this->get_field_name('button_bg_color'),
+        'type'  => 'color_picker',
+        'title' => 'Button Background Color',
+        'default' => '',
+        'info'  => '',
+      );
+
+        $settings .= cs_add_element( $date_field, $date_value );
+
+     // -------------------------------------------------
+      $date_value = esc_attr( $instance['button_bg_hover_color'] );
+      $date_field = array(
+        'id'    => $this->get_field_name('button_bg_hover_color'),
+        'name'  => $this->get_field_name('button_bg_hover_color'),
+        'type'  => 'color_picker',
+        'title' => 'Button Background Hover Color',
+        'default' => '',
+        'info'  => '',
+      );
+
+
+        $settings .= cs_add_element( $date_field, $date_value );
+       // return $html;
+
+
+       // Call to action button url
+      // -------------------------------------------------
+      $date_value = esc_attr( $instance['button_border_color'] );
+      $date_field = array(
+        'id'    => $this->get_field_name('button_border_color'),
+        'name'  => $this->get_field_name('button_border_color'),
+        'type'  => 'color_picker',
+        'title' => 'Button Border Color',
+        'default' => '',
+        'info'  => '',
+      );
+
+        $settings .= cs_add_element( $date_field, $date_value );
+
+     // -------------------------------------------------
+      $date_value = esc_attr( $instance['button_border_hover_color'] );
+      $date_field = array(
+        'id'    => $this->get_field_name('button_border_hover_color'),
+        'name'  => $this->get_field_name('button_border_hover_color'),
+        'type'  => 'color_picker',
+        'title' => 'Button Border Hover Color',
+        'default' => '',
+        'info'  => '',
+      );
+
+
+        $settings .= cs_add_element( $date_field, $date_value );
+       // return $html;
+
+
+         $settings .= '</fieldset>';
+         $settings .= '</div>';
+
+
+
+
+
         $settings .= '<div class="st-clospore-panel" >';
         $settings .= '<div class="cs-title closepore_title_widget custom-style"><h4>Section Additional Settings</h4></div>';
         $settings .= '<fieldset class="background-setting-wapper clospore_content" >';
+
+
+        $value = esc_attr( $instance['enable_vertical_center'] ?? '' );
+        $field = array(
+                'id'    => $this->get_field_name('enable_vertical_center'),
+                'name'    => $this->get_field_name('enable_vertical_center'),
+                'type'  => 'switcher',
+                'title' => 'Enable Content Vertically Centered',
+                'help' => 'Enable to center all the content vertically.',
+
+            );
+        $settings .= cs_add_element( $field, $value );
+
+
+
+
+
+        $value = esc_attr( $instance['section_height'] ?? '' );
+        $field = array(
+                'id'    => $this->get_field_name('section_height'),
+                'name'    => $this->get_field_name('section_height'),
+                'type'  => 'text',
+                'title' => 'Section Height',
+                'help' => 'Defined section height. It helps when need to set the content vertically center.'
+            );
+        $settings .= cs_add_element( $field, $value );
+
+
+
+
+
+
+
+
+
         $value = esc_attr( $instance['enable_paralax_overlay'] ?? '' );
         $field = array(
                 'id'    => $this->get_field_name('enable_paralax_overlay'),
@@ -567,7 +752,7 @@ use WP_Widget as DWP_Widget;
                 'type'  => 'switcher',
                 'title' => 'Enable Paralax Overlay',
                 'help' => 'Enable to show custom paralax overlay.',
-            
+
             );
         $settings .= cs_add_element( $field, $value );
 
@@ -589,7 +774,7 @@ use WP_Widget as DWP_Widget;
                      '.9' => '90',
                      '1' => '100',
                         ),
-                
+
             );
         $settings .= cs_add_element( $field, $value );
 
@@ -611,8 +796,8 @@ use WP_Widget as DWP_Widget;
                 'help' => 'This class will add to the section wapper at the very top. It will help to add additional CSS.'
             );
         $settings .= cs_add_element( $field, $value );
-        
-        
+
+
         $value = esc_attr( $instance['section_enable_animation'] ?? false );
         $field = array(
                 'id'    => $this->get_field_name('section_enable_animation'),
@@ -621,21 +806,21 @@ use WP_Widget as DWP_Widget;
                 'title' => 'Animation',
                 'help' => 'Enable to add animation to this specific section'
             );
-        $settings .= cs_add_element( $field, $value );       
-        
-        
-        
+        $settings .= cs_add_element( $field, $value );
+
+
+
         $settings .= '</fieldset>';
-        $settings .= '</div>';        
-        
-        
-        
-        
-        
-        // Add some space and then add a section 
+        $settings .= '</div>';
+
+
+
+
+
+        // Add some space and then add a section
         //formet example
         /*
-        
+
         $settings .= '<div class="st-clospore-panel" >';
         $settings .= '<div class="cs-title closepore_title_widget custom-style"><h4>Section Content Style</h4></div>';
         $settings .= '<fieldset class="background-setting-wapper clospore_content" >';
@@ -649,15 +834,15 @@ use WP_Widget as DWP_Widget;
         $settings .= cs_add_element( $field, $value );
         $settings .= '</fieldset>';
         $settings .= '</div>';
-        
-        
-        
+
+
+
         //end the section
         //Note: It is a clospore section where class .st-clospore-panel is the wapper
         // It has title wapper where you need to click to view the section.
         // every fields will be placed under "<fieldset class="background-setting-wapper clospore_content" >"
-        
-        
+
+
         // A individual field example is :
         $value = esc_attr( $instance['section_title_color'] ?? '' );
         $field = array(
@@ -668,31 +853,90 @@ use WP_Widget as DWP_Widget;
             );
         $settings .= cs_add_element( $field, $value );
         // end if a individual section
-        // here we have type they can be set to text, textarea, color, media, image, select, color_picker . 
+        // here we have type they can be set to text, textarea, color, media, image, select, color_picker .
         // More detailes here at: http://codestarframework.com/documentation/#options
-        
+
         */
-        
-        
-        
-        
-        
+
+
+
+
+
             // End content style
           $settings .= '</div>';
             echo $settings;
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
 
 
     }
-      
-     
+
+
       public function UpdateForm($instance){
-          
+
       }
-      
+
+
+
+
+      public function DefaultFields($instance){
+          $html = '';
+       $value = esc_attr( $instance['heading'] );
+      $field = array(
+        'id'    => $this->get_field_name('heading'),
+        'name'  => $this->get_field_name('heading'),
+        'type'  => 'text',
+        'title' => 'Title',
+        'attributes'      => array(
+          'class'     => 'default_data_field',
+        ),
+      );
+
+      $html .= cs_add_element( $field, $value );
+
+
+      $value = esc_attr( $instance['content'] ?? '');
+      $field = array(
+        'id'    => $this->get_field_name('content'),
+        'name'  => $this->get_field_name('content'),
+        'type'  => 'textarea',
+        'title' => 'Description',
+
+      );
+
+       $html .= cs_add_element( $field, $value );
+
+          return $html;
+      }
+
+
+
+      public function WidgetFields($instance){
+        $echo = '';
+        $echo .= '<div class="cs-title General_field_field_editor_content custom-style"><h4 style="margin-top: 0px; margin-bottom: 0px;">Widget Fields</h4></div>';
+
+
+        $echo .= '<div class="dynamic-config-main-wapper">';
+
+        $echo .= '<div class="dynamic-config-wapper">';
+
+        $echo .= $this->DefaultFields($instance);
+        $echo .=  $this->UpdateForm($instance);
+
+        $echo .= '</div>';
+        $echo .= '</div>';
+
+        return $echo;
+
+      }
+
+
+
+
+
+// end class
 }

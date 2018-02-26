@@ -167,6 +167,7 @@ class App
     
         public static function Phone(){
             $html = GetConfig('global.business_phone');
+            if(empty($html)) return false;
             return sprintf('<span class="business-phone">%s</span>', $html);
         }
     

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * Must PreDefined ***
 */
@@ -15,6 +15,7 @@ return[
     'coppy_right' => apply_filters('filter_copy_right_wapper', Helpers()->Option('coppy_right')) ?? '© Copyright 2017 by SimTheme.com',
     'dynamic_widgets' => Helpers()->GetAllDynamicWidget(),
     'dynamic_css'   => Helpers()->GenerateDynamicCss(),
+    'dynamic_js'   => Helpers()->GenerateDynamicJs(),
     //Layout
     'wapper'        => true,
      'disable_content_section' =>  false, //it is currently apply on homepage only
@@ -35,13 +36,13 @@ return[
     'sidebar' => Helpers()->EnableSidebar(),
     'excerpt_limit' => Helpers()->ExcerptLimit(), //post excerpt limit
     'title_limit' => Helpers()->TitleLimit(),  //post Title limit
-    
-    //Events/Posts 
-    'latest_events' => do_action('Action_Latest_Event_listing_config'), 
-    
-    
-    
-    
+
+    //Events/Posts
+    'latest_events' => do_action('Action_Latest_Event_listing_config'),
+
+
+
+
     // read more
     'readmore_text' => Helpers()->ReadMoreText(), //Read More text
     'readmore_class' => 'my-2 btn-primary',
@@ -57,5 +58,5 @@ return[
     'footer_social' => true,
     'print_style' => Helpers()->CustomStyle(),
     'st_register_scripts' => get_option('st-scripts-register'),
-    
+
 ];

@@ -6,6 +6,7 @@ class init{
 
       return array(
         \ST\Account\Access::class,
+        \ST\Account\User::class,
         
       );
 

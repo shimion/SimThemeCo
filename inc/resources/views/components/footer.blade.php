@@ -1,7 +1,12 @@
 @if(  is_active_sidebar('footer-widget-section') )
-  <section class="footer-widget-section mt-0 mb-0 pt-0 pb-0">
-                  @if(  ! dynamic_sidebar('footer-widget-section') )
-                @endif     
+  <section class="footer-widget-section mt-0 mb-0">
+            <div class="container">
+                <div class="row">
+                    @if(  ! dynamic_sidebar('footer-widget-section') )
+                    @endif 
+                </div>    
+            </div>
+                     
      </section>
 @endif 
 

@@ -15,6 +15,7 @@ define('_CSS',_ASSETS.'css/');
 define('_JS',_ASSETS.'js/');
 define('_INC',_D.'inc/');
 define('_APP',_INC.'app/');
+define('_BLADE', get_stylesheet_directory(). '/inc/resources/views');
 define('_RESOURCE',_INC.'resources/');
 define('_ADMIN',_INC.'admin/');
 define('_VIEW',_RESOURCE.'views/');
@@ -95,7 +96,7 @@ if (version_compare('4.7.0', get_bloginfo('version'), '>=')) {
  *
  * The mapped array determines the code library included in your theme.
  * Add or remove files to the array as needed. Supports child theme overrides.
- 
+
 array_map(function ($file) use ($st_error) {
     $file = "/inc/app/{$file}.php";
     if (!locate_template($file, true, true)) {
@@ -108,17 +109,17 @@ array_map(function ($file) use ($st_error) {
 add_action('wp_enqueue_scripts', 'EnqueryStyleAndScript');
 function EnqueryStyleAndScript(){
         wp_deregister_script('jquery');
-        wp_enqueue_script('jquery');  
+        wp_enqueue_script('jquery');
         wp_register_script('jquery', '/wp-includes/js/jquery/jquery.js', false, '3.2.1', true);
         wp_register_style( 'main.min', CSS . 'main.min.css', array(), VERSION, 'all' );
-        wp_enqueue_style( 'main.min' );     
-    
-        
-        wp_register_script( 'main.min', JS. 'main.min.js', 
+        wp_enqueue_style( 'main.min' );
+
+
+        wp_register_script( 'main.min', JS. 'main.min.js',
         array('jquery'), VERSION, true );
         wp_localize_script( 'main.min', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_script('main.min');
-  
+
 }
 
 

@@ -99,7 +99,7 @@ class Modules extends Core
         $class = $this->instence['section_additional_class'] ?? '';
         $enable = $this->instence['section_enable_animation'] ?? false;
         if($enable){
-            $class .= ' sta fadeIn';
+            $class .= ' wow fadeIn';
         }
         
         return $class;

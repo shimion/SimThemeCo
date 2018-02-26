@@ -19,7 +19,8 @@ use ST\Providers\PostTypeProvider;
 use ST\Providers\ButtonWidget;
 use ST\Ajax\Ajax;
 use ST\Helpers\Sidebar;
-$template_directory =  _INC . '/resources/views';
+//$template_directory =  _INC . '/resources/views';
+$template_directory =  _BLADE ;
 if (!is_dir($template_directory)) {
 mkdir($template_directory , 0755, true);
 }
@@ -43,20 +44,20 @@ $GLOBALS['blade_engine'] = new \Philo\Blade\Blade($views, $cache);
 
 function Config(){
         App::Config();
-            
+
 }
 
 /**
  * -f GetConfig
  * -D Retrive the configuration data from Config
  * @param string/array $name
- * @param return string/array 
+ * @param return string/array
  */
 
 function GetConfig($name){
     if(!empty($name))
         return App::Config()->Get($name);
-            
+
 }
 
 
@@ -65,13 +66,13 @@ function GetConfig($name){
  * -f GetMetada
  * -D Retrive the metadata of a page . ID set to global so we do not need to warry about it. It retrive all page metadat that is stored under _custom_page_options
  * @param string/array $meta name
- * @param return string/array 
+ * @param return string/array
  */
 
 function GetPageMeta($name, $single = false){
     if(!empty($name))
         return App::GetPageMeta($name, $single);
-            
+
 }
 
 
@@ -105,7 +106,7 @@ function SetDefault($main, $default){
         return $main;
         else
           return  $default;
-            
+
 }
 
 
@@ -191,17 +192,17 @@ function GetDynamicContent(){
         $array = [];
        // $array[$postID] = get_the_title($postID);
         $array[] = array(
-              'name'          => 'sidebar-widgets-st-sidebar-'.$postID,   
+              'name'          => 'sidebar-widgets-st-sidebar-'.$postID,
               'title'         => 'Content Editor',
               'settings'      => array(
 
                )
             );
         return $postID;
-        
-        /*$content = maybe_unserialize(get_option( 'st_dynamic_content' )) ?? false;   
+
+        /*$content = maybe_unserialize(get_option( 'st_dynamic_content' )) ?? false;
         //add_option( 'st_dynamic_content', maybe_serialize($customizer) );
-            
+
             if( ! is_array($content) OR $content != false){
 
             }*/
@@ -226,13 +227,13 @@ function Excerpt($text, $words, $readmore = '...'){
 
 /**
  * -f function
- * -D only apply this title filter  for the loop zone. 
- * -D add extra condition via filter on the title to add ancor on it. 
+ * -D only apply this title filter  for the loop zone.
+ * -D add extra condition via filter on the title to add ancor on it.
  * @return string from the_title
  */
 
 
-   
+
     add_filter('the_title', function($title){
          global $wp_query;
         if(is_singular() or ! $wp_query->in_the_loop) return $title;
@@ -240,10 +241,10 @@ function Excerpt($text, $words, $readmore = '...'){
         $title = Excerpt($title,  App::Config()->Get('global.title_limit'), '...');
         $title = sprintf('<a href="%s" >%s</a>', get_the_permalink(),  $title);
         if($title) return $title;
-               
+
         }, 20);
-    
-    
+
+
 
 
 
@@ -281,7 +282,7 @@ add_filter('get_the_archive_title', function($title){
     } elseif ( is_tax() ) {
         $title = single_term_title( '', false );
     }
-  
+
     return $title;
 }, 20);
 
@@ -293,9 +294,9 @@ add_filter('get_the_archive_title', function($title){
 
 
 
-function Woo(){  
+function Woo(){
  $Woo = new Woo();
-  return $Woo;  
+  return $Woo;
 }
 
 
@@ -308,7 +309,7 @@ function Woo(){
  */
 add_filter('action_addditional_fields_after_content', function($post){
     global $post, $wp_query;
-    if( !is_page() ){
+    if( !is_singular() ){
     return Helpers::Button(['link'=> get_permalink(get_the_ID()), 'text'=>App::Config()->Get('global.readmore_text'), 'class' =>App::Config()->Get('global.readmore_class')]);
     }
 }, 20);
@@ -337,7 +338,7 @@ add_filter('Action_Post_Type', function($instance){
     return Helpers::GetPosts($instance);
 }, 20);
 
-    
+
 
 /**
  * -f function
@@ -437,9 +438,9 @@ add_filter('Action_Latest_Requests_listing', function($instance){
  * @return string
  */
 add_filter('filter_copy_right_wapper', function($content){
-    
+
     return sprintf('<p>%s</p>', $content);
-    
+
 }, 20);
 
 /**
@@ -451,7 +452,7 @@ add_filter('filter_copy_right_wapper', function($content){
 add_filter('filter_header_extra_text', function($content){
    if(Helpers()->Option('enable_header_text'))
     return sprintf('<div class="header-custom-text pl-2 pr-2">%s</div>', $content);
-    
+
 }, 20);
 
 
@@ -465,7 +466,7 @@ add_filter('filter_header_extra_text', function($content){
 add_filter('action_nevigation_additional_elements', function($menu){
    // if(Helpers()->Option('enable_header_text'))
     return $menu . GetConfig('global.menu_text');
-    
+
 }, 20);
 
 
@@ -497,7 +498,7 @@ add_filter('action_nevigation_additional_elements', function($menu){
         'class' => sprintf('d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3 %s', GetConfig('global.button_class')),
         'link' => GetConfig('global.menu_button_link'),
         'text' => GetConfig('global.menu_button_text')
-    );   
+    );
     return $menu .'<div class="header-button-wapper">'. Helpers()->Button($data).'</div>';
     }else{
        return $menu;
@@ -513,14 +514,15 @@ add_filter('action_nevigation_additional_elements', function($menu){
  * @return string
  */
 function Blade($view, array $attributes = []){
- $attdata =  collect($attributes) ; 
+ $attdata =  collect($attributes) ;
  return $GLOBALS['blade_engine']->view()->make($view, $attdata);
 
 }
 
 function template($view){
+
     echo $GLOBALS['blade_engine']->view()->make($view, collect(App::me()));
-    
+
 }
 
 /**
@@ -529,9 +531,9 @@ function template($view){
  *
  * @return string
  */
-function get_rendered_blade_view($view, array $attributes = []){  
+function get_rendered_blade_view($view, array $attributes = []){
 return $GLOBALS['blade_engine']->view()->make($view, $attributes);
-    
+
 }
 
 
@@ -543,25 +545,25 @@ return $GLOBALS['blade_engine']->view()->make($view, $attributes);
 
 */
 add_action('after_setup_theme', function(){
-   add_theme_support( 'menus' ); 
-   add_theme_support( 'customize-selective-refresh-widgets' ); 
+   add_theme_support( 'menus' );
+   add_theme_support( 'customize-selective-refresh-widgets' );
        add_theme_support( 'custom-logo', array(
         'height'      => 50,
         'width'       => 150,
         'flex-height' => false,
         'flex-width'  => false,
-           
+
         'header-text' => array( 'site-title', 'site-description' ),
-    ) ); 
-    
-		register_nav_menus(                      
-			array( 
-				'main_nav' => 'The Main Menu',   
-				'footer_links' => 'Footer Menu' 
+    ) );
+
+		register_nav_menus(
+			array(
+				'main_nav' => 'The Main Menu',
+				'footer_links' => 'Footer Menu'
 			)
-		); 
-    
-    
+		);
+
+
     	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
@@ -575,11 +577,11 @@ add_action('after_setup_theme', function(){
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
-    
-    
-    
-    
-    
+
+
+
+
+
     /*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -591,9 +593,9 @@ add_action('after_setup_theme', function(){
 		'gallery',
 		'caption',
 	) );
-    
-    
-    
+
+
+
 });
 
 
@@ -616,7 +618,7 @@ add_action('after_setup_theme', function(){
         'singular' => 'Type',
         'plural' => 'Types',
     );
-   PostType($type, $tax); 
+   PostType($type, $tax);
 });
  * @return Object PostType
  */
@@ -625,7 +627,7 @@ add_action('after_setup_theme', function(){
         $type['taxonomies'] = $tax ?? '';
         if(!empty($type['taxonomies']))
         $type['taxonomies']['post_type'] = !empty($tax['post_type']) ? $tax['post_type'] : $type['name'];
-        new PostTypeProvider($type); 
+        new PostTypeProvider($type);
     }
 
 
@@ -648,10 +650,12 @@ add_action('wp_footer', function(){
 }, '9999');
 
 
-
+add_action('wp_footer', function(){
+   echo sprintf('<script>%s</script>', apply_filters('filter_dynamic_js', GetConfig('global.dynamic_js')));
+}, '9999');
 
 /*
-Add Minify Script 
+Add Minify Script
 Run Via ajax call
 example: http://mercer.simtheme.com/wp-admin/admin-ajax.php?action=Minify
 */

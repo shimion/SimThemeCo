@@ -1,20 +1,20 @@
-<div id="carouselDefaultCaptions" class="carousel slide" data-ride="carousel">
+<div id="carouselDefaultCaptions_{{ $sid }}" class="carousel slide" data-ride="carousel">
 
     @if($Settings['nevi'])
     <!-- Indicators -->
     <ol class="carousel-indicators">
      @if($Sliders)
      @foreach($Sliders as $key => $slide)
-      <li data-target="#carouselDefaultCaptions" data-slide-to="{{ $key }}" class="@if($key == 1) active @endif"></li>
+      <li data-target="#carouselDefaultCaptions_{{ $sid }}" data-slide-to="{{ $key }}" class="@if($key == 1) active @endif"></li>
       @endforeach
-      @endif  
+      @endif
     </ol>
     @endif
 
     <!-- Carousel items -->
     <div class="carousel-inner">
 
-     
+
      @if($Sliders)
      @foreach($Sliders as $key => $slide)
       <div class="carousel-item @if($key == 1) active @endif" >
@@ -22,7 +22,7 @@
         <div class="st_image_wapper" data-src="{{ $slide['image']['image'] }}" style="background-image: url({{ $slide['image']['image'] }}); @if($slide['image']['repeat']) background-repeat:{{ $slide['image']['repeat'] }}; @endif @if($slide['image']['size']) background-size:{{ $slide['image']['size'] }}; @endif @if($slide['image']['position']) background-position:{{ $slide['image']['position'] }}; @endif @if($slide['image']['attachment']) background-attachment:{{ $slide['image']['attachment'] }}; @endif"  ></div>
         @endif
          @if($Settings['caption'])
-        
+
         <div class="carousel-caption"  >
             <div class="caption-inner-wapper js-colorize" data-background="{{  $slide['caption']['caption_background']['normal'] }}">
              @if($slide['title'])
@@ -41,24 +41,24 @@
               @endif
 
             </div>
-            
+
         </div>
-        
-        
-        
+
+
+
         @endif
       </div>
-      
+
       @endforeach
-      @endif    
+      @endif
     </div>
 
     @if($Settings['pagination'])
-     <a class="carousel-control-prev" href="#carouselDefaultCaptions" role="button" data-slide="prev">
+     <a class="carousel-control-prev" href="#carouselDefaultCaptions_{{ $sid }}" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselDefaultCaptions" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#carouselDefaultCaptions_{{ $sid }}" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>

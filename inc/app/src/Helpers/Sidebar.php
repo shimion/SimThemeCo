@@ -104,8 +104,8 @@ class Sidebar extends Core{
                 'id' => 'footer-widget-section',
                 'name' => 'Footer Widget Area',
                 'description' => 'Full wapper will be devided depends on the number of widget used on this section.',
-                'before_widget' => '<div id="%1$s" class="col-sm list-group-item %2$s">',
-                'after_widget' => '</div>',
+                'before_widget' => '<div id="%1$s" class="col-sm %2$s"><div class="list-group-item">',
+                'after_widget' => '</div></div>',
                 'before_title' => '<h3 class="widgettitle">',
                 'after_title' => '</h3>',
             ));  

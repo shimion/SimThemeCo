@@ -1,4 +1,6 @@
 <?php 
+// Get Individual Post Information
+
 namespace ST\Base;
 use    ST\Base\Core;
 abstract class Post{

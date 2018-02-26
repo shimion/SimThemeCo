@@ -57,7 +57,14 @@ section.content {
     background: #FFF;
 }
 body.page-template section.content{ padding-top: 0px;}
+
+body.page-template section.content > .container-full >.row {
+    margin-left:  0;
+    margin-right:  0;
+}
+
 .main.main-builder{display: block; width: 100%;}
+
 
 /*
  * Customizer additional styles

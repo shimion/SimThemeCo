@@ -1,16 +1,16 @@
- jQuery(document).ready( function($) {  
-    
-     
+ jQuery(document).ready( function($) {
 
-     
+
+
+
  // ======================================================
   // CSFRAMEWORK MEDIA UPLOADER / UPLOAD
   // ------------------------------------------------------
   $("body").on('click','.cs-element-import-layout',  function() {
         $(this).parents('#post').addClass('ajax-entry');
-       var Form = $('.ajax-entry');    
-        
-    
+       var Form = $('.ajax-entry');
+
+
          var post_ID = $(Form).find('#post_ID');
         var id = $(post_ID).val();
       console.log(id);
@@ -72,7 +72,7 @@
                         console.log(response);
                         let FormData = {
                             //data : response.data,
-                            
+
                         };
                         //window.location.replace(response.redirect);
                       //   window.location.replace(response.redirect);
@@ -90,23 +90,23 @@
       });
 
   });
-    
-     
-     
-     
-     
+
+
+
+
+
 $('body').on('blend', '.cs-element-import-layut', function(){
          let self = this;
-   
-   
+
+
 		$(self).parents('#post').addClass('ajax-entry');
-       var Form = $('.ajax-entry');    
-        
-    
+       var Form = $('.ajax-entry');
+
+
          var post_ID = $(Form).find('#post_ID');
          var importdata = $(Form).find('.customizer-upload-button');
          var importdata = $(importdata).val();
-    
+
          console.log(importdata);
          var customizer = true;
         if(!importdata){
@@ -129,25 +129,25 @@ $('body').on('blend', '.cs-element-import-layut', function(){
                     data : response.data,
                 };
               //  window.location.replace(response.redirect);
-                
-                
+
+
                // $('.Form_Widget').html(ThankYou(data));
                     console.log(FormData);
             },
         });
-    
+
     });
-     
-     
+
+
 $('body').on('change', '.cs-element-enable-customizer-for-this-page', function(){
         let self = this;
 		var data = $(self).parents('#post').addClass('ajax-entry');
-        var Form = $('.ajax-entry');    
+        var Form = $('.ajax-entry');
         //var str = $( Form ).submit();
         console.log()
         var dtitle = data.find('#title').val() ;
-       var post_id = data.find('#post_ID').val() ; 
-        var enable_customizer = true;     
+       var post_id = data.find('#post_ID').val() ;
+        var enable_customizer = true;
             $(self).find('input').val(enable_customizer);
        //self.LoadingCheck(self.Loading, self.Form);
         return $.ajax({
@@ -162,8 +162,8 @@ $('body').on('change', '.cs-element-enable-customizer-for-this-page', function()
             success: function( response ) {
                 console.log(response);
               window.location.replace(response.redirect);
-                
-                
+
+
                // $('.Form_Widget').html(ThankYou(data));
                     console.log(FormData);
             },

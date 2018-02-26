@@ -1,8 +1,8 @@
 
 //import ThankYou from "../templates/components/ThankYou.html";
 jQuery(document).ready(function($) {
-  // Custom 
- 
+  // Custom
+
 /*
  * SimThemeCo
  */
@@ -17,7 +17,7 @@ var SimThemeCo = function(options){
         action  : '',
         data    : '',
     };
-    
+
     var Action = '';
     var Form = '';
     var Loading = false;
@@ -37,21 +37,22 @@ var SimThemeCo = function(options){
     this.construct = function(options){
         $.extend(vars , options);
         this.Slider = $('.carousel');
+        this.Paralax = $('section');
         this.Form = $('.simthemeco-form');
         this.Bg = $('.caption-inner-wapper');
         this.Colorize = $('.js-colorize');
         this.ActionType = $('.simthemeco-form').attr('data-form-type');
-        
+
         this.WoW =  new WOW(
                       {
-                      boxClass:     'sta',      // default
+                      boxClass:     'woo',      // default
                       animateClass: 'animated', // default
                       offset:       0,          // default
                       mobile:       true,       // default
                       live:         true        // default
                     }
                     )
-        
+
         this.SubmitForm();
         this.STCarousel();
         this.SectionBG();
@@ -60,10 +61,10 @@ var SimThemeCo = function(options){
     };
 
 
-    
-    
-    
-    
+
+
+
+
     this.stickyToggle = function(sticky, stickyWrapper, scrollElement) {
     var stickyHeight = sticky.outerHeight();
     var stickyTop = stickyWrapper.offset().top;
@@ -76,10 +77,16 @@ var SimThemeCo = function(options){
       stickyWrapper.height('auto');
     }
   };
-    
-  
-    
-    
+
+  this.ParalaxFunction = function() {
+      this.Paralax.each(function(){
+          var __this = $(this);
+          var id = __this.attr('id');
+          $('#'+id).parallax("50%", 0.1);
+      });
+  };
+
+
       // Find all data-toggle="sticky-onscroll" elements
    this.Menu = function(){
        $('[data-toggle="sticky-onscroll"]').each(function() {
@@ -96,13 +103,13 @@ var SimThemeCo = function(options){
         // On page load
         root.stickyToggle(sticky, stickyWrapper, $(window));
       });
-    
-    }
-    
 
-   
+    }
+
+
+
    // Define Ajax Function
-   this.AjaxColler =    function(form_data){     
+   this.AjaxColler =    function(form_data){
         console.log(this.ActionType);
         let self = this;
        //self.LoadingCheck(self.Loading, self.Form);
@@ -118,8 +125,8 @@ var SimThemeCo = function(options){
                 console.log(response);
                 self.Loading = false;
                 self.LoadingCheck(self.Loading, self.Form);
-                
-                
+
+
                 let FormData = {
                     data : response.data,
                 };
@@ -128,9 +135,9 @@ var SimThemeCo = function(options){
                     self.Result(response);
             },
         });
-    }  
-   
-   
+    }
+
+
    this.SubmitForm = function (){
         let self = this;
        self.Form.on('submit', function(e){
@@ -138,18 +145,18 @@ var SimThemeCo = function(options){
            $('.form-control').removeClass('is-invalid');
            $('.invalid-feedback').remove();
            self.Loading = true;
-           
+
          var formData = self.Form.serializeArray();
          //  console.log(formData);
             var data = JSON.stringify(formData);
             self.AjaxColler( data);
-           
-           
-            
+
+
+
        })
    }
-   
-   
+
+
   this.Result = function (response){
         let self = this;
        var res = response.output;
@@ -166,11 +173,11 @@ var SimThemeCo = function(options){
          this.Form.after(res);
          this.Form.hide();
         }
-      
-      
+
+
    }
-   
-   
+
+
     this.STCarousel = function (){
         let self = this;
         self.Slider.carousel({
@@ -178,22 +185,22 @@ var SimThemeCo = function(options){
             })
 
    }
-   
+
    this.SectionBG       = function (){
         let self = this;
-       
+
        self.Bg.each(function () {
 			var $this = $(this),
 				$animationType = $this.data('background');
 			$this.css('background', $animationType);
-		});       
+		});
    }
-   
-   
-  
+
+
+
    this.Color       = function (){
         //let self = this;
-       
+
        this.Colorize.each(function () {
 			var __this = $(this),
 
@@ -206,16 +213,16 @@ var SimThemeCo = function(options){
                             if($background){
                              __this.css('background-image', $background);
                             }
-           
-           
+
+
                             $border = __this.data('border');
                             if($border){
                              __this.css('border-color', $border);
                             }
 
-           
-           
-           
+
+
+
 
                 __this.mouseover(
                         function(){
@@ -227,14 +234,14 @@ var SimThemeCo = function(options){
                             if($color){
                              __this.css('color', $color);
                             }
-                            
+
                              $border = __this.data('border-hover');
                             if($border){
                              __this.css('border-color', $border);
                             }
-                            
-                            
-                            
+
+
+
                     });
 
               __this.mouseout(
@@ -247,12 +254,12 @@ var SimThemeCo = function(options){
                             if($color){
                              __this.css('color', $color);
                             }
-                            
+
                              $border = __this.data('border');
                             if($border){
                              __this.css('border-color', $border);
                             }
-                            
+
                     }
 
 
@@ -264,31 +271,31 @@ var SimThemeCo = function(options){
 
 
 
-				
-                
-		});       
+
+
+		});
    }
-   
-  
-   
-   
-   
-   
-    this.LoadingCheck = function (loading, wapper){  
+
+
+
+
+
+
+    this.LoadingCheck = function (loading, wapper){
         let self = this;
       //  console.log(wapper);
             if(loading){
-                if(! wapper.hasClass('loading')){    
+                if(! wapper.hasClass('loading')){
                     wapper.addClass('loading');
                     }
             }else{
                     wapper.removeClass('loading');
-                
+
             }
-        
+
             return;
         }
-   
+
 
     /*
      * Pass options when class instantiated
@@ -311,7 +318,23 @@ var NewSimThemeCo = new SimThemeCo();
  * Call myMethod inside SimThemeCo
  */
 NewSimThemeCo.Menu();
-    
-    
+NewSimThemeCo.ParalaxFunction();
+
+//var sticky = [];
+$('.paralax-sticky').each(function(idx){
+var sticky = new Waypoint.Sticky({
+
+    element: $('.paralax-sticky')[idx],
+
+});
+});
+/*var waypoint = new Waypoint({
+  element: $('.widget-area'),
+  handler: function(direction) {
+    console.log('Scrolled to waypoint!')
+  }
+});*/
+
+
 
 });

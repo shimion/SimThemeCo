@@ -466,7 +466,7 @@ class CSFramework extends CSFramework_Abstract {
       echo '</div>'; // end .cs-body
 
       echo '<footer class="cs-footer">';
-      echo '<div class="cs-block-left">Powered by Codestar Framework.</div>';
+      echo '<div class="cs-block-left">Powered by '.NAME.'.</div>';
       echo '<div class="cs-block-right">Version '. CS_VERSION .'</div>';
       echo '<div class="clear"></div>';
       echo '</footer>'; // end .cs-footer

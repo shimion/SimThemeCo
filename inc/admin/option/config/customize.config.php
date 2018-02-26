@@ -284,7 +284,7 @@ $options[]            = array(
                                           'type'      => 'color_picker',
                                           'title'     => 'Backgrund Color',
                                           'default'     => '',
-                                          'desc'      => 'Customize header text color',
+                                          'desc'      => 'Set the header Background Color',
                                           'help'      => '',
                                          // 'default'      => true,
                                         ),
@@ -318,7 +318,7 @@ $options[]            = array(
                                           'type'      => 'color_picker',
                                           'title'     => 'Hover Color',
                                           'default'     => '',
-                                          'desc'      => 'Customize header text color',
+                                          'desc'      => 'Customize header text hover color',
                                           'help'      => '',
                                          // 'default'      => true,
                                         ),
@@ -328,12 +328,12 @@ $options[]            = array(
                 
                   
                                      array(
-                                      'name'          => 'header_menu_bg_color',
+                                      'name'          => 'header_menu_item_bg_color',
                                       'control'       => array(
                                         'type'        => 'cs_field',
                                         'options'     => array(
                                           'type'      => 'color_picker',
-                                          'title'     => 'Menu Background Color',
+                                          'title'     => 'Menu Item Background Color',
                                           'default'     => '',
                                           'desc'      => 'Customize header text color',
                                           'help'      => '',
@@ -345,12 +345,12 @@ $options[]            = array(
                 
                   
                                      array(
-                                      'name'          => 'header_menu_bg_color_hover',
+                                      'name'          => 'header_menu_item_bg_color_hover',
                                       'control'       => array(
                                         'type'        => 'cs_field',
                                         'options'     => array(
                                           'type'      => 'color_picker',
-                                          'title'     => 'Menu Background Hover Color',
+                                          'title'     => 'Menu Hover and Active Item Background Color',
                                           'default'     => '',
                                          // 'desc'      => 'Customize header text color',
                                           'help'      => '',
@@ -361,14 +361,14 @@ $options[]            = array(
 
                 
                                      array(
-                                      'name'          => 'header_menu_color',
+                                      'name'          => 'header_menu_text_color',
                                       'control'       => array(
                                         'type'        => 'cs_field',
                                         'options'     => array(
                                           'type'      => 'color_picker',
-                                          'title'     => 'Menu Color',
+                                          'title'     => 'Menu Text Color',
                                           'default'     => '',
-                                          'desc'      => 'Customize header text color',
+                                          'desc'      => 'Customize header menu text color',
                                           'help'      => '',
                                          // 'default'      => true,
                                         ),
@@ -378,15 +378,15 @@ $options[]            = array(
                 
                   
                                      array(
-                                      'name'          => 'header_menu_color_hover',
+                                      'name'          => 'header_menu_text_color_hover',
                                       'control'       => array(
                                         'type'        => 'cs_field',
                                         'options'     => array(
                                           'type'      => 'color_picker',
-                                          'title'     => 'Hover Color',
+                                          'title'     => 'Menu Hover and Active Item Text Color',
                                           'default'     => '',
-                                          'desc'      => 'Customize header text color',
-                                          'help'      => '',
+                                          'desc'      => 'Customize header menu hover and active item text color',
+                                        //  'help'      => '',
                                          // 'default'      => true,
                                         ),
                                       ),
@@ -881,6 +881,250 @@ $options[]            = array(
        ),
     ),  
       
+      
+      
+      
+                                    array(
+                              'name'          => 'footer-colors',
+                              'title'         => 'Footer Colors',
+                              'settings'      => array(
+
+                                     array(
+                                      'name'          => 'footer_backgrounds',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Footer Background Colors',
+                                          'default'     => '',
+                                          'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                    
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Text Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize footer text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_color_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Text Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize footer text hover color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color_title',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_color_title_hover',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_alignment',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'select',
+                                          'title'     => 'Text Alignment',
+                                          'default'     => '',
+                                          'desc'      => 'Set the text alignment for the footer coppyright',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                            'options' => array(
+                                                ''      => 'Default',
+                                                'left'      => 'Left',
+                                                'right'      => 'Right',
+                                                'center'      => 'Center',
+                                            )
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                               ),
+                            ),
+
+                 
+                             array(
+                              'name'          => 'footer-widget-styles',
+                              'title'         => 'Footer Widget Styles',
+                              'settings'      => array(
+
+                                     array(
+                                      'name'          => 'footer_backgrounds_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Footer Widget Background Color',
+                                          'default'     => '',
+                                          //'desc'      => 'Customize header text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                    
+                  
+                                     array(
+                                      'name'          => 'footer_color_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Text Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize footer text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color_hover_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Customize footer text color',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                     array(
+                                      'name'          => 'footer_color_title_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_color_title_hover_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'color_picker',
+                                          'title'     => 'Title Hover Color',
+                                          'default'     => '',
+                                          'desc'      => 'Define footer title color here.',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                                    array(
+                                      'name'          => 'footer_alignment_widget',
+                                      'control'       => array(
+                                        'type'        => 'cs_field',
+                                        'options'     => array(
+                                          'type'      => 'select',
+                                          'title'     => 'Text Alignment',
+                                          'default'     => '',
+                                          'desc'      => 'Set the text alignment for the footer coppyright',
+                                          'help'      => '',
+                                         // 'default'      => true,
+                                            'options' => array(
+                                                ''      => 'Default',
+                                                'left'      => 'Left',
+                                                'right'      => 'Right',
+                                                'center'      => 'Center',
+                                            )
+                                        ),
+                                      ),
+                                    ),
+
+                
+                  
+                               ),
+                            ),
+      
+      
+      
+      
+      
+      
+      
         // end: section  
       
       
@@ -1148,223 +1392,7 @@ $options[]            = array(
 
                  
                   
-                              array(
-                              'name'          => 'footer-colors',
-                              'title'         => 'Footer Colors',
-                              'settings'      => array(
 
-                                     array(
-                                      'name'          => 'footer_backgrounds',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'background',
-                                          'title'     => 'Footer Background Colors',
-                                          'default'     => '',
-                                          'desc'      => 'Customize header text color',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                    
-
-                
-                  
-                                     array(
-                                      'name'          => 'footer_color_hover',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'color_picker',
-                                          'title'     => 'Hover Color',
-                                          'default'     => '',
-                                          'desc'      => 'Customize footer text color',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                                     array(
-                                      'name'          => 'footer_color_title',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'color_picker',
-                                          'title'     => 'Title Color',
-                                          'default'     => '',
-                                          'desc'      => 'Define footer title color here.',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                                    array(
-                                      'name'          => 'footer_color_title_hover',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'color_picker',
-                                          'title'     => 'Title Hover Color',
-                                          'default'     => '',
-                                          'desc'      => 'Define footer title color here.',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                                    array(
-                                      'name'          => 'footer_alignment',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'select',
-                                          'title'     => 'Text Alignment',
-                                          'default'     => '',
-                                          'desc'      => 'Set the text alignment for the footer coppyright',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                            'options' => array(
-                                                ''      => 'Default',
-                                                'left'      => 'Left',
-                                                'right'      => 'Right',
-                                                'center'      => 'Center',
-                                            )
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                               ),
-                            ),
-
-                 
-                             array(
-                              'name'          => 'footer-widget-styles',
-                              'title'         => 'Footer Widget Styles',
-                              'settings'      => array(
-
-                                     array(
-                                      'name'          => 'footer_backgrounds_widget',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'background',
-                                          'title'     => 'Footer Widget Background Color',
-                                          'default'     => '',
-                                          //'desc'      => 'Customize header text color',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                    
-                  
-                                     array(
-                                      'name'          => 'footer_color_widget',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'color_picker',
-                                          'title'     => 'Text Color',
-                                          'default'     => '',
-                                          'desc'      => 'Customize footer text color',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                                     array(
-                                      'name'          => 'footer_color_hover_widget',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'color_picker',
-                                          'title'     => 'Hover Color',
-                                          'default'     => '',
-                                          'desc'      => 'Customize footer text color',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                                     array(
-                                      'name'          => 'footer_color_title_widget',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'color_picker',
-                                          'title'     => 'Title Color',
-                                          'default'     => '',
-                                          'desc'      => 'Define footer title color here.',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                                    array(
-                                      'name'          => 'footer_color_title_hover_widget',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'color_picker',
-                                          'title'     => 'Title Hover Color',
-                                          'default'     => '',
-                                          'desc'      => 'Define footer title color here.',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                                    array(
-                                      'name'          => 'footer_alignment_widget',
-                                      'control'       => array(
-                                        'type'        => 'cs_field',
-                                        'options'     => array(
-                                          'type'      => 'select',
-                                          'title'     => 'Text Alignment',
-                                          'default'     => '',
-                                          'desc'      => 'Set the text alignment for the footer coppyright',
-                                          'help'      => '',
-                                         // 'default'      => true,
-                                            'options' => array(
-                                                ''      => 'Default',
-                                                'left'      => 'Left',
-                                                'right'      => 'Right',
-                                                'center'      => 'Center',
-                                            )
-                                        ),
-                                      ),
-                                    ),
-
-                
-                  
-                               ),
-                            ),
 
                  
                   

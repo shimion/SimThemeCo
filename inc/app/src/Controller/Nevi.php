@@ -28,7 +28,7 @@ class Nevi extends Base{
                                  'container_class' => 'collapse navbar-collapse',
                                  'menu_id'         => false,
                                  'menu_class'      => 'navbar-nav ml-auto mr-0',
-                                 'depth'           => 2,
+                                 'depth'           => 4,
                                  'items_wrap'     => self::Filters(),
                                  'fallback_cb'     => '\ST\bs4navwalker::fallback',
                                  'walker'          => new \ST\bs4navwalker

@@ -35,6 +35,12 @@ class FileViewFinder implements ViewFinderInterface
      */
     protected $hints = [];
 
+
+
+    protected $theme = [];
+
+
+
     /**
      * Register a view extension with the finder.
      *
@@ -52,9 +58,15 @@ class FileViewFinder implements ViewFinderInterface
      */
     public function __construct(Filesystem $files, array $paths, array $extensions = null)
     {
+
+
+        $this->theme = wp_get_theme();
+        //print_r($this->theme);
         $this->files = $files;
         $this->paths = $paths;
-
+        if( $this->theme->stylesheet != NAME )
+        $this->paths[] = str_replace($this->theme->stylesheet, NAME, $this->paths[0]);
+        //print_r($this->paths);
         if (isset($extensions)) {
             $this->extensions = $extensions;
         }
